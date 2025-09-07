@@ -3,14 +3,14 @@ import { useState } from "react"
 import Logo from "../../../components/Logo"
 import { useScroll } from "framer-motion";
 import { motion, AnimatePresence } from "framer-motion"
-import { LinkedInIcon, GitHubIcon, SunIcon, MoonIcon, HamburgerIcon, EnglishFlagIcon, FrenchFlagIcon } from "../../../components/icons"
+import { LinkedInIcon, GitHubIcon , HamburgerIcon, EnglishFlagIcon, FrenchFlagIcon } from "../../../components/icons"
 import { useAppContext } from "../../../contexts/AppContext"
 import { TransText } from "../../../components/TransText"
 
 export default function Navbar() {
     const { scrollYProgress } = useScroll();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const { selectedLanguage, toggleLanguage, isDark, toggleTheme } = useAppContext();
+    const { selectedLanguage, toggleLanguage } = useAppContext();
 
     
     const navLinks = [
