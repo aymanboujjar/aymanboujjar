@@ -36,7 +36,6 @@ import clickteePreview from "../assets/images/projects/clicktee/Capture d’écr
 import clicktee1 from "../assets/images/projects/clicktee/1.png";
 import clicktee2 from "../assets/images/projects/clicktee/2.png";
 import clicktee3 from "../assets/images/projects/clicktee/3.png";
-import clicktee4 from "../assets/images/projects/clicktee/4.png";
 export const proProjects: Project[] = [
     {
         id: 1,
