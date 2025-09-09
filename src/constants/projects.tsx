@@ -362,12 +362,6 @@ export const proProjects: Project[] = [
         additionalImages: [yesmobile2, yesmobile3, yesmobile4, yesmobile5]
     },
     
-
-];
-
-export const persoProjects: Project[] = [
-
-    
     {
     id: 7,
     name: 'ClickTee',
@@ -421,7 +415,13 @@ export const persoProjects: Project[] = [
         { en: "Integration with print-on-demand services", fr: "Intégration avec des services d’impression à la demande" }
     ],
     additionalImages: [clicktee1, clicktee2, clicktee3] // placeholders for screenshots
-}
+    }
+
+];
+
+export const persoProjects: Project[] = [
+
+    
 
 
 

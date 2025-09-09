@@ -15,12 +15,12 @@ export default function Projects() {
                     {/* pro projects */}
                     <div className="space-y-8">
                         <h2 className="text-2xl lg:text-3xl font-bold underline mb-8">
-                            <TransText en="Professional Projects" fr="Projets Professionnels" />
+                            <TransText en=" Projects" fr="Projets " />
                         </h2>
 
                         <div className="grid gap-2">
 
-                            {proProjects.slice(0,3).map((project, ind) => (
+                            {proProjects.slice(0,4).map((project, ind) => (
                                 <ProjectCard
                                     key={project.id}
                                     project={project}
@@ -32,24 +32,7 @@ export default function Projects() {
                         </div>
                     </div>
 
-                    {/* perso projects */}
-                    <div className="space-y-8 mt-16">
-                        <h2 className="text-2xl lg:text-4xl font-bold underline mb-8">
-                            <TransText en="Personal Projects" fr="Projets Personnels" />
-                        </h2>
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
-
-                            {persoProjects.map((project, ind) => (
-                                <ProjectCard
-                                    key={project.id}
-                                    project={project}
-                                    index={ind + proProjects.length}
-                                    type="perso"
-                                />
-                            ))}
-
-                        </div>
-                    </div>
+               
                 </div>
             </div>
         </section>

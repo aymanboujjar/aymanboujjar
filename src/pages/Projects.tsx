@@ -13,7 +13,7 @@ export default function Projects() {
                     {/* Professional Projects Section */}
                     <div className="space-y-8">
                         <h2 className="text-2xl lg:text-3xl font-bold text-alpha underline decoration-alpha/50 underline-offset-8 mb-8">
-                            <TransText en="Professional Projects" fr="Projets Professionnels" />
+                            <TransText en=" Projects" fr="Projets " />
                         </h2>
 
                         <div className="space-y-8 grid grid-cols-1 lg:grid-cols-2 gap-3">
@@ -28,25 +28,7 @@ export default function Projects() {
                         </div>
                     </div>
 
-                    {/* Personal Projects Section */}
-                    <div className="space-y-8">
-                        <h2 className="text-2xl lg:text-3xl font-bold text-alpha underline decoration-alpha/50 underline-offset-8 mb-8">
-
-                            <TransText en="Personal Projects" fr="projets Personnels" />
-
-                        </h2>
-
-                        <div className="space-y-8 grid grid-cols-1 lg:grid-cols-2 gap-2">
-                            {persoProjects.map((project, ind) => (
-                                <ProjectCard
-                                    key={project.id}
-                                    project={project}
-                                    index={ind + proProjects.length}
-                                    type="perso"
-                                />
-                            ))}
-                        </div>
-                    </div>
+                   
                 </div>
             </div>
         </div>
