@@ -1,6 +1,6 @@
 import ProjectCard from "../../../components/ProjectCard"
 import Title from "../../../components/Title"
-import { proProjects , persoProjects } from "../../../constants/projects"
+import { proProjects  } from "../../../constants/projects"
 import { TransText } from "../../../components/TransText"
 
 export default function Projects() {
