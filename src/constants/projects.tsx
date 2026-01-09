@@ -32,10 +32,15 @@ import yesmobile3 from "../assets/images/projects/yesmobile/yesmobile3.png";
 import yesmobile4 from "../assets/images/projects/yesmobile/yesmobile4.png";
 import yesmobile5 from "../assets/images/projects/yesmobile/yesmobile5.png";
 
-import clickteePreview from "../assets/images/projects/clicktee/Capture d’écran 2025-07-28 152229.png";
+import clickteePreview from "../assets/images/projects/clicktee/01.png";
 import clicktee1 from "../assets/images/projects/clicktee/1.png";
 import clicktee2 from "../assets/images/projects/clicktee/2.png";
 import clicktee3 from "../assets/images/projects/clicktee/3.png";
+
+import sonoticPreview from "../assets/images/projects/sonotic/sonotic1.png";
+import sonotic1 from "../assets/images/projects/sonotic/sonotic1.png";
+import sonotic2 from "../assets/images/projects/sonotic/sonotic4.png";
+import sonotic3 from "../assets/images/projects/sonotic/sonotic3.png";
 export const proProjects: Project[] = [
     {
         id: 1,
@@ -415,6 +420,61 @@ export const proProjects: Project[] = [
         { en: "Integration with print-on-demand services", fr: "Intégration avec des services d’impression à la demande" }
     ],
     additionalImages: [clicktee1, clicktee2, clicktee3] // placeholders for screenshots
+    },
+    
+    {
+    id: 8,
+    name: 'SONOTIC',
+    github: '',
+    website: 'https://sonotic.ma/',
+    desc: {
+        en: "SONOTIC is Morocco's trusted partner for over 25 years, providing industrial and food-grade pipes for water supply, sanitation, irrigation, and industrial infrastructure. We built a modern, responsive website showcasing their comprehensive range of materials including PVC, HDPE, steel, and concrete, all meeting the strictest international and Moroccan standards.",
+        fr: "SONOTIC est le partenaire de confiance du Maroc depuis plus de 25 ans, fournissant des tuyaux industriels et alimentaires pour l'approvisionnement en eau, l'assainissement, l'irrigation et les infrastructures industrielles. Nous avons développé un site web moderne et réactif mettant en valeur leur large gamme de matériaux incluant PVC, HDPE, acier et béton, tous conformes aux normes internationales et marocaines les plus strictes."
+    },
+    detailedDesc: {
+        en: "A professional corporate website for SONOTIC, a leading supplier of industrial and food-grade pipes in Morocco. The platform highlights their 25+ years of expertise, showcasing their diverse product range including PVC, HDPE, steel, and concrete pipes. Built with modern web technologies to ensure fast performance, excellent user experience, and mobile responsiveness.",
+        fr: "Un site web d'entreprise professionnel pour SONOTIC, un fournisseur leader de tuyaux industriels et alimentaires au Maroc. La plateforme met en valeur leurs plus de 25 ans d'expertise, présentant leur gamme diversifiée de produits incluant des tuyaux en PVC, HDPE, acier et béton. Développé avec des technologies web modernes pour assurer des performances rapides, une excellente expérience utilisateur et une réactivité mobile."
+    },
+    techs: [
+        { name: 'React', color: 'bg-[#00d8ff]' },
+        { name: 'Vite', color: 'bg-[#646cff]' },
+        { name: 'Tailwind CSS', color: 'bg-[#38bdf8]' },
+    ],
+    client: 'SONOTIC',
+    clientWebsite: 'https://sonotic.ma/',
+    preview: sonoticPreview,
+    timeline: {
+        en: "2 months (Project timeline)",
+        fr: "2 mois (Durée du projet)"
+    },
+    challenges: [
+        { en: "Showcasing technical product specifications in an accessible way", fr: "Présenter les spécifications techniques des produits de manière accessible" },
+        { en: "Creating a professional corporate image while maintaining usability", fr: "Créer une image d'entreprise professionnelle tout en maintenant la facilité d'utilisation" },
+        { en: "Ensuring responsive design for various devices and screen sizes", fr: "Assurer un design réactif pour divers appareils et tailles d'écran" }
+    ],
+    solutions: [
+        { en: "Designed intuitive product catalog with clear categorization", fr: "Conception d'un catalogue de produits intuitif avec catégorisation claire" },
+        { en: "Implemented modern UI with Tailwind CSS for professional aesthetics", fr: "Mise en œuvre d'une interface moderne avec Tailwind CSS pour une esthétique professionnelle" },
+        { en: "Built fast, responsive website using React and Vite for optimal performance", fr: "Développement d'un site web rapide et réactif utilisant React et Vite pour des performances optimales" }
+    ],
+    keyFeatures: [
+        { en: "Product catalog showcasing PVC, HDPE, steel, and concrete pipes", fr: "Catalogue de produits présentant des tuyaux en PVC, HDPE, acier et béton" },
+        { en: "Company history and expertise presentation", fr: "Présentation de l'histoire et de l'expertise de l'entreprise" },
+        { en: "Responsive design for all devices", fr: "Design réactif pour tous les appareils" },
+        { en: "Contact and inquiry forms", fr: "Formulaires de contact et de demande" },
+        { en: "Fast loading times and optimized performance", fr: "Temps de chargement rapides et performances optimisées" }
+    ],
+    lessonsLearned: [
+        { en: "Best practices for corporate website development", fr: "Meilleures pratiques pour le développement de sites web d'entreprise" },
+        { en: "Balancing technical content with user-friendly presentation", fr: "Équilibrer le contenu technique avec une présentation conviviale" },
+        { en: "Optimizing React applications with Vite for production", fr: "Optimisation des applications React avec Vite pour la production" }
+    ],
+    futureImprovements: [
+        { en: "Product configurator tool for custom pipe specifications", fr: "Outil de configuration de produits pour des spécifications de tuyaux personnalisées" },
+        { en: "Multi-language support (Arabic, French, English)", fr: "Support multilingue (Arabe, Français, Anglais)" },
+        { en: "Integration with CRM for lead management", fr: "Intégration avec un CRM pour la gestion des prospects" }
+    ],
+    additionalImages: [sonotic1, sonotic2, sonotic3]
     }
 
 ];
