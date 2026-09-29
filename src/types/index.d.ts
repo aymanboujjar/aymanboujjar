@@ -41,8 +41,9 @@ type LocalizedString = {
 type Project = {
     id: number,
     name: string,
-    github?: string,
     website: string,
+    appStore?: string,
+    playStore?: string,
     desc: LocalizedString;
     detailedDesc: LocalizedString;
     techs: Tech[],

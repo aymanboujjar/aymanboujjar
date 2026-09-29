@@ -1,9 +1,32 @@
+import tililaPreview from "../assets/images/projects/tilila/tilila1.jpg";
+import tilila2 from "../assets/images/projects/tilila/tilila2.jpg";
+import tilila3 from "../assets/images/projects/tilila/tilila3.jpg";
+import tilila4 from "../assets/images/projects/tilila/tilila4.png";
+
+import mylionsgeekPreview from "../assets/images/projects/mylionsgeek/mylionsgeek1.png";
+import mylionsgeek2 from "../assets/images/projects/mylionsgeek/mylionsgeek2.jpg";
+import mylionsgeek3 from "../assets/images/projects/mylionsgeek/mylionsgeek3.png";
+import mylionsgeek4 from "../assets/images/projects/mylionsgeek/mylionsgeek4.jpg";
+import mylionsgeek5 from "../assets/images/projects/mylionsgeek/mylionsgeek5.png";
+import mylionsgeek6 from "../assets/images/projects/mylionsgeek/mylionsgeek6.png";
+
+import lionsgeekPreview from "../assets/images/projects/lionsgeek/lionsgeek1.png";
+import lionsgeek2 from "../assets/images/projects/lionsgeek/lionsgeek2.png";
+import lionsgeek3 from "../assets/images/projects/lionsgeek/lionsgeek3.png";
+import lionsgeek4 from "../assets/images/projects/lionsgeek/lionsgeek4.png";
+import lionsgeek5 from "../assets/images/projects/lionsgeek/lionsgeek5.png";
+import lionsgeek6 from "../assets/images/projects/lionsgeek/lionsgeek6.jpg";
+
+import lgmobilePreview from "../assets/images/projects/lionsgeek-mobile/lgmobile1.png";
+import lgmobile2 from "../assets/images/projects/lionsgeek-mobile/lgmobile2.png";
+import lgmobile3 from "../assets/images/projects/lionsgeek-mobile/lgmobile3.png";
+import lgmobile4 from "../assets/images/projects/lionsgeek-mobile/lgmobile4.png";
+import lgmobile5 from "../assets/images/projects/lionsgeek-mobile/lgmobile5.png";
+
 import lionsPreview from "../assets/images/projects/a1atelier/atelier2.png";
 import lions1 from "../assets/images/projects/a1atelier/atelier2.png";
 import lions2 from "../assets/images/projects/a1atelier/atelier3.png";
 import lions3 from "../assets/images/projects/a1atelier/atelier4.png";
-
-
 
 import casaPreview from "../assets/images/projects/casatourat/casa1.png"
 import casa2 from "../assets/images/projects/casatourat/casa2.png";
@@ -32,10 +55,6 @@ import yesmobile3 from "../assets/images/projects/yesmobile/yesmobile3.png";
 import yesmobile4 from "../assets/images/projects/yesmobile/yesmobile4.png";
 import yesmobile5 from "../assets/images/projects/yesmobile/yesmobile5.png";
 
-import clickteePreview from "../assets/images/projects/clicktee/01.png";
-import clicktee1 from "../assets/images/projects/clicktee/1.png";
-import clicktee2 from "../assets/images/projects/clicktee/2.png";
-import clicktee3 from "../assets/images/projects/clicktee/3.png";
 
 import sonoticPreview from "../assets/images/projects/sonotic/sonotic1.png";
 import sonotic1 from "../assets/images/projects/sonotic/sonotic1.png";
@@ -43,9 +62,225 @@ import sonotic2 from "../assets/images/projects/sonotic/sonotic4.png";
 import sonotic3 from "../assets/images/projects/sonotic/sonotic3.png";
 export const proProjects: Project[] = [
     {
+        id: 9,
+        name: 'Tilila',
+        website: 'https://tilila.org/',
+        desc: {
+            en: "A multi-program platform built with the LionsGeek team for equity, diversity, and inclusion in media. Tilila brings together Tilila Awards, Tililab, and an expert directory — connecting campaigns, emerging storytellers, and women experts across Morocco, Africa, and the diaspora.",
+            fr: "Une plateforme multi-programmes développée avec l’équipe LionsGeek pour l’équité, la diversité et l’inclusion dans les médias. Tilila réunit Tilila Awards, Tililab et un annuaire d’expertes — connectant campagnes, talents du storytelling et expertes au Maroc, en Afrique et dans la diaspora."
+        },
+        detailedDesc: {
+            en: "Tilila is a comprehensive web platform supporting media representation initiatives. It includes Tilila Awards for recognizing campaigns that evolve representations, Tililab for mentoring tomorrow’s storytelling talents, and a searchable Expertes directory for journalists and collaborators. Built with Laravel, Inertia, and React for a seamless, multilingual experience.",
+            fr: "Tilila est une plateforme web complète au service des initiatives de représentation dans les médias. Elle comprend Tilila Awards pour récompenser les campagnes qui font évoluer les représentations, Tililab pour accompagner les talents du storytelling de demain, et un annuaire Expertes consultable pour les journalistes et collaborateurs. Développée avec Laravel, Inertia et React pour une expérience fluide et multilingue."
+        },
+        techs: [
+            { name: 'Laravel', color: 'bg-[#ff2d20]' },
+            { name: 'Inertia', color: 'bg-[#3b4654]' },
+            { name: 'React', color: 'bg-[#00d8ff]' },
+            { name: 'TypeScript', color: 'bg-[#3178c6] text-white' },
+            { name: 'Tailwind', color: 'bg-[#38bdf8]' },
+        ],
+        client: 'Tilila / 2M',
+        clientWebsite: 'https://tilila.org/',
+        preview: tililaPreview,
+        timeline: {
+            en: "2025 - 2026 (Team project with LionsGeek)",
+            fr: "2025 - 2026 (Projet d’équipe avec LionsGeek)"
+        },
+        challenges: [
+            { en: "Unifying Awards, Tililab, and Expertes into one coherent platform", fr: "Unifier Awards, Tililab et Expertes dans une plateforme cohérente" },
+            { en: "Building searchable expert directories with multi-criteria filters", fr: "Construire des annuaires d’expertes recherchables avec filtres multi-critères" },
+            { en: "Supporting bilingual content and distinct program workflows", fr: "Gérer le contenu bilingue et des flux métier distincts par programme" }
+        ],
+        solutions: [
+            { en: "Modular Laravel + Inertia architecture with shared UI components", fr: "Architecture Laravel + Inertia modulaire avec composants UI partagés" },
+            { en: "Filterable Expertes directory by region, country, city, and languages", fr: "Annuaire Expertes filtrable par région, pays, ville et langues" },
+            { en: "Dedicated program pages with registration and application flows", fr: "Pages dédiées par programme avec flux d’inscription et de candidature" }
+        ],
+        keyFeatures: [
+            { en: "Tilila Awards registration and program presentation", fr: "Inscription et présentation du programme Tilila Awards" },
+            { en: "Tililab candidacy and talent mentoring flows", fr: "Candidatures Tililab et parcours d’accompagnement des talents" },
+            { en: "Expertes directory with search and advanced filters", fr: "Annuaire Expertes avec recherche et filtres avancés" },
+            { en: "Journalist and expert access pathways", fr: "Parcours d’accès journaliste et experte" },
+            { en: "Multilingual French / English interface", fr: "Interface multilingue français / anglais" }
+        ],
+        lessonsLearned: [
+            { en: "Designing multi-program platforms with clear user journeys", fr: "Concevoir des plateformes multi-programmes avec des parcours utilisateurs clairs" },
+            { en: "Collaborating in a team on a production Laravel + React stack", fr: "Collaborer en équipe sur une stack Laravel + React en production" },
+            { en: "Building accessible directories for media professionals", fr: "Construire des annuaires accessibles pour les professionnels des médias" }
+        ],
+        futureImprovements: [
+            { en: "Expanded analytics for Awards and Tililab impact", fr: "Analyses élargies de l’impact Awards et Tililab" },
+            { en: "Richer expert profiles and collaboration tools", fr: "Profils d’expertes enrichis et outils de collaboration" }
+        ],
+        additionalImages: [tilila2, tilila3, tilila4]
+    },
+    {
+        id: 10,
+        name: 'MyLionsGeek',
+        website: 'https://mylionsgeek.ma/',
+        desc: {
+            en: "The internal community and operations platform for LionsGeek. MyLionsGeek combines a social feed, jobs, leaderboards, messaging, and studio/cowork reservations — plus an admin dashboard to manage members, equipment, and bookings.",
+            fr: "La plateforme interne de communauté et d’opérations de LionsGeek. MyLionsGeek réunit un fil d’actualité, des offres d’emploi, un classement, la messagerie et les réservations de studios/cowork — ainsi qu’un tableau de bord admin pour gérer membres, équipements et réservations."
+        },
+        detailedDesc: {
+            en: "MyLionsGeek is a full-stack hub for LionsGeek students and staff. Members interact through posts, profiles, and real-time messaging; book studios and cowork spaces; track engagement via leaderboards; and browse jobs. Admins get a 360° overview of users, reservations, computers, and equipment. Built with Laravel, Inertia, and React.",
+            fr: "MyLionsGeek est un hub fullstack pour les étudiants et le staff LionsGeek. Les membres interagissent via posts, profils et messagerie ; réservent studios et espaces cowork ; suivent l’engagement via le classement ; et consultent les offres. Les admins disposent d’une vue 360° sur utilisateurs, réservations, ordinateurs et équipements. Développé avec Laravel, Inertia et React."
+        },
+        techs: [
+            { name: 'Laravel', color: 'bg-[#ff2d20]' },
+            { name: 'Inertia', color: 'bg-[#3b4654]' },
+            { name: 'React', color: 'bg-[#00d8ff]' },
+            { name: 'TypeScript', color: 'bg-[#3178c6] text-white' },
+            { name: 'Tailwind', color: 'bg-[#38bdf8]' },
+        ],
+        client: 'LionsGeek Association',
+        clientWebsite: 'https://lionsgeek.ma/',
+        preview: mylionsgeekPreview,
+        timeline: {
+            en: "2024 - Present (Ongoing at LionsGeek)",
+            fr: "2024 - Présent (En cours chez LionsGeek)"
+        },
+        challenges: [
+            { en: "Unifying social, booking, and admin workflows in one platform", fr: "Unifier réseaux sociaux, réservations et admin dans une seule plateforme" },
+            { en: "Real-time-feel messaging and community engagement features", fr: "Messagerie et fonctionnalités d’engagement communautaire fluides" },
+            { en: "Managing studios, cowork tables, and equipment availability", fr: "Gérer la disponibilité des studios, tables cowork et équipements" }
+        ],
+        solutions: [
+            { en: "Modular Laravel + Inertia architecture with role-based access", fr: "Architecture Laravel + Inertia modulaire avec accès basé sur les rôles" },
+            { en: "Spaces booking UI with studios/cowork filters and calendars", fr: "UI de réservation Spaces avec filtres studios/cowork et calendriers" },
+            { en: "Admin dashboard with live stats for users, gear, and reservations", fr: "Dashboard admin avec stats en direct sur utilisateurs, matériel et réservations" }
+        ],
+        keyFeatures: [
+            { en: "Social feed with posts, likes (Geeked), comments, and reposts", fr: "Fil social avec posts, likes (Geeked), commentaires et reposts" },
+            { en: "Spaces & reservations for studios and cowork tables", fr: "Spaces & réservations pour studios et tables cowork" },
+            { en: "Leaderboard and member engagement tracking", fr: "Classement et suivi de l’engagement des membres" },
+            { en: "Direct messaging between members", fr: "Messagerie directe entre membres" },
+            { en: "Admin 360° overview of members, computers, and equipment", fr: "Vue admin 360° sur membres, ordinateurs et équipements" },
+            { en: "Jobs board and member profiles", fr: "Espace Jobs et profils membres" }
+        ],
+        lessonsLearned: [
+            { en: "Building internal tools that serve both community and operations", fr: "Construire des outils internes pour la communauté et les opérations" },
+            { en: "Role-based UX for students vs administrators", fr: "UX basée sur les rôles étudiants vs administrateurs" },
+            { en: "Scaling a reservation system alongside social features", fr: "Faire évoluer un système de réservation avec des fonctionnalités sociales" }
+        ],
+        futureImprovements: [
+            { en: "Deeper mobile parity with the LionsGeek app", fr: "Meilleure parité mobile avec l’app LionsGeek" },
+            { en: "Smarter equipment analytics and booking insights", fr: "Analyses équipements et insights de réservation plus poussés" }
+        ],
+        additionalImages: [mylionsgeek2, mylionsgeek3, mylionsgeek4, mylionsgeek5, mylionsgeek6]
+    },
+    {
+        id: 11,
+        name: 'LionsGeek',
+        website: 'https://lionsgeek.ma/',
+        desc: {
+            en: "The public website for LionsGeek, a non-profit empowering young Moroccans with free digital skills. It presents training programs, events & hackathons, coworking, and LionsGeek Pro services — with multilingual support and dark mode.",
+            fr: "Le site public de LionsGeek, une association qui forme gratuitement les jeunes Marocains aux compétences numériques. Il présente les formations, événements & hackathons, le coworking et les services LionsGeek Pro — avec support multilingue et mode sombre."
+        },
+        detailedDesc: {
+            en: "LionsGeek.ma is the association’s main digital gateway: storytelling about the mission, 6-month Full Stack and Digital Content Creator programs, upcoming events and hackathon registration, coworking info, and Pro services (web development, audiovisual production, and more). Built with Laravel, Inertia, and React for a polished bilingual experience.",
+            fr: "LionsGeek.ma est la vitrine digitale de l’association : présentation de la mission, programmes Full Stack et Digital Content Creator de 6 mois, événements et inscriptions aux hackathons, coworking, et services Pro (développement web, production audiovisuelle, etc.). Développé avec Laravel, Inertia et React pour une expérience bilingue soignée."
+        },
+        techs: [
+            { name: 'Laravel', color: 'bg-[#ff2d20]' },
+            { name: 'Inertia', color: 'bg-[#3b4654]' },
+            { name: 'React', color: 'bg-[#00d8ff]' },
+            { name: 'Tailwind', color: 'bg-[#38bdf8]' },
+        ],
+        client: 'LionsGeek Association',
+        clientWebsite: 'https://lionsgeek.ma/',
+        preview: lionsgeekPreview,
+        timeline: {
+            en: "2024 - Present (Ongoing at LionsGeek)",
+            fr: "2024 - Présent (En cours chez LionsGeek)"
+        },
+        challenges: [
+            { en: "Presenting programs, events, and Pro services in one clear journey", fr: "Présenter formations, événements et services Pro dans un parcours clair" },
+            { en: "Multilingual content (EN / FR / AR) with consistent branding", fr: "Contenu multilingue (EN / FR / AR) avec une identité visuelle cohérente" },
+            { en: "Event and hackathon registration flows with real availability", fr: "Flux d’inscription événements/hackathons avec disponibilités réelles" }
+        ],
+        solutions: [
+            { en: "Sectioned marketing site with dedicated Training, Events, and Pro pages", fr: "Site marketing structuré avec pages Training, Events et Pro dédiées" },
+            { en: "Shared TransText / i18n patterns across pages", fr: "Patterns TransText / i18n partagés sur les pages" },
+            { en: "Event cards with filters, spots left, and registration CTAs", fr: "Cartes d’événements avec filtres, places restantes et CTA d’inscription" }
+        ],
+        keyFeatures: [
+            { en: "Hero landing with pillars: Training, Co-working, Events", fr: "Landing hero avec piliers : Training, Co-working, Events" },
+            { en: "6-month Full Stack & Digital Content Creator programs", fr: "Programmes Full Stack & Digital Content Creator de 6 mois" },
+            { en: "Events & hackathons listing with registration", fr: "Liste événements & hackathons avec inscription" },
+            { en: "LionsGeek Pro services showcase", fr: "Vitrine des services LionsGeek Pro" },
+            { en: "Dark / light mode and language switcher", fr: "Mode sombre / clair et sélecteur de langue" }
+        ],
+        lessonsLearned: [
+            { en: "Designing an association brand site that converts visitors into applicants", fr: "Concevoir un site d’association qui convertit les visiteurs en candidats" },
+            { en: "Balancing storytelling with operational registration flows", fr: "Équilibrer storytelling et flux d’inscription opérationnels" },
+            { en: "Maintaining yellow/black brand identity across light and dark themes", fr: "Maintenir l’identité jaune/noir en thèmes clair et sombre" }
+        ],
+        futureImprovements: [
+            { en: "Richer alumni / success-story storytelling", fr: "Storytelling alumni / success stories enrichi" },
+            { en: "Tighter sync with MyLionsGeek for applicant pipelines", fr: "Sync plus étroite avec MyLionsGeek pour les pipelines candidats" }
+        ],
+        additionalImages: [lionsgeek2, lionsgeek3, lionsgeek4, lionsgeek5, lionsgeek6]
+    },
+    {
+        id: 12,
+        name: 'LionsGeek Mobile',
+        website: '',
+        appStore: 'https://apps.apple.com/us/app/lionsgeek/id6759228520',
+        playStore: 'https://play.google.com/store/apps/details?id=com.lionsgeek_pro.lionsgeek',
+        desc: {
+            en: "The official LionsGeek companion app for iOS and Android — social feed, messaging, studio/cowork reservations, events with QR check-in, and member profiles. Built with React Native and Expo so the community stays connected on the go.",
+            fr: "L’application officielle LionsGeek pour iOS et Android — fil d’actualité, messagerie, réservations studios/cowork, événements avec check-in QR, et profils membres. Développée avec React Native et Expo pour garder la communauté connectée en mobilité."
+        },
+        detailedDesc: {
+            en: "LionsGeek Mobile brings the full community platform to phones: Stories and posts, real-time chat and calls, calendar booking for studios and cowork spaces, events & info sessions with staff QR scanning, and profiles with gamification. Available on the App Store and Google Play.",
+            fr: "LionsGeek Mobile porte toute la plateforme communauté sur mobile : Stories et posts, chat et appels en temps réel, réservation calendrier des studios et espaces cowork, événements & infosessions avec scan QR pour le staff, et profils avec gamification. Disponible sur l’App Store et Google Play."
+        },
+        techs: [
+            { name: 'React Native', color: 'bg-[#00d8ff]' },
+            { name: 'Expo', color: 'bg-white text-black' },
+            { name: 'NativeWind', color: 'bg-[#38bdf8]' },
+            { name: 'TypeScript', color: 'bg-[#3178c6] text-white' },
+        ],
+        client: 'LionsGeek Association',
+        clientWebsite: 'https://lionsgeek.ma/',
+        preview: lgmobilePreview,
+        timeline: {
+            en: "2025 - Present (Team project with LionsGeek)",
+            fr: "2025 - Présent (Projet d’équipe avec LionsGeek)"
+        },
+        challenges: [
+            { en: "Parity with the web platform across social, booking, and events", fr: "Parité avec le web pour le social, les réservations et les événements" },
+            { en: "Cross-platform booking UX with calendars and time-slot dragging", fr: "UX de réservation multiplateforme avec calendriers et créneaux glissables" },
+            { en: "Staff tools for QR check-in and event participant management", fr: "Outils staff pour check-in QR et gestion des participants aux événements" }
+        ],
+        solutions: [
+            { en: "Expo + React Native shared codebase for iOS and Android", fr: "Codebase partagée Expo + React Native pour iOS et Android" },
+            { en: "Native calendars and interactive schedule booking flows", fr: "Calendriers natifs et flux de réservation interactifs" },
+            { en: "Camera-based QR scanning with role-aware staff features", fr: "Scan QR via caméra avec fonctionnalités staff selon les rôles" }
+        ],
+        keyFeatures: [
+            { en: "Community feed with Stories, posts, and engagements", fr: "Fil communautaire avec Stories, posts et interactions" },
+            { en: "Messaging with calls support", fr: "Messagerie avec support d’appels" },
+            { en: "Studio & cowork reservations with availability calendar", fr: "Réservations studios & cowork avec calendrier de disponibilités" },
+            { en: "Events & info sessions with QR participant check-in", fr: "Événements & infosessions avec check-in QR des participants" },
+            { en: "Profiles, settings, and Coding Mode dark theme", fr: "Profils, paramètres et mode Coding (thème sombre)" }
+        ],
+        lessonsLearned: [
+            { en: "Shipping a production Expo app to both App Store and Play Store", fr: "Publier une app Expo en production sur App Store et Play Store" },
+            { en: "Designing mobile-first booking and social UX", fr: "Concevoir une UX mobile-first pour réservations et social" },
+            { en: "Role-based features for students, coaches, and staff", fr: "Fonctionnalités basées sur les rôles étudiants, coachs et staff" }
+        ],
+        futureImprovements: [
+            { en: "Deeper offline support for reservations and feed", fr: "Support hors ligne plus poussé pour réservations et fil" },
+            { en: "Richer push notification preferences", fr: "Préférences de notifications push plus riches" }
+        ],
+        additionalImages: [lgmobile2, lgmobile3, lgmobile4, lgmobile5]
+    },
+    {
         id: 1,
         name: 'A1 Atelier',
-        github: '',
         website: 'https://a1.mylionsgeek.ma/',
         desc: {
             en: "We collaborated with A1 Atelier, an architecture company, to build a modern platform that streamlines project management, client meetings, and resource scheduling. Leveraging Laravel, Inertia, and Tailwind, we created a system that improves both internal workflows and client communication.",
@@ -100,7 +335,6 @@ export const proProjects: Project[] = [
     {
         id: 2,
         name: 'Casatourat',
-        github: '',
         website: 'http://casatourat.ma/',
         desc: {
             en: "A mobile application built with React Native and Expo for the Casa Memoire association, designed to showcase the rich history of Casablanca. This project provided invaluable experience in mobile app development, user interface design, and a deeper understanding of the differences and requirements between Android and iOS platforms",
@@ -154,7 +388,6 @@ export const proProjects: Project[] = [
     {
         id: 3,
         name: 'YES Africa',
-        github: '',
         website: 'https://youthempowermentsummit.africa/',
         desc: {
             en: "This is the website for the Foundation Jadara, an NGO dedicated to supporting NEET youth across African countries. The goal of this platform is to connect and highlight various NGO foundations, helping them reach more young people throughout the continent and provide the necessary support for their education, employment, and training.",
@@ -206,7 +439,6 @@ export const proProjects: Project[] = [
     {
         id: 4,
         name: 'Her Day For Her',
-        github: '',
         website: 'https://herdayforher.ma/',
         desc: {
             en: "This is the leadership initiative by the Fondation Marocaine de l’Étudiant (FME) aimed at empowering young Moroccan women scholars. The goal is to inspire and support female students through mentorship, soft skills training, and career guidance with the help of accomplished women professionals.",
@@ -260,7 +492,6 @@ export const proProjects: Project[] = [
     {
         id: 5,
         name: 'MOOC Platform',
-        github: '',
         website: '',
         desc: {
             en: "A comprehensive Massive Open Online Course (MOOC) platform designed to provide accessible education to learners worldwide. This platform features course management, student enrollment, progress tracking, and interactive learning modules with a modern, user-friendly interface.",
@@ -315,8 +546,7 @@ export const proProjects: Project[] = [
     {
         id: 6,
         name: 'YES Mobile App',
-        github: 'https://github.com/Osama-Jeb/yesmobile',
-        website: '',
+        website: 'https://youthempowermentsummit.africa/',
         desc: {
             en: "The mobile companion app for the YES Africa platform, built with React Native. This app extends the reach of the youth empowerment initiative by providing mobile access to NGO resources, program information, and community features for young people across African countries.",
             fr: "L'application mobile compagnon de la plateforme YES Africa, développée avec React Native. Elle étend la portée de l’initiative d’autonomisation des jeunes en offrant un accès mobile aux ressources des ONG, aux informations sur les programmes et aux fonctionnalités communautaires pour les jeunes à travers les pays africains."
@@ -366,12 +596,13 @@ export const proProjects: Project[] = [
         ],
         additionalImages: [yesmobile2, yesmobile3, yesmobile4, yesmobile5]
     },
-    
+
+    // ClickTee hidden for now
+    /*
     {
     id: 7,
     name: 'ClickTee',
-    github: '',
-    website: 'https://clicktee.ma/', // replace with real link if available
+    website: 'https://clicktee.ma/',
     desc: {
         en: "ClickTee is an online store dedicated to unique, artist-designed T-shirts. Our goal was to create a smooth and engaging shopping experience where customers can easily explore collections, preview designs, and securely place orders.",
         fr: "ClickTee est une boutique en ligne dédiée aux T-shirts uniques conçus par des artistes. Notre objectif était de créer une expérience d’achat fluide et engageante, permettant aux clients d’explorer facilement les collections, d’apercevoir les designs et de passer des commandes en toute sécurité."
@@ -386,8 +617,8 @@ export const proProjects: Project[] = [
         { name: 'Tailwind', color: 'bg-[#38bdf8]' },
     ],
     client: 'ClickTee',
-    clientWebsite: 'https://clicktee.ma/', // replace with real if available
-    preview: clickteePreview, // image placeholder
+    clientWebsite: 'https://clicktee.ma/',
+    preview: clickteePreview,
     timeline: {
         en: "3 months (May 2024 - July 2024)",
         fr: "3 mois (Mai 2024 - Juillet 2024)"
@@ -419,13 +650,13 @@ export const proProjects: Project[] = [
         { en: "AI-powered product recommendations", fr: "Recommandations de produits basées sur l’IA" },
         { en: "Integration with print-on-demand services", fr: "Intégration avec des services d’impression à la demande" }
     ],
-    additionalImages: [clicktee1, clicktee2, clicktee3] // placeholders for screenshots
+    additionalImages: [clicktee1, clicktee2, clicktee3]
     },
-    
+    */
+
     {
     id: 8,
     name: 'SONOTIC',
-    github: '',
     website: 'https://sonotic.ma/',
     desc: {
         en: "SONOTIC is Morocco's trusted partner for over 25 years, providing industrial and food-grade pipes for water supply, sanitation, irrigation, and industrial infrastructure. We built a modern, responsive website showcasing their comprehensive range of materials including PVC, HDPE, steel, and concrete, all meeting the strictest international and Moroccan standards.",

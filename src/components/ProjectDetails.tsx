@@ -73,7 +73,7 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
                                 </div>
                             )}
 
-                            <div className="flex gap-4">
+                            <div className="flex flex-wrap gap-4">
                                 {project.website && (
                                     <a
                                         href={project.website}
@@ -84,14 +84,24 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
                                         <TransText en="Live Demo" fr="Démo en Direct" />
                                     </a>
                                 )}
-                                {project.github && (
+                                {project.appStore && (
                                     <a
-                                        href={project.github}
+                                        href={project.appStore}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="px-6 py-3 border border-gray-600  rounded-lg hover:border-alpha hover:text-alpha transition-colors font-medium"
+                                        className="px-6 py-3 bg-black text-white rounded-lg hover:bg-black/80 transition-colors font-medium"
                                     >
-                                        GitHub
+                                        App Store
+                                    </a>
+                                )}
+                                {project.playStore && (
+                                    <a
+                                        href={project.playStore}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="px-6 py-3 bg-[#01875f] text-white rounded-lg hover:bg-[#01875f]/90 transition-colors font-medium"
+                                    >
+                                        Google Play
                                     </a>
                                 )}
                             </div>

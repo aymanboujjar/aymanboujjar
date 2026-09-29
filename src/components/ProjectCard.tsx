@@ -48,7 +48,7 @@ export default function ProjectCard({ project, index, type }: ProjectCardProps) 
                     </div>
 
                     {/* links */}
-                    <div className="flex gap-4 pt-2">
+                    <div className="flex flex-wrap gap-4 pt-2">
                         {project.website && (
                             <a
                                 href={project.website}
@@ -59,14 +59,24 @@ export default function ProjectCard({ project, index, type }: ProjectCardProps) 
                                 Live Website →
                             </a>
                         )}
-                        {project.github && (
+                        {project.appStore && (
                             <a
-                                href={project.github}
+                                href={project.appStore}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="px-4 bg-black text-white rounded-full transition-colors font-medium hover:scale-110"
                             >
-                                GitHub →
+                                App Store →
+                            </a>
+                        )}
+                        {project.playStore && (
+                            <a
+                                href={project.playStore}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="px-4 bg-[#01875f] text-white rounded-full transition-colors font-medium hover:scale-110"
+                            >
+                                Google Play →
                             </a>
                         )}
                     </div>

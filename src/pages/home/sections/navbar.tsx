@@ -3,7 +3,7 @@ import { useState } from "react"
 import Logo from "../../../components/Logo"
 import { useScroll } from "framer-motion";
 import { motion, AnimatePresence } from "framer-motion"
-import { LinkedInIcon, GitHubIcon , HamburgerIcon, EnglishFlagIcon, FrenchFlagIcon } from "../../../components/icons"
+import { LinkedInIcon, HamburgerIcon, EnglishFlagIcon, FrenchFlagIcon } from "../../../components/icons"
 import { useAppContext } from "../../../contexts/AppContext"
 import { TransText } from "../../../components/TransText"
 
@@ -34,11 +34,6 @@ export default function Navbar() {
             icon: LinkedInIcon,
             label: "LinkedIn"
         },
-        {
-            href: "https://github.com/aymanboujjar",
-            icon: GitHubIcon,
-            label: "GitHub"
-        }
     ];
 
     return (

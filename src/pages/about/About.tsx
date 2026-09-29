@@ -1,7 +1,6 @@
 import AboutEducation from './sections/aboutEducation'
 import AboutExperience from './sections/aboutExperience'
 import AboutHero from './sections/aboutHero'
-import AboutInterests from './sections/aboutInterests'
 
 
 export default function About() {
@@ -16,9 +15,6 @@ export default function About() {
 
       {/* Experience Section */}
       <AboutExperience />
-
-      {/* Personal Interests */}
-      <AboutInterests />
     </>
   )
 }
