@@ -16,7 +16,7 @@ export default function Trusted() {
                                 className="flex flex-col gap-2 items-center bg-gray-900/50 backdrop-blur-sm text-white rounded p-6 cursor-pointer"
                             >
                                 <img src={tru.image}
-                                    className="w-[150px] h-[140px] object-cover"
+                                    className="w-[150px] h-[140px] object-contain"
                                     alt="trusted_logo" />
                                 <p className="text-xl">{tru.name}</p>
                             </a>

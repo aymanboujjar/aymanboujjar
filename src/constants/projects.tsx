@@ -23,6 +23,10 @@ import lgmobile3 from "../assets/images/projects/lionsgeek-mobile/lgmobile3.png"
 import lgmobile4 from "../assets/images/projects/lionsgeek-mobile/lgmobile4.png";
 import lgmobile5 from "../assets/images/projects/lionsgeek-mobile/lgmobile5.png";
 
+import israrPreview from "../assets/images/projects/israr/israr1.png";
+import israr2 from "../assets/images/projects/israr/israr2.png";
+import israr3 from "../assets/images/projects/israr/israr3.jpg";
+
 import lionsPreview from "../assets/images/projects/a1atelier/atelier2.png";
 import lions1 from "../assets/images/projects/a1atelier/atelier2.png";
 import lions2 from "../assets/images/projects/a1atelier/atelier3.png";
@@ -277,6 +281,59 @@ export const proProjects: Project[] = [
             { en: "Richer push notification preferences", fr: "Préférences de notifications push plus riches" }
         ],
         additionalImages: [lgmobile2, lgmobile3, lgmobile4, lgmobile5]
+    },
+    {
+        id: 13,
+        name: 'ISRAR',
+        website: 'https://israr.ma/',
+        desc: {
+            en: "Digital platform for Coalition ISRAR — a national network of 19 associations across 8 Moroccan regions fighting gender-based violence. Listening, support, advocacy, programs, and legal-aid pathways in French and Arabic.",
+            fr: "Plateforme numérique de la Coalition ISRAR — un réseau national de 19 associations dans 8 régions du Maroc contre les violences fondées sur le genre. Écoute, accompagnement, plaidoyer, programmes et aide juridique en français et en arabe."
+        },
+        detailedDesc: {
+            en: "Built with Laravel, Inertia, and React for Coalition ISRAR’s 2025 digital platform: public storytelling, program impact by region, publications, petitions, blog, and a clear “Je cherche de l’aide” help journey for women seeking support.",
+            fr: "Développée avec Laravel, Inertia et React pour la plateforme numérique 2025 de la Coalition ISRAR : storytelling public, impact des programmes par région, publications, pétitions, blog, et un parcours clair « Je cherche de l’aide » pour les femmes en quête de soutien."
+        },
+        techs: [
+            { name: 'Laravel', color: 'bg-[#ff2d20]' },
+            { name: 'Inertia', color: 'bg-[#3b4654]' },
+            { name: 'React', color: 'bg-[#00d8ff]' },
+            { name: 'Tailwind', color: 'bg-[#38bdf8]' },
+        ],
+        client: 'Coalition ISRAR',
+        clientWebsite: 'https://israr.ma/',
+        preview: israrPreview,
+        timeline: {
+            en: "2025 (Digital platform launch)",
+            fr: "2025 (Lancement de la plateforme numérique)"
+        },
+        challenges: [
+            { en: "Serving survivors and associations with sensitive help-seeking flows", fr: "Servir les survivantes et associations avec des parcours d’aide sensibles" },
+            { en: "Showcasing programs and regional impact for a 19-association network", fr: "Présenter programmes et impact régional pour un réseau de 19 associations" },
+            { en: "Bilingual French / Arabic institutional content", fr: "Contenu institutionnel bilingue français / arabe" }
+        ],
+        solutions: [
+            { en: "Clear public IA with Accueil, Programmes, Aide juridique, and help CTA", fr: "IA publique claire avec Accueil, Programmes, Aide juridique et CTA d’aide" },
+            { en: "Program cards with status filters and regional impact storytelling", fr: "Cartes programmes avec filtres de statut et storytelling d’impact régional" },
+            { en: "Laravel + Inertia + React stack for maintainable bilingual pages", fr: "Stack Laravel + Inertia + React pour des pages bilingues maintenables" }
+        ],
+        keyFeatures: [
+            { en: "Coalition presentation and timeline (SaMMa, digital platform)", fr: "Présentation de la coalition et parcours (SaMMa, plateforme numérique)" },
+            { en: "Programs directory with ongoing / closed filters", fr: "Annuaire des programmes avec filtres en cours / clôturés" },
+            { en: "Help-seeking CTA and legal-aid pathways", fr: "CTA « Je cherche de l’aide » et parcours d’aide juridique" },
+            { en: "Publications, blog, and petitions sections", fr: "Sections publications, blog et pétitions" },
+            { en: "French / Arabic language support", fr: "Support français / arabe" }
+        ],
+        lessonsLearned: [
+            { en: "Designing civic platforms around safety and trust", fr: "Concevoir des plateformes civiques autour de la sécurité et de la confiance" },
+            { en: "Balancing advocacy storytelling with operational program data", fr: "Équilibrer storytelling de plaidoyer et données opérationnelles des programmes" },
+            { en: "Building for multi-association networks at national scale", fr: "Construire pour des réseaux multi-associations à l’échelle nationale" }
+        ],
+        futureImprovements: [
+            { en: "Richer member-association dashboards", fr: "Tableaux de bord associations membres plus riches" },
+            { en: "Deeper impact analytics by region and program", fr: "Analyses d’impact plus poussées par région et programme" }
+        ],
+        additionalImages: [israr2, israr3]
     },
     {
         id: 1,
