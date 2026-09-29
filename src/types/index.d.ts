@@ -19,6 +19,7 @@ type ProjectCardProps = {
     index: number,
     project: Project,
     type: string,
+    layout?: "row" | "stack",
 }
 
 type Skill = {

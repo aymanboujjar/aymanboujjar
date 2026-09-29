@@ -1,300 +1,282 @@
-import { Link } from "react-router-dom"
-import { useState } from "react"
-import Logo from "../../../components/Logo"
-import { useScroll } from "framer-motion";
-import { motion, AnimatePresence } from "framer-motion"
-import { LinkedInIcon, HamburgerIcon, EnglishFlagIcon, FrenchFlagIcon } from "../../../components/icons"
-import { useAppContext } from "../../../contexts/AppContext"
-import { TransText } from "../../../components/TransText"
+import { Link, useLocation } from "react-router-dom";
+import { useRef, useState } from "react";
+import Logo from "../../../components/Logo";
+import { useScroll, useMotionValue, useSpring, motion, AnimatePresence } from "framer-motion";
+import { LinkedInIcon, HamburgerIcon, EnglishFlagIcon, FrenchFlagIcon } from "../../../components/icons";
+import { useAppContext } from "../../../contexts/AppContext";
+import { TransText } from "../../../components/TransText";
+
+function MagneticNode({
+    children,
+    className = "",
+}: {
+    children: React.ReactNode;
+    className?: string;
+}) {
+    const ref = useRef<HTMLDivElement>(null);
+    const mx = useMotionValue(0);
+    const my = useMotionValue(0);
+    const x = useSpring(mx, { stiffness: 220, damping: 18 });
+    const y = useSpring(my, { stiffness: 220, damping: 18 });
+
+    return (
+        <motion.div
+            ref={ref}
+            className={className}
+            style={{ x, y }}
+            onMouseMove={(e) => {
+                const el = ref.current;
+                if (!el) return;
+                const rect = el.getBoundingClientRect();
+                mx.set((e.clientX - (rect.left + rect.width / 2)) * 0.35);
+                my.set((e.clientY - (rect.top + rect.height / 2)) * 0.35);
+            }}
+            onMouseLeave={() => {
+                mx.set(0);
+                my.set(0);
+            }}
+        >
+            {children}
+        </motion.div>
+    );
+}
 
 export default function Navbar() {
     const { scrollYProgress } = useScroll();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const { selectedLanguage, toggleLanguage } = useAppContext();
+    const { pathname } = useLocation();
 
-    
     const navLinks = [
-        {
-            to: "/",
-            label: <TransText en="Home" fr="Accueil" />
-        },
-        {
-            to: "/about",
-            label: <TransText en="About Me" fr="À Propos" />
-        },
-        {
-            to: "/projects",
-            label: <TransText en="Projects" fr="Projets" />
-        },
+        { to: "/", index: "01", label: <TransText en="Home" fr="Accueil" /> },
+        { to: "/about", index: "02", label: <TransText en="About Me" fr="À Propos" /> },
+        { to: "/projects", index: "03", label: <TransText en="Projects" fr="Projets" /> },
     ];
 
-    const socialLinks = [
-        {
-            href: "https://linkedin.com/in/aymanboujjar",
-            icon: LinkedInIcon,
-            label: "LinkedIn"
-        },
-    ];
+    const isActive = (to: string) =>
+        to === "/" ? pathname === "/" : pathname.startsWith(to);
 
     return (
-        <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-black/20 border-b border-gray-800">
-            <div className="flex items-center justify-between px-4 sm:px-6 lg:px-16 py-4">
-                {/* Logo */}
-                <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                >
-                    <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-                       <Logo size="w-16 h-16" />
-                        <p className="hidden sm:block">Ayman Boujjar</p>
-                    </Link>
-                </motion.div>
-
-                {/* desktop version */}
-                <div className="hidden md:flex items-center gap-6">
-                    {/* nav links */}
-                    {navLinks.map((link) => (
-                        <motion.div
-                            key={link.to}
-                            whileHover={{ y: -2 }}
-                            whileTap={{ y: 0 }}
+        <nav className="fixed top-0 left-0 right-0 z-50">
+            <div className="border-b border-alpha/20 bg-[#050810]/70 backdrop-blur-xl shadow-[0_1px_0_0_rgba(0,119,190,0.15)]">
+                <div className="flex items-center justify-between px-4 sm:px-6 lg:px-16 py-3">
+                    <MagneticNode>
+                        <Link
+                            to="/"
+                            className="group flex items-center gap-3"
+                            onClick={() => setIsMenuOpen(false)}
                         >
-                            <Link
-                                to={link.to}
-                                className="hover:text-alpha transition-colors duration-300 relative group"
-                            >
-                                {link.label}
-                                <motion.div
-                                    className="absolute -bottom-1 left-0 w-0 h-0.5 bg-alpha group-hover:w-full transition-all duration-300"
-                                />
-                            </Link>
-                        </motion.div>
-                    ))}
+                            <span className="relative flex h-12 w-12 items-center justify-center rounded-full border border-white/12 bg-[#070b14]/80 transition-colors group-hover:border-alpha/50">
+                                <Logo size="w-10 h-10" />
+                            </span>
+                            <div className="hidden sm:block leading-tight">
+                                <p className="font-semibold tracking-wide">Ayman Boujjar</p>
+                                <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-alpha/80">
+                                    <TransText en="Signal" fr="Signal" />
+                                </p>
+                            </div>
+                        </Link>
+                    </MagneticNode>
 
-                    {/* social links */}
-                    {socialLinks.map((social) => (
-                        <motion.div
-                            key={social.href}
-                            whileHover={{ scale: 1.1, y: -2 }}
-                            whileTap={{ scale: 0.9 }}
-                        >
-                            <a
-                                href={social.href}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="hover:text-alpha transition-colors duration-300"
-                                aria-label={social.label}
-                            >
-                                <social.icon size={20} />
-                            </a>
-                        </motion.div>
-                    ))}
+                    {/* Desktop */}
+                    <div className="hidden md:flex items-center gap-2">
+                        {navLinks.map((link) => {
+                            const active = isActive(link.to);
+                            return (
+                                <MagneticNode key={link.to}>
+                                    <Link
+                                        to={link.to}
+                                        className={`relative flex items-center gap-2 rounded-full border px-4 py-2 font-mono text-sm transition-colors duration-300
+                                            ${active
+                                                ? "border-alpha/50 bg-alpha/10 text-white shadow-[0_0_24px_rgba(0,119,190,0.25)]"
+                                                : "border-transparent text-white/70 hover:border-white/12 hover:bg-white/[0.03] hover:text-white"
+                                            }`}
+                                    >
+                                        <span className="text-[10px] text-alpha">{link.index}</span>
+                                        <span>{link.label}</span>
+                                        {active && (
+                                            <motion.span
+                                                layoutId="nav-active-ring"
+                                                aria-hidden
+                                                className="pointer-events-none absolute inset-[-3px] rounded-full border border-dashed border-alpha/50"
+                                            />
+                                        )}
+                                    </Link>
+                                </MagneticNode>
+                            );
+                        })}
 
-                    {/* language */}
+                        <div className="ml-2 flex items-center gap-2 border-l border-white/10 pl-4">
+                            <MagneticNode>
+                                <a
+                                    href="https://linkedin.com/in/aymanboujjar"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="LinkedIn"
+                                    className="flex h-10 w-10 items-center justify-center rounded-full border border-white/12 bg-[#070b14]/80 text-white/80 transition-colors hover:border-alpha hover:text-alpha"
+                                >
+                                    <LinkedInIcon size={18} />
+                                </a>
+                            </MagneticNode>
+
+                            <MagneticNode>
+                                <button
+                                    type="button"
+                                    onClick={toggleLanguage}
+                                    aria-label="Toggle language"
+                                    className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-white/12 bg-[#070b14]/80 transition-colors hover:border-alpha"
+                                >
+                                    <AnimatePresence mode="wait">
+                                        {selectedLanguage !== "en" ? (
+                                            <motion.div
+                                                key="french"
+                                                initial={{ scale: 0.7, opacity: 0, rotate: -12 }}
+                                                animate={{ scale: 1, opacity: 1, rotate: 0 }}
+                                                exit={{ scale: 0.7, opacity: 0, rotate: 12 }}
+                                                transition={{ duration: 0.25 }}
+                                            >
+                                                <FrenchFlagIcon className="text-alpha" size={18} />
+                                            </motion.div>
+                                        ) : (
+                                            <motion.div
+                                                key="english"
+                                                initial={{ scale: 0.7, opacity: 0, rotate: -12 }}
+                                                animate={{ scale: 1, opacity: 1, rotate: 0 }}
+                                                exit={{ scale: 0.7, opacity: 0, rotate: 12 }}
+                                                transition={{ duration: 0.25 }}
+                                            >
+                                                <EnglishFlagIcon className="text-alpha" size={18} />
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+                                </button>
+                            </MagneticNode>
+                        </div>
+                    </div>
+
+                    {/* Mobile toggle */}
                     <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="p-2 rounded-full bg-alpha/10 hover:bg-alpha/20 transition-colors duration-300 cursor-pointer"
-                        onClick={toggleLanguage}
-                        aria-label="Toggle language"
+                        type="button"
+                        whileTap={{ scale: 0.9 }}
+                        className="md:hidden flex h-10 w-10 items-center justify-center rounded-full border border-white/12 bg-[#070b14]/80 hover:border-alpha"
+                        onClick={() => setIsMenuOpen(!isMenuOpen)}
+                        aria-label="Toggle mobile menu"
+                        aria-expanded={isMenuOpen}
                     >
-                        <AnimatePresence mode="wait">
-                            {selectedLanguage !== 'en' ? (
-                                <motion.div
-                                    key="french"
-                                    initial={{ scale: 0.8, opacity: 0 }}
-                                    animate={{ scale: 1, opacity: 1 }}
-                                    exit={{ scale: 0.8, opacity: 0 }}
-                                    transition={{ duration: 0.3 }}
-                                >
-                                    <FrenchFlagIcon className="text-alpha" size={20} />
-                                </motion.div>
-                            ) : (
-                                <motion.div
-                                    key="english"
-                                    initial={{ scale: 0.8, opacity: 0 }}
-                                    animate={{ scale: 1, opacity: 1 }}
-                                    exit={{ scale: 0.8, opacity: 0 }}
-                                    transition={{ duration: 0.3 }}
-                                >
-                                    <EnglishFlagIcon className="text-alpha" size={20} />
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
+                        <HamburgerIcon isOpen={isMenuOpen} />
                     </motion.button>
-
-                    {/* theme */}
-                    {/* <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="p-2 rounded-full bg-alpha/10 hover:bg-alpha/20 transition-colors duration-300 cursor-pointer"
-                        onClick={toggleTheme}
-                        aria-label="Toggle theme"
-                    >
-                        <AnimatePresence mode="wait">
-                            {isDark ? (
-                                <motion.div
-                                    key="sun"
-                                    initial={{ rotate: -90, opacity: 0 }}
-                                    animate={{ rotate: 0, opacity: 1 }}
-                                    exit={{ rotate: 90, opacity: 0 }}
-                                    transition={{ duration: 0.3 }}
-                                >
-                                    <SunIcon className="text-alpha" />
-                                </motion.div>
-                            ) : (
-                                <motion.div
-                                    key="moon"
-                                    initial={{ rotate: 90, opacity: 0 }}
-                                    animate={{ rotate: 0, opacity: 1 }}
-                                    exit={{ rotate: -90, opacity: 0 }}
-                                    transition={{ duration: 0.3 }}
-                                >
-                                    <MoonIcon className="text-alpha" />
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
-                    </motion.button>  */}
                 </div>
 
-                {/* Mobile Menu Button */}
-                <motion.button
-                    whileTap={{ scale: 0.9 }}
-                    className="md:hidden p-2 hover:text-alpha transition-colors duration-300"
-                    onClick={() => setIsMenuOpen(!isMenuOpen)}
-                    aria-label="Toggle mobile menu"
-                >
-                    <HamburgerIcon isOpen={isMenuOpen} />
-                </motion.button>
+                {/* Signal progress beam under bar */}
+                <motion.div
+                    style={{ scaleX: scrollYProgress, transformOrigin: "0% 50%" }}
+                    className="signal-progress h-[2px] w-full bg-gradient-to-r from-alpha via-alpha to-transparent"
+                />
             </div>
 
-            {/* mobile version */}
+            {/* Mobile panel */}
             <AnimatePresence>
                 {isMenuOpen && (
                     <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.3, ease: "easeInOut" }}
-                        className="md:hidden overflow-hidden bg-black/30 backdrop-blur-md border-t border-gray-700"
+                        initial={{ opacity: 0, y: -12 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -12 }}
+                        transition={{ duration: 0.35, ease: "easeOut" }}
+                        className="relative md:hidden overflow-hidden border-b border-alpha/20 bg-[#050810]/95 backdrop-blur-xl"
                     >
-                        <div className="px-4 py-6 space-y-4">
-                            {/* Mobile Navigation Links */}
-                            {navLinks.map((link, index) => (
-                                <motion.div
-                                    key={link.to}
-                                    initial={{ opacity: 0, x: -20 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{ delay: index * 0.1, duration: 0.3 }}
-                                >
-                                    <Link
-                                        to={link.to}
-                                        className="block py-2 text-lg hover:text-alpha transition-colors duration-300"
-                                        onClick={() => setIsMenuOpen(false)}
-                                    >
-                                        {link.label}
-                                    </Link>
-                                </motion.div>
-                            ))}
+                        <div
+                            aria-hidden
+                            className="pointer-events-none absolute inset-0 opacity-[0.07]"
+                            style={{
+                                backgroundImage:
+                                    "repeating-linear-gradient(28deg, #0077BE 0 1px, transparent 1px 16px)",
+                                maskImage: "linear-gradient(to bottom, black, transparent)",
+                            }}
+                        />
 
-                            {/* Mobile Social Links */}
+                        <div className="relative px-4 py-8 space-y-2">
+                            <p className="mb-4 font-mono text-[10px] uppercase tracking-[0.35em] text-alpha">
+                                <TransText en="Navigate" fr="Navigation" />
+                            </p>
+
+                            {navLinks.map((link, index) => {
+                                const active = isActive(link.to);
+                                return (
+                                    <motion.div
+                                        key={link.to}
+                                        initial={{ opacity: 0, x: -24 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        transition={{
+                                            delay: index * 0.08,
+                                            type: "spring",
+                                            stiffness: 200,
+                                            damping: 18,
+                                        }}
+                                    >
+                                        <Link
+                                            to={link.to}
+                                            onClick={() => setIsMenuOpen(false)}
+                                            className={`flex items-center gap-4 border px-4 py-4 transition-colors
+                                                ${active
+                                                    ? "border-alpha/40 bg-alpha/10 text-white"
+                                                    : "border-white/10 bg-white/[0.02] text-white/80 hover:border-alpha/30"
+                                                }`}
+                                        >
+                                            <span className="font-mono text-xs text-alpha">{link.index}</span>
+                                            <span className="text-xl font-semibold">{link.label}</span>
+                                        </Link>
+                                    </motion.div>
+                                );
+                            })}
+
                             <motion.div
-                                initial={{ opacity: 0, y: 20 }}
+                                initial={{ opacity: 0, y: 16 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.3, duration: 0.3 }}
-                                className="flex items-center gap-6 pt-4 border-t border-gray-700"
+                                transition={{ delay: 0.28 }}
+                                className="flex items-center gap-3 pt-6"
                             >
-                                {socialLinks.map((social) => (
-                                    <motion.a
-                                        key={social.href}
-                                        href={social.href}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="hover:text-alpha transition-colors duration-300"
-                                        aria-label={social.label}
-                                        whileHover={{ scale: 1.1 }}
-                                        whileTap={{ scale: 0.9 }}
-                                    >
-                                        <social.icon size={24} />
-                                    </motion.a>
-                                ))}
-
-                                {/* Mobile Language Toggle */}
-                                <motion.button
-                                    whileHover={{ scale: 1.1 }}
-                                    whileTap={{ scale: 0.9 }}
-                                    className="p-2 rounded-full bg-alpha/10 hover:bg-alpha/20 transition-colors duration-300"
+                                <a
+                                    href="https://linkedin.com/in/aymanboujjar"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="LinkedIn"
+                                    className="flex h-12 w-12 items-center justify-center rounded-full border border-white/12 bg-[#070b14] text-white/80 hover:border-alpha hover:text-alpha"
+                                >
+                                    <LinkedInIcon size={22} />
+                                </a>
+                                <button
+                                    type="button"
                                     onClick={toggleLanguage}
                                     aria-label="Toggle language"
+                                    className="flex h-12 w-12 cursor-pointer items-center justify-center rounded-full border border-white/12 bg-[#070b14] hover:border-alpha"
                                 >
                                     <AnimatePresence mode="wait">
-                                        {selectedLanguage === 'en' ? (
+                                        {selectedLanguage !== "en" ? (
                                             <motion.div
-                                                key="french-mobile"
-                                                initial={{ scale: 0.8, opacity: 0 }}
+                                                key="fr-m"
+                                                initial={{ scale: 0.7, opacity: 0 }}
                                                 animate={{ scale: 1, opacity: 1 }}
-                                                exit={{ scale: 0.8, opacity: 0 }}
-                                                transition={{ duration: 0.3 }}
+                                                exit={{ scale: 0.7, opacity: 0 }}
                                             >
-                                                <FrenchFlagIcon className="text-alpha" size={24} />
+                                                <FrenchFlagIcon className="text-alpha" size={22} />
                                             </motion.div>
                                         ) : (
                                             <motion.div
-                                                key="english-mobile"
-                                                initial={{ scale: 0.8, opacity: 0 }}
+                                                key="en-m"
+                                                initial={{ scale: 0.7, opacity: 0 }}
                                                 animate={{ scale: 1, opacity: 1 }}
-                                                exit={{ scale: 0.8, opacity: 0 }}
-                                                transition={{ duration: 0.3 }}
+                                                exit={{ scale: 0.7, opacity: 0 }}
                                             >
-                                                <EnglishFlagIcon className="text-alpha" size={24} />
+                                                <EnglishFlagIcon className="text-alpha" size={22} />
                                             </motion.div>
                                         )}
                                     </AnimatePresence>
-                                </motion.button>
-
-                                {/* Mobile Theme Toggle */}
-                                {/* <motion.button
-                                    whileHover={{ scale: 1.1 }}
-                                    whileTap={{ scale: 0.9 }}
-                                    className="p-2 rounded-full bg-alpha/10 hover:bg-alpha/20 transition-colors duration-300"
-                                    onClick={toggleTheme}
-                                    aria-label="Toggle theme"
-                                >
-                                    <AnimatePresence mode="wait">
-                                        {isDark ? (
-                                            <motion.div
-                                                key="sun-mobile"
-                                                initial={{ rotate: -90, opacity: 0 }}
-                                                animate={{ rotate: 0, opacity: 1 }}
-                                                exit={{ rotate: 90, opacity: 0 }}
-                                                transition={{ duration: 0.3 }}
-                                            >
-                                                <SunIcon className="text-alpha" />
-                                            </motion.div>
-                                        ) : (
-                                            <motion.div
-                                                key="moon-mobile"
-                                                initial={{ rotate: 90, opacity: 0 }}
-                                                animate={{ rotate: 0, opacity: 1 }}
-                                                exit={{ rotate: -90, opacity: 0 }}
-                                                transition={{ duration: 0.3 }}
-                                            >
-                                                <MoonIcon className="text-alpha" />
-                                            </motion.div>
-                                        )}
-                                    </AnimatePresence>
-                                </motion.button> */}
+                                </button>
                             </motion.div>
                         </div>
                     </motion.div>
                 )}
             </AnimatePresence>
-
-            {/* Scroll Progress Bar */}
-            <motion.div
-                style={{ scaleX: scrollYProgress }}
-                className="bg-alpha z-50 fixed bottom-0 left-0 h-[0.5vh] w-full">
-            </motion.div>
         </nav>
-    )
+    );
 }

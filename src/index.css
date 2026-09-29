@@ -80,10 +80,48 @@
   }
 }
 
+/* Hero — soft radar sweep behind brand */
+.hero-radar {
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 310deg,
+    rgba(0, 119, 190, 0.12) 345deg,
+    rgba(0, 119, 190, 0.4) 360deg
+  );
+  -webkit-mask-image: radial-gradient(farthest-side, transparent 55%, #000 56%, #000 98%, transparent 100%);
+  mask-image: radial-gradient(farthest-side, transparent 55%, #000 56%, #000 98%, transparent 100%);
+  animation: trusted-spin 18s linear infinite;
+  opacity: 0.7;
+}
+
+.hero-scroll-dot {
+  animation: hero-scroll-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes hero-scroll-pulse {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(12px);
+    opacity: 0.25;
+  }
+}
+
+/* Navbar signal progress */
+.signal-progress {
+  transform-origin: left center;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .trusted-orbit,
   .trusted-radar,
-  .trusted-marquee-track {
+  .trusted-marquee-track,
+  .hero-radar,
+  .hero-scroll-dot {
     animation: none !important;
   }
 }
