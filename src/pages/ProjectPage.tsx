@@ -1,51 +1,58 @@
-import { useParams, Navigate } from 'react-router-dom'
-import ProjectDetails from '../components/ProjectDetails'
-import { proProjects, persoProjects } from '../constants/projects'
-import { TransText } from '../components/TransText'
+import { useParams, Navigate, Link } from "react-router-dom";
+import ProjectDetails from "../components/ProjectDetails";
+import { proProjects, persoProjects } from "../constants/projects";
+import { TransText } from "../components/TransText";
 
 export default function ProjectPage() {
-  const { id } = useParams<{ id: string }>()
-  
-  // if no id then go back to home
-  if (!id) {
-    return <Navigate to="/" replace />
-  }
+    const { id } = useParams<{ id: string }>();
 
-  const projectId = parseInt(id, 10)
-  // if project id is not a number then go back to home
-  if (isNaN(projectId)) {
-    return <Navigate to="/" replace />
-  }
+    if (!id) {
+        return <Navigate to="/" replace />;
+    }
 
-  // combine both project arrays and find the selected project
-  const project = [...proProjects, ...persoProjects].find(p => p.id === projectId)
+    const projectId = parseInt(id, 10);
+    if (isNaN(projectId)) {
+        return <Navigate to="/" replace />;
+    }
 
-  // if project not found the 404
-  if (!project) {
-    
-    return (
-      <div className="min-h-screen py-16 lg:py-24 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold text-alpha mb-4">
-            <TransText en="Project Not Found" fr="Projet Introuvable" />
-          </h1>
-          <p className="mb-8">
-            <TransText
-              en="The project you're looking for doesn't exist."
-              fr="Le projet que vous recherchez n'existe pas."
-            />
-          </p>
-          <a
-            href="/"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-alpha text-black rounded-lg hover:bg-alpha/80 transition-colors"
-          >
-            <TransText en="Back to Home" fr="Retour à l'Accueil" />
-          </a>
-        </div>
-      </div>
-    )
-  }
+    const project = [...proProjects, ...persoProjects].find((p) => p.id === projectId);
 
-  // finally return project details 
-  return <ProjectDetails project={project} />
+    if (!project) {
+        return (
+            <div className="relative flex min-h-screen items-center justify-center overflow-hidden px-4 py-16">
+                <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 opacity-[0.05]"
+                    style={{
+                        backgroundImage:
+                            "repeating-linear-gradient(30deg, #0077BE 0 1px, transparent 1px 18px)",
+                        maskImage:
+                            "radial-gradient(ellipse at center, black 20%, transparent 70%)",
+                    }}
+                />
+                <div className="relative max-w-md border border-white/10 bg-[#070b14]/90 p-8 text-center backdrop-blur-md">
+                    <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.35em] text-alpha">
+                        <TransText en="Signal lost" fr="Signal perdu" />
+                    </p>
+                    <h1 className="mb-4 text-3xl font-bold text-white">
+                        <TransText en="Project Not Found" fr="Projet Introuvable" />
+                    </h1>
+                    <p className="mb-8 text-white/55">
+                        <TransText
+                            en="The case file you're looking for doesn't exist on this band."
+                            fr="Le dossier que vous recherchez n’existe pas sur cette bande."
+                        />
+                    </p>
+                    <Link
+                        to="/projects"
+                        className="inline-flex items-center gap-2 border border-alpha bg-alpha px-6 py-3 font-semibold text-white transition-shadow hover:shadow-[0_0_24px_rgba(0,119,190,0.35)]"
+                    >
+                        ← <TransText en="Back to archive" fr="Retour à l’archive" />
+                    </Link>
+                </div>
+            </div>
+        );
+    }
+
+    return <ProjectDetails project={project} />;
 }

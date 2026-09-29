@@ -64,11 +64,11 @@ export default function Layout() {
           </div>
         </div>
       ) : (
-        <div className={`min-h-screen transition-colors duration-300 ${
+        <div className={`min-h-screen overflow-x-hidden transition-colors duration-300 ${
           isDark ? 'bg-[#050505] text-[#E1E1E1]' : 'bg-[#f8f8f8] text-[#0A0A0A]'
         }`}>
           <Navbar />
-          <div className="pt-20">
+          <div className="overflow-x-hidden pt-20">
             <Outlet />
           </div>
         </div>
