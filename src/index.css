@@ -4,4 +4,86 @@
 @theme {
   --color-alpha: #0077BE;
 }
-  
+
+/* Trusted By — orbital constellation */
+@property --orbit {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
+
+.trusted-orbit {
+  --orbit: 0deg;
+  animation: trusted-orbit-angle 52s linear infinite;
+}
+
+.trusted-orbit--paused {
+  animation-play-state: paused;
+}
+
+.trusted-orbit-item {
+  /* ring placement + counter-rotate so marks stay upright while --orbit advances */
+  transform: rotate(calc(var(--a) + var(--orbit))) translate(var(--r))
+    rotate(calc((var(--a) + var(--orbit)) * -1));
+  margin-left: -43px;
+  margin-top: -43px;
+}
+
+@media (min-width: 640px) {
+  .trusted-orbit-item {
+    margin-left: -51px;
+    margin-top: -51px;
+  }
+}
+
+.trusted-radar {
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 300deg,
+    rgba(0, 119, 190, 0.18) 340deg,
+    rgba(0, 119, 190, 0.55) 360deg
+  );
+  -webkit-mask-image: radial-gradient(farthest-side, transparent 62%, #000 63%, #000 99%, transparent 100%);
+  mask-image: radial-gradient(farthest-side, transparent 62%, #000 63%, #000 99%, transparent 100%);
+  animation: trusted-spin 14s linear infinite;
+  opacity: 0.85;
+}
+
+.trusted-radar--paused {
+  animation-play-state: paused;
+}
+
+@keyframes trusted-orbit-angle {
+  to {
+    --orbit: 360deg;
+  }
+}
+
+@keyframes trusted-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.trusted-marquee-track {
+  animation: trusted-marquee 28s linear infinite;
+}
+
+.trusted-marquee:hover .trusted-marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes trusted-marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trusted-orbit,
+  .trusted-radar,
+  .trusted-marquee-track {
+    animation: none !important;
+  }
+}
