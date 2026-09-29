@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import Navbar from '../pages/home/sections/navbar'
 import Logo from './Logo';
 import { useAppContext } from '../contexts/AppContext';
+import SignalCursor from './SignalCursor';
 
 export default function Layout() {
   const { isDark } = useAppContext();
@@ -48,6 +49,8 @@ export default function Layout() {
         </defs>
         <rect width="100%" height="100%" fill="url(#grid)" />
       </svg>
+
+      <SignalCursor />
       
       {loading ? (
         <div className="h-[100vh] bg-black text-white flex flex-col items-center justify-center text-2xl">

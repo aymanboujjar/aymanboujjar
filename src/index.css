@@ -125,3 +125,10 @@
     animation: none !important;
   }
 }
+
+/* Custom signal cursor — hide system cursor only after custom cursor is ready */
+html.signal-cursor-on,
+html.signal-cursor-on * {
+  cursor: none !important;
+}
+
