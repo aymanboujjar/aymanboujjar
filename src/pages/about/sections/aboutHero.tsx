@@ -96,7 +96,7 @@ export default function AboutHero() {
                     </p>
 
                     <MagneticCta
-                        href="/Ayman_Boujjar_CV.docx"
+                        href="/Ayman_Boujjar_CV.docx?v=20260930"
                         download="Ayman_Boujjar_CV.docx"
                         className="inline-flex items-center gap-3 border border-alpha bg-alpha px-6 py-3.5 font-semibold text-white transition-shadow duration-300 hover:shadow-[0_0_32px_rgba(0,119,190,0.35)]"
                     >

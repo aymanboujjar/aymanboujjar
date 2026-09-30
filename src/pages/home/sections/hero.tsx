@@ -184,7 +184,7 @@ export default function Hero() {
                         </MagneticCta>
 
                         <MagneticCta
-                            href="/Ayman_Boujjar_CV.docx"
+                            href="/Ayman_Boujjar_CV.docx?v=20260930"
                             download="Ayman_Boujjar_CV.docx"
                             className="inline-flex items-center gap-2 border border-white/15 bg-transparent px-7 py-3.5 font-semibold text-white/80 transition-colors hover:border-alpha hover:text-alpha"
                         >
