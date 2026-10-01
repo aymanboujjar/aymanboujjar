@@ -78,14 +78,14 @@ export default function AboutHero() {
                     </h1>
                     <h2 className="text-xl font-semibold text-alpha sm:text-2xl lg:text-3xl">
                         <TransText
-                            en="Passionate Full Stack Developer"
-                            fr="Développeur Full Stack Passionné"
+                            en="Full-Stack & Mobile Developer"
+                            fr="Développeur Full-Stack & Mobile"
                         />
                     </h2>
                     <p className="max-w-xl text-base leading-relaxed text-white/65 sm:text-lg">
                         <TransText
-                            en="I'm a dedicated web developer with a passion for creating innovative solutions that make a difference. With expertise in modern web technologies and a collaborative approach, I bring ideas to life through clean, efficient code."
-                            fr="Je suis un développeur web dévoué avec une passion pour créer des solutions innovantes qui font la différence. Avec une expertise dans les technologies web modernes et une approche collaborative, je donne vie aux idées grâce à un code propre et efficace."
+                            en="I'm a Full-Stack & Mobile Developer based in Morocco, building web and mobile products with Laravel, React, React Native, Expo, APIs, and modern frontend tooling. I ship intuitive applications for communities, studios, and institutions."
+                            fr="Je suis un développeur Full-Stack & Mobile basé au Maroc, qui conçoit des produits web et mobile avec Laravel, React, React Native, Expo, des APIs et des outils frontend modernes. Je livre des applications intuitives pour des communautés, studios et institutions."
                         />
                     </p>
                     <p className="max-w-xl text-sm leading-relaxed text-white/50 sm:text-base">
@@ -95,6 +95,7 @@ export default function AboutHero() {
                         />
                     </p>
 
+                    <div className="flex flex-wrap gap-3">
                     <MagneticCta
                         href="/Ayman_Boujjar_CV.pdf?v=20260930"
                         download="Ayman_Boujjar_CV.pdf"
@@ -110,6 +111,13 @@ export default function AboutHero() {
                             />
                         </svg>
                     </MagneticCta>
+                    <a
+                        href="/projects"
+                        className="inline-flex items-center gap-2 border border-white/15 px-6 py-3.5 font-semibold text-white/80 transition-colors hover:border-alpha hover:text-alpha"
+                    >
+                        <TransText en="View projects" fr="Voir les projets" />
+                    </a>
+                    </div>
                 </motion.div>
 
                 <motion.div

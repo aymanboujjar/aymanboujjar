@@ -1,7 +1,13 @@
+import { useMemo } from "react";
 import { useParams, Navigate, Link } from "react-router-dom";
 import ProjectDetails from "../components/ProjectDetails";
+import Seo from "../components/Seo";
 import { proProjects, persoProjects } from "../constants/projects";
 import { TransText } from "../components/TransText";
+import {
+    buildProjectJsonLd,
+    projectPageTitle,
+} from "../constants/seo";
 
 export default function ProjectPage() {
     const { id } = useParams<{ id: string }>();
@@ -20,6 +26,11 @@ export default function ProjectPage() {
     if (!project) {
         return (
             <div className="relative flex min-h-screen items-center justify-center overflow-hidden px-4 py-16">
+                <Seo
+                    title="Project Not Found | Ayman Boujjar"
+                    description="The requested project case file was not found on Ayman Boujjar’s portfolio."
+                    path={`/project/${id}`}
+                />
                 <div
                     aria-hidden
                     className="pointer-events-none absolute inset-0 opacity-[0.05]"
@@ -54,5 +65,21 @@ export default function ProjectPage() {
         );
     }
 
-    return <ProjectDetails project={project} />;
+    return <ProjectSeoDetails project={project} />;
+}
+
+function ProjectSeoDetails({ project }: { project: Project }) {
+    const jsonLd = useMemo(() => buildProjectJsonLd(project), [project]);
+
+    return (
+        <>
+            <Seo
+                title={projectPageTitle(project)}
+                description={project.desc.en}
+                path={`/project/${project.id}`}
+                jsonLd={jsonLd}
+            />
+            <ProjectDetails project={project} />
+        </>
+    );
 }

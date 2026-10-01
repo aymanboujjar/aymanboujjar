@@ -27,30 +27,30 @@ import israrPreview from "../assets/images/projects/israr/israr1.png";
 import israr2 from "../assets/images/projects/israr/israr2.png";
 import israr3 from "../assets/images/projects/israr/israr3.jpg";
 
-import lionsPreview from "../assets/images/projects/a1atelier/atelier2.png";
-import lions1 from "../assets/images/projects/a1atelier/atelier2.png";
-import lions2 from "../assets/images/projects/a1atelier/atelier3.png";
-import lions3 from "../assets/images/projects/a1atelier/atelier4.png";
+import lionsPreview from "../assets/images/projects/a1atelier/atelier2.jpg";
+import lions1 from "../assets/images/projects/a1atelier/atelier2.jpg";
+import lions2 from "../assets/images/projects/a1atelier/atelier3.jpg";
+import lions3 from "../assets/images/projects/a1atelier/atelier4.jpg";
 
 import casaPreview from "../assets/images/projects/casatourat/casa1.png"
 import casa2 from "../assets/images/projects/casatourat/casa2.png";
 import casa3 from "../assets/images/projects/casatourat/casa3.png";
-import casa4 from "../assets/images/projects/casatourat/casa4.png";
+import casa4 from "../assets/images/projects/casatourat/casa4.jpg";
 import casa5 from "../assets/images/projects/casatourat/casa5.png";
 
 import africaPreview from "../assets/images/projects/yesafrica/africa1.png"
-import africa2 from "../assets/images/projects/yesafrica/africa2.png";
+import africa2 from "../assets/images/projects/yesafrica/africa2.jpg";
 import africa3 from "../assets/images/projects/yesafrica/africa3.png";
 import africa4 from "../assets/images/projects/yesafrica/africa4.png";
 
-import herPreview from "../assets/images/projects/herday/her1.png";
+import herPreview from "../assets/images/projects/herday/her1.jpg";
 import her2 from "../assets/images/projects/herday/her2.png";
 import her3 from "../assets/images/projects/herday/her3.png";
 
-import moocPreview from "../assets/images/projects/mooc/mooc1.png";
+import moocPreview from "../assets/images/projects/mooc/mooc1.jpg";
 import mooc2 from "../assets/images/projects/mooc/mooc2.png";
 import mooc3 from "../assets/images/projects/mooc/mooc3.png";
-import mooc4 from "../assets/images/projects/mooc/mooc4.png";
+import mooc4 from "../assets/images/projects/mooc/mooc4.jpg";
 import mooc5 from "../assets/images/projects/mooc/mooc5.png";
 
 import yesmobilePreview from "../assets/images/projects/yesmobile/yesmobile1.png";
@@ -60,9 +60,9 @@ import yesmobile4 from "../assets/images/projects/yesmobile/yesmobile4.png";
 import yesmobile5 from "../assets/images/projects/yesmobile/yesmobile5.png";
 
 
-import sonoticPreview from "../assets/images/projects/sonotic/sonotic1.png";
-import sonotic1 from "../assets/images/projects/sonotic/sonotic1.png";
-import sonotic2 from "../assets/images/projects/sonotic/sonotic4.png";
+import sonoticPreview from "../assets/images/projects/sonotic/sonotic1.jpg";
+import sonotic1 from "../assets/images/projects/sonotic/sonotic1.jpg";
+import sonotic2 from "../assets/images/projects/sonotic/sonotic4.jpg";
 import sonotic3 from "../assets/images/projects/sonotic/sonotic3.png";
 export const proProjects: Project[] = [
     {

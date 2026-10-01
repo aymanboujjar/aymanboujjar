@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { TransText } from "./TransText";
+import { projectImageAlt } from "../constants/seo";
 
 interface ProjectDetailsProps {
     project: Project;
@@ -9,6 +10,7 @@ interface ProjectDetailsProps {
 
 export default function ProjectDetails({ project }: ProjectDetailsProps) {
     const [galleryIndex, setGalleryIndex] = useState(0);
+    const imageAlt = projectImageAlt(project);
 
     const gallery = useMemo(() => {
         const extras = project.additionalImages ?? [];
@@ -153,7 +155,7 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
                         <motion.img
                             key={gallery[galleryIndex]}
                             src={gallery[galleryIndex]}
-                            alt={project.name}
+                            alt={imageAlt}
                             className="absolute inset-0 h-full w-full object-cover"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
@@ -367,7 +369,7 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
                             >
                                 <img
                                     src={src}
-                                    alt={`${project.name} ${i + 1}`}
+                                            alt={`${imageAlt} — view ${i + 1}`}
                                     className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
                                 />
                                 <span className="absolute left-2 top-2 font-mono text-[10px] text-white/70 opacity-0 transition group-hover:opacity-100">

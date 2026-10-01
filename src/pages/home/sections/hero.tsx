@@ -129,8 +129,8 @@ export default function Hero() {
                         <span className="hidden h-px w-10 bg-alpha/50 sm:block" />
                         <h2 className="text-xl font-semibold text-alpha sm:text-3xl lg:text-4xl">
                             <TransText
-                                en="FULLSTACK WEB DEVELOPER"
-                                fr="DÉVELOPPEUR WEB FULLSTACK"
+                                en="FULL-STACK & MOBILE DEVELOPER"
+                                fr="DÉVELOPPEUR FULL-STACK & MOBILE"
                             />
                         </h2>
                         <motion.span

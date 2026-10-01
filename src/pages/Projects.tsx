@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import ProjectCard from "../components/ProjectCard";
 import Title from "../components/Title";
+import Seo from "../components/Seo";
 import { proProjects } from "../constants/projects";
 import { TransText } from "../components/TransText";
 
@@ -32,6 +33,11 @@ export default function Projects() {
 
     return (
         <div className="relative min-h-screen overflow-hidden py-16 lg:py-28">
+            <Seo
+                title="Projects — Ayman Boujjar | Full-Stack & Mobile Developer"
+                description="Explore web and mobile projects by Ayman Boujjar — Laravel, React, React Native, Expo, iOS, Android and API-driven applications for real clients."
+                path="/projects"
+            />
             <div
                 aria-hidden
                 className="pointer-events-none absolute inset-0 opacity-[0.05]"

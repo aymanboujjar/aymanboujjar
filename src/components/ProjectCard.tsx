@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { TransText } from "./TransText";
+import { projectImageAlt } from "../constants/seo";
 
 export default function ProjectCard({
     project,
@@ -11,6 +12,7 @@ export default function ProjectCard({
     const stack = layout === "stack";
     const reverse = !stack && index % 2 === 0;
     const pad = String(index + 1).padStart(2, "0");
+    const imageAlt = projectImageAlt(project);
 
     return (
         <motion.article
@@ -39,7 +41,7 @@ export default function ProjectCard({
                     <img
                         className={`w-full object-cover transition-transform duration-700 group-hover:scale-[1.04] ${stack ? "aspect-[16/10]" : "aspect-[16/10] h-full"}`}
                         src={project.preview}
-                        alt={project.name}
+                        alt={imageAlt}
                     />
                     <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#050810]/50 via-transparent to-transparent opacity-80" />
                     <span

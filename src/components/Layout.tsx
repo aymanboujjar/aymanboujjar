@@ -23,14 +23,14 @@ export default function Layout() {
     useEffect(() => {
         const interval = setInterval(() => {
             setProgress((prev) => {
-                if (prev < 100) return prev + 4;
+                if (prev < 100) return Math.min(prev + 5, 100);
                 return prev;
             });
-        }, 120);
+        }, 80);
 
         const timeout = setTimeout(() => {
             setLoading(false);
-        }, 3200);
+        }, 1800);
 
         return () => {
             clearInterval(interval);
@@ -172,9 +172,9 @@ export default function Layout() {
                     }`}
                 >
                     <Navbar />
-                    <div className="overflow-x-hidden pt-20">
+                    <main className="overflow-x-hidden pt-20">
                         <Outlet />
-                    </div>
+                    </main>
                 </div>
             )}
         </>
