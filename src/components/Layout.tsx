@@ -1,16 +1,18 @@
 import { Outlet, useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect } from "react";
+// import { useState } from "react";
+// import { motion } from "framer-motion";
 import Navbar from "../pages/home/sections/navbar";
-import Logo from "./Logo";
+// import Logo from "./Logo";
 import { useAppContext } from "../contexts/AppContext";
 import SignalCursor from "./SignalCursor";
-import { TransText } from "./TransText";
+// import { TransText } from "./TransText";
 
 export default function Layout() {
     const { isDark } = useAppContext();
-    const [loading, setLoading] = useState(true);
-    const [progress, setProgress] = useState(0);
+    // Loading screen disabled — site opens directly
+    // const [loading, setLoading] = useState(true);
+    // const [progress, setProgress] = useState(0);
 
     const path = useLocation().pathname;
     useEffect(() => {
@@ -20,23 +22,23 @@ export default function Layout() {
         });
     }, [path]);
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setProgress((prev) => {
-                if (prev < 100) return Math.min(prev + 5, 100);
-                return prev;
-            });
-        }, 80);
-
-        const timeout = setTimeout(() => {
-            setLoading(false);
-        }, 1800);
-
-        return () => {
-            clearInterval(interval);
-            clearTimeout(timeout);
-        };
-    }, []);
+    // useEffect(() => {
+    //     const interval = setInterval(() => {
+    //         setProgress((prev) => {
+    //             if (prev < 100) return Math.min(prev + 5, 100);
+    //             return prev;
+    //         });
+    //     }, 80);
+    //
+    //     const timeout = setTimeout(() => {
+    //         setLoading(false);
+    //     }, 1800);
+    //
+    //     return () => {
+    //         clearInterval(interval);
+    //         clearTimeout(timeout);
+    //     };
+    // }, []);
 
     return (
         <>
@@ -56,9 +58,9 @@ export default function Layout() {
 
             <SignalCursor />
 
+            {/* Loading screen commented out — uncomment to restore
             {loading ? (
                 <div className="relative flex h-[100vh] items-center justify-center overflow-hidden bg-[#050505] text-white">
-                    {/* atmosphere */}
                     <div
                         aria-hidden
                         className="pointer-events-none absolute inset-0 opacity-[0.07]"
@@ -82,14 +84,10 @@ export default function Layout() {
                         className="hero-radar pointer-events-none absolute left-1/2 top-1/2 h-[16rem] w-[16rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-alpha/15"
                         style={{ animationDirection: "reverse", animationDuration: "18s" }}
                     />
-
-                    {/* frame corners */}
                     <span className="pointer-events-none absolute left-6 top-6 h-3 w-3 border-l border-t border-alpha/70 sm:left-10 sm:top-10" aria-hidden />
                     <span className="pointer-events-none absolute right-6 top-6 h-3 w-3 border-r border-t border-alpha/70 sm:right-10 sm:top-10" aria-hidden />
                     <span className="pointer-events-none absolute bottom-6 left-6 h-3 w-3 border-b border-l border-alpha/70 sm:bottom-10 sm:left-10" aria-hidden />
                     <span className="pointer-events-none absolute bottom-6 right-6 h-3 w-3 border-b border-r border-alpha/70 sm:bottom-10 sm:right-10" aria-hidden />
-
-                    {/* top readout */}
                     <div className="absolute left-6 top-6 flex items-center gap-3 sm:left-10 sm:top-10">
                         <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-alpha shadow-[0_0_10px_rgba(0,119,190,0.8)]" />
                         <p className="font-mono text-[10px] uppercase tracking-[0.35em] text-alpha">
@@ -99,8 +97,6 @@ export default function Layout() {
                     <p className="absolute right-6 top-6 font-mono text-[10px] uppercase tracking-[0.25em] text-white/35 sm:right-10 sm:top-10">
                         BOOT · {String(progress).padStart(3, "0")}
                     </p>
-
-                    {/* core */}
                     <motion.div
                         className="relative z-10 flex w-full max-w-md flex-col items-center px-6"
                         initial={{ opacity: 0, y: 16, filter: "blur(6px)" }}
@@ -118,15 +114,12 @@ export default function Layout() {
                             />
                             <Logo size="w-20 h-20 sm:w-24 sm:h-24 relative z-10" />
                         </div>
-
                         <p className="mb-2 font-mono text-[11px] uppercase tracking-[0.32em] text-alpha">
                             <TransText en="Establishing link" fr="Établissement du lien" />
                         </p>
                         <h1 className="mb-8 text-2xl font-bold tracking-tight text-white sm:text-3xl">
                             Ayman Boujjar
                         </h1>
-
-                        {/* signal beam progress */}
                         <div className="w-full">
                             <div className="mb-2 flex items-end justify-between font-mono text-[11px]">
                                 <span className="uppercase tracking-[0.2em] text-white/40">
@@ -144,39 +137,28 @@ export default function Layout() {
                                     animate={{ width: `${progress}%` }}
                                     transition={{ duration: 0.15, ease: "linear" }}
                                 />
-                                <span
-                                    aria-hidden
-                                    className="absolute top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-white"
-                                    style={{ left: `calc(${progress}% - 4px)` }}
-                                />
-                            </div>
-                            <div className="mt-3 flex justify-between font-mono text-[10px] uppercase tracking-[0.18em] text-white/25">
-                                <span>00</span>
-                                <span>
-                                    <TransText en="Channel locked" fr="Canal verrouillé" />
-                                </span>
-                                <span>100</span>
                             </div>
                         </div>
                     </motion.div>
-
-                    {/* bottom cue */}
                     <p className="absolute bottom-6 left-1/2 -translate-x-1/2 font-mono text-[10px] uppercase tracking-[0.3em] text-white/30 sm:bottom-10">
                         <TransText en="Please stand by" fr="Veuillez patienter" />
                     </p>
                 </div>
             ) : (
-                <div
-                    className={`min-h-screen overflow-x-hidden transition-colors duration-300 ${
-                        isDark ? "bg-[#050505] text-[#E1E1E1]" : "bg-[#f8f8f8] text-[#0A0A0A]"
-                    }`}
-                >
-                    <Navbar />
-                    <main className="overflow-x-hidden pt-20">
-                        <Outlet />
-                    </main>
-                </div>
-            )}
+            */}
+
+            <div
+                className={`min-h-screen overflow-x-hidden transition-colors duration-300 ${
+                    isDark ? "bg-[#050505] text-[#E1E1E1]" : "bg-[#f8f8f8] text-[#0A0A0A]"
+                }`}
+            >
+                <Navbar />
+                <main className="overflow-x-hidden pt-20">
+                    <Outlet />
+                </main>
+            </div>
+
+            {/* )} */}
         </>
     );
 }
