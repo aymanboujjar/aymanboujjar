@@ -64,7 +64,66 @@ import sonoticPreview from "../assets/images/projects/sonotic/sonotic1.jpg";
 import sonotic1 from "../assets/images/projects/sonotic/sonotic1.jpg";
 import sonotic2 from "../assets/images/projects/sonotic/sonotic4.jpg";
 import sonotic3 from "../assets/images/projects/sonotic/sonotic3.png";
+
+import adaPreview from "../assets/images/projects/ada-lovelace/ada1.jpg";
+import ada2 from "../assets/images/projects/ada-lovelace/ada2.jpg";
+
 export const proProjects: Project[] = [
+    {
+        id: 14,
+        name: 'Ada Lovelace',
+        website: '',
+        desc: {
+            en: "Built to compete at the [IN]VISIBLE Festival 2026 in Brussels (XR4Heritage) — our LionsGeek team won the Jury’s Coup de Cœur for a conversational 3D AI avatar of Ada Lovelace (Concours AVATARS — Héroïnes de la Science).",
+            fr: "Conçu pour concourir au festival [IN]VISIBLE 2026 à Bruxelles (XR4Heritage) — notre équipe LionsGeek a remporté le Prix Coup de Cœur du Jury avec un avatar IA conversationnel 3D d’Ada Lovelace (Concours AVATARS — Héroïnes de la Science)."
+        },
+        detailedDesc: {
+            en: "This project was made to compete in the Concours AVATARS — Héroïnes de la Science at the [IN]VISIBLE Festival 2026 in Brussels (by XR4Heritage). With the LionsGeek team (Mehdi Forkani, Fatima Zahra Chourfi, Ayman Boujjar, Yahya Moussair), we built an interactive conversational 3D avatar of Ada Lovelace — a Next.js + Three.js front end with a LiveKit real-time voice agent (speech-to-text, LLM replies, text-to-speech) and lip-sync. We won the Prix Coup de Cœur Jury for the historical figure Ada Lovelace. The gallery shows us on stage holding the award certificate.",
+            fr: "Ce projet a été conçu pour concourir au Concours AVATARS — Héroïnes de la Science du festival [IN]VISIBLE 2026 à Bruxelles (par XR4Heritage). Avec l’équipe LionsGeek (Mehdi Forkani, Fatima Zahra Chourfi, Ayman Boujjar, Yahya Moussair), nous avons créé un avatar conversationnel 3D interactif d’Ada Lovelace — front Next.js + Three.js et agent vocal temps réel LiveKit (reconnaissance vocale, réponses LLM, synthèse vocale) avec lip-sync. Nous avons remporté le Prix Coup de Cœur Jury pour le personnage historique Ada Lovelace. La galerie nous montre sur scène avec le diplôme."
+        },
+        techs: [
+            { name: 'Next.js', color: 'bg-white text-black' },
+            { name: 'React', color: 'bg-[#00d8ff]' },
+            { name: 'Three.js', color: 'bg-[#049ef4]' },
+            { name: 'LiveKit', color: 'bg-[#1a1a1a] text-white' },
+            { name: 'Python', color: 'bg-[#3776ab] text-white' },
+            { name: 'AI', color: 'bg-alpha text-white' },
+        ],
+        client: 'LionsGeek Association',
+        clientWebsite: 'https://lionsgeek.ma/',
+        preview: adaPreview,
+        timeline: {
+            en: "2026 — Built for [IN]VISIBLE Festival competition (Casablanca → Brussels)",
+            fr: "2026 — Conçu pour le concours du festival [IN]VISIBLE (Casablanca → Bruxelles)"
+        },
+        challenges: [
+            { en: "Shipping a competition-ready AI avatar for an international festival jury", fr: "Livrer un avatar IA prêt pour un jury de festival international" },
+            { en: "Building a real-time conversational loop between voice, LLM, and a 3D avatar", fr: "Construire une boucle conversationnelle temps réel entre voix, LLM et avatar 3D" },
+            { en: "Synchronizing lip-sync and presence with remote agent audio", fr: "Synchroniser lip-sync et présence avec l’audio distant de l’agent" }
+        ],
+        solutions: [
+            { en: "Next.js + Three.js front end with LiveKit for low-latency voice rooms", fr: "Front Next.js + Three.js avec LiveKit pour des salles vocales à faible latence" },
+            { en: "Python LiveKit voice agent with STT, switchable LLM, and TTS", fr: "Agent vocal Python LiveKit avec STT, LLM interchangeable et TTS" },
+            { en: "Lip-sync driven by remote audio level / visemes for natural avatar speech", fr: "Lip-sync piloté par le niveau audio distant / visemes pour une parole d’avatar naturelle" }
+        ],
+        keyFeatures: [
+            { en: "Made to compete — Concours AVATARS, [IN]VISIBLE Festival 2026", fr: "Conçu pour concourir — Concours AVATARS, festival [IN]VISIBLE 2026" },
+            { en: "Prix Coup de Cœur Jury — winning team, Ada Lovelace", fr: "Prix Coup de Cœur Jury — équipe gagnante, Ada Lovelace" },
+            { en: "Interactive 3D Ada Lovelace avatar with lip-sync", fr: "Avatar 3D interactif d’Ada Lovelace avec lip-sync" },
+            { en: "Real-time voice conversation via LiveKit agent", fr: "Conversation vocale temps réel via agent LiveKit" },
+            { en: "AI-powered replies grounded in Ada Lovelace’s historical figure", fr: "Réponses IA ancrées dans la figure historique d’Ada Lovelace" }
+        ],
+        lessonsLearned: [
+            { en: "Building under festival competition constraints as a full-stack team", fr: "Construire sous contraintes de concours de festival en équipe full-stack" },
+            { en: "Shipping a multi-stack AI experience (web 3D + realtime voice agent) as a team", fr: "Livrer une expérience IA multi-stack (web 3D + agent vocal temps réel) en équipe" },
+            { en: "Representing Moroccan youth tech talent on an international XR/AI stage", fr: "Représenter les talents tech de la jeunesse marocaine sur une scène XR/IA internationale" }
+        ],
+        futureImprovements: [
+            { en: "Richer knowledge grounding and multilingual conversation modes", fr: "Ancrage de connaissances plus riche et modes de conversation multilingues" },
+            { en: "Public demo deployment for wider access beyond the festival", fr: "Déploiement d’une démo publique pour un accès plus large hors festival" }
+        ],
+        additionalImages: [ada2]
+    },
     {
         id: 9,
         name: 'Tilila',

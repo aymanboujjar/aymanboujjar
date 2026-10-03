@@ -132,6 +132,10 @@ export function projectPageTitle(project: Project): string {
 }
 
 export function projectImageAlt(project: Project): string {
+    if (project.name === "Ada Lovelace") {
+        return "LionsGeek team holding Prix Coup de Cœur Jury certificate for Ada Lovelace avatar at [IN]VISIBLE Festival 2026";
+    }
+
     const techHint = project.techs
         .map((t) => t.name)
         .filter((n) =>

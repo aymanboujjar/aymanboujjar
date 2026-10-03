@@ -60,8 +60,8 @@ export const experience: Experience[] = [
                 fr: "Livré le site public LionsGeek et le site corporate SONOTIC avec Laravel, Inertia, React et Tailwind"
             },
             {
-                en: "Represented LionsGeek at the IN]VISIBLE Festival 2026 in Brussels (XR4Heritage), focused on XR, AI, and digital heritage",
-                fr: "Représenté LionsGeek au festival IN]VISIBLE 2026 à Bruxelles (XR4Heritage), axé sur la XR, l’IA et le patrimoine numérique"
+                en: "Competed at the [IN]VISIBLE Festival 2026 in Brussels (XR4Heritage) with LionsGeek’s Ada Lovelace AI avatar — won Prix Coup de Cœur Jury (Concours AVATARS — Héroïnes de la Science)",
+                fr: "Concouru au festival [IN]VISIBLE 2026 à Bruxelles (XR4Heritage) avec l’avatar IA Ada Lovelace de LionsGeek — Prix Coup de Cœur Jury remporté (Concours AVATARS — Héroïnes de la Science)"
             }
         ]
     },
