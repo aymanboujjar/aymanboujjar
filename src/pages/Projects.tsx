@@ -6,7 +6,7 @@ import Title from "../components/Title";
 import Seo from "../components/Seo";
 import { awardProject, proProjects } from "../constants/projects";
 import { TransText } from "../components/TransText";
-import { projectImageAlt } from "../constants/seo";
+import { PROJECTS_PAGE_SEO, projectImageAlt } from "../constants/seo";
 
 export default function Projects() {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -49,11 +49,7 @@ export default function Projects() {
 
     return (
         <div className="relative min-h-screen overflow-hidden py-16 lg:py-28">
-            <Seo
-                title="Projects — Ayman Boujjar | Full-Stack & Mobile Developer"
-                description="Web and mobile projects by Ayman Boujjar — freelance full-stack Laravel/React apps, APIs, and React Native Expo apps for iOS and Android. Worldwide remote from Casablanca, Morocco."
-                path="/projects"
-            />
+            <Seo {...PROJECTS_PAGE_SEO} />
             <div
                 aria-hidden
                 className="pointer-events-none absolute inset-0 opacity-[0.05]"

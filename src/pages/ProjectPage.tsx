@@ -6,7 +6,7 @@ import { awardProject, proProjects, persoProjects } from "../constants/projects"
 import { TransText } from "../components/TransText";
 import {
     buildProjectJsonLd,
-    projectPageTitle,
+    projectPageSeo,
 } from "../constants/seo";
 
 export default function ProjectPage() {
@@ -70,21 +70,11 @@ export default function ProjectPage() {
 
 function ProjectSeoDetails({ project }: { project: Project }) {
     const jsonLd = useMemo(() => buildProjectJsonLd(project), [project]);
-    const description = useMemo(() => {
-        const role = project.role?.en ? ` ${project.role.en}.` : "";
-        const techs = project.techs.map((t) => t.name).slice(0, 5).join(", ");
-        const techHint = techs ? ` Technologies: ${techs}.` : "";
-        return `${project.desc.en}${role}${techHint}`.slice(0, 300);
-    }, [project]);
+    const pageSeo = useMemo(() => projectPageSeo(project), [project]);
 
     return (
         <>
-            <Seo
-                title={projectPageTitle(project)}
-                description={description}
-                path={`/project/${project.id}`}
-                jsonLd={jsonLd}
-            />
+            <Seo {...pageSeo} jsonLd={jsonLd} />
             <ProjectDetails project={project} />
         </>
     );

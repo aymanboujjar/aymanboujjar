@@ -39,6 +39,35 @@ export type PageSeo = {
     jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 };
 
+/** Indexable static routes — shared by <Seo /> and post-build raw HTML emission */
+export const ABOUT_PAGE_SEO: PageSeo = {
+    title: "About Ayman Boujjar — Full-Stack & Mobile Developer and Freelancer",
+    description:
+        "About Ayman Boujjar — full-stack & mobile developer and freelancer in Casablanca, Morocco. Full Stack Developer at LionsGeek Association. Available for worldwide remote work. Laravel, React, React Native, Expo — web apps, mobile apps, and APIs.",
+    path: "/about",
+    type: "profile",
+};
+
+export const SERVICES_PAGE_SEO: PageSeo = {
+    title: "Freelance Full-Stack & Mobile Development — Ayman Boujjar",
+    description:
+        "Freelance full-stack and mobile development by Ayman Boujjar — Laravel, React, React Native, Expo. Web apps, mobile apps, APIs, real-time integrations, and AI-powered features. Worldwide remote from Casablanca, Morocco.",
+    path: "/services",
+};
+
+export const PROJECTS_PAGE_SEO: PageSeo = {
+    title: "Projects — Ayman Boujjar | Full-Stack & Mobile Developer",
+    description:
+        "Web and mobile projects by Ayman Boujjar — freelance full-stack Laravel/React apps, APIs, and React Native Expo apps for iOS and Android. Worldwide remote from Casablanca, Morocco.",
+    path: "/projects",
+};
+
+export const STATIC_PAGE_SEO: PageSeo[] = [
+    ABOUT_PAGE_SEO,
+    SERVICES_PAGE_SEO,
+    PROJECTS_PAGE_SEO,
+];
+
 export function absoluteUrl(path: string): string {
     if (path.startsWith("http")) return path.split("?")[0];
     const clean = path.startsWith("/") ? path : `/${path}`;
@@ -190,6 +219,21 @@ export function buildProjectJsonLd(project: Project) {
     }
 
     return data;
+}
+
+export function projectPageDescription(project: Project): string {
+    const role = project.role?.en ? ` ${project.role.en}.` : "";
+    const techs = project.techs.map((t) => t.name).slice(0, 5).join(", ");
+    const techHint = techs ? ` Technologies: ${techs}.` : "";
+    return `${project.desc.en}${role}${techHint}`.slice(0, 300);
+}
+
+export function projectPageSeo(project: Project): PageSeo {
+    return {
+        title: projectPageTitle(project),
+        description: projectPageDescription(project),
+        path: `/project/${project.id}`,
+    };
 }
 
 export function projectPageTitle(project: Project): string {

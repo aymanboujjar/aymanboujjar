@@ -4,7 +4,7 @@ import Seo from "../components/Seo";
 import { TransText } from "../components/TransText";
 import { services, servicesIntro } from "../constants/services";
 import { awardProject, proProjects } from "../constants/projects";
-import { buildServicesPageJsonLd } from "../constants/seo";
+import { SERVICES_PAGE_SEO, buildServicesPageJsonLd } from "../constants/seo";
 
 const allProjects = [awardProject, ...proProjects];
 
@@ -17,12 +17,7 @@ export default function Services() {
 
     return (
         <div className="relative min-h-screen overflow-hidden py-16 lg:py-28">
-            <Seo
-                title="Freelance Full-Stack & Mobile Development — Ayman Boujjar"
-                description="Freelance full-stack and mobile development by Ayman Boujjar — Laravel, React, React Native, Expo. Web apps, mobile apps, APIs, real-time integrations, and AI-powered features. Worldwide remote from Casablanca, Morocco."
-                path="/services"
-                jsonLd={jsonLd}
-            />
+            <Seo {...SERVICES_PAGE_SEO} jsonLd={jsonLd} />
 
             <div
                 aria-hidden
