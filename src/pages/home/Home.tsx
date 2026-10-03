@@ -1,5 +1,6 @@
 import Contact from './sections/contact'
 import Hero from './sections/hero'
+import Award from './sections/award'
 import Projects from './sections/projects'
 import Skills from './sections/skills'
 import Trusted from './sections/trusted'
@@ -17,6 +18,7 @@ export default function Home() {
       />
       <Hero />
       <Skills />
+      <Award />
       <Projects />
       <Trusted />
       <Contact />

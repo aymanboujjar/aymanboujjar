@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { useParams, Navigate, Link } from "react-router-dom";
 import ProjectDetails from "../components/ProjectDetails";
 import Seo from "../components/Seo";
-import { proProjects, persoProjects } from "../constants/projects";
+import { awardProject, proProjects, persoProjects } from "../constants/projects";
 import { TransText } from "../components/TransText";
 import {
     buildProjectJsonLd,
@@ -21,7 +21,7 @@ export default function ProjectPage() {
         return <Navigate to="/" replace />;
     }
 
-    const project = [...proProjects, ...persoProjects].find((p) => p.id === projectId);
+    const project = [awardProject, ...proProjects, ...persoProjects].find((p) => p.id === projectId);
 
     if (!project) {
         return (

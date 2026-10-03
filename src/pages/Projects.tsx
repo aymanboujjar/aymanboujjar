@@ -4,8 +4,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import ProjectCard from "../components/ProjectCard";
 import Title from "../components/Title";
 import Seo from "../components/Seo";
-import { proProjects } from "../constants/projects";
+import { awardProject, proProjects } from "../constants/projects";
 import { TransText } from "../components/TransText";
+import { projectImageAlt } from "../constants/seo";
 
 export default function Projects() {
     const [active, setActive] = useState(0);
@@ -102,6 +103,44 @@ export default function Projects() {
                         </span>
                     </motion.div>
                 </div>
+
+                {/* Award — kept outside the project archive */}
+                <motion.div
+                    className="mt-10"
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.12 }}
+                >
+                    <Link
+                        to={`/project/${awardProject.id}`}
+                        className="group relative flex flex-col overflow-hidden border border-alpha/35 bg-[#070b14]/80 transition-[border-color,box-shadow] duration-500 hover:border-alpha/55 hover:shadow-[0_0_36px_rgba(0,119,190,0.14)] sm:flex-row"
+                    >
+                        <div className="relative w-full shrink-0 overflow-hidden border-b border-white/10 sm:w-56 sm:border-b-0 sm:border-r lg:w-72">
+                            <img
+                                src={awardProject.preview}
+                                alt={projectImageAlt(awardProject)}
+                                className="aspect-[16/10] h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                            />
+                        </div>
+                        <div className="flex flex-1 flex-col justify-center gap-2 p-5 sm:p-6">
+                            <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-alpha">
+                                <TransText en="Award · not in archive" fr="Prix · hors archive" />
+                            </p>
+                            <p className="text-xl font-semibold text-white sm:text-2xl">
+                                {awardProject.name}
+                            </p>
+                            <p className="line-clamp-2 text-sm text-white/55">
+                                <TransText
+                                    en={awardProject.desc.en}
+                                    fr={awardProject.desc.fr}
+                                />
+                            </p>
+                            <span className="mt-1 inline-flex items-center gap-2 font-mono text-sm text-alpha">
+                                <TransText en="Open case" fr="Ouvrir le cas" /> →
+                            </span>
+                        </div>
+                    </Link>
+                </motion.div>
 
                 {/* band filters */}
                 <div className="mt-10 flex flex-wrap gap-2">

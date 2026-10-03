@@ -18,12 +18,15 @@
 - Cross-platform mobile apps for iOS and Android with React Native and Expo
 - Real-time features, REST APIs, and AI-powered experiences
 
+## Award
+
+- Ada Lovelace — conversational 3D AI avatar; Prix Coup de Cœur Jury at [IN]VISIBLE Festival 2026 (XR4Heritage, Brussels). Shown separately from the project archive.
+
 ## Featured work
 
 - LionsGeek Mobile — React Native / Expo app on the App Store and Google Play (iOS & Android)
 - MyLionsGeek — Laravel + Inertia + React full-stack community platform
 - Tilila — Laravel + React platform for CPD / 2M media initiatives
-- Ada Lovelace — conversational AI avatar; Prix Coup de Cœur Jury at [IN]VISIBLE Festival 2026
 - YES Mobile, Casatourat, ISRAR, LionsGeek.ma, and other client projects
 
 ## Pages
