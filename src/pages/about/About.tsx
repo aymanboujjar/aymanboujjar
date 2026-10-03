@@ -8,7 +8,7 @@ export default function About() {
     <>
       <Seo
         title="About Ayman Boujjar — Full-Stack & Mobile Developer"
-        description="Learn about Ayman Boujjar — Full-Stack & Mobile Developer based in Morocco, with experience in Laravel, React, React Native, Expo, APIs and real client projects."
+        description="About Ayman Boujjar — full-stack and mobile developer (développeur full-stack et mobile) in Casablanca, Morocco. Frontend, backend, Laravel, React, React Native, Expo, iOS and Android apps for real clients."
         path="/about"
         type="profile"
       />

@@ -35,7 +35,7 @@ export default function Projects() {
         <div className="relative min-h-screen overflow-hidden py-16 lg:py-28">
             <Seo
                 title="Projects — Ayman Boujjar | Full-Stack & Mobile Developer"
-                description="Explore web and mobile projects by Ayman Boujjar — Laravel, React, React Native, Expo, iOS, Android and API-driven applications for real clients."
+                description="Web and mobile projects by Ayman Boujjar — full-stack Laravel/React apps, frontend and backend APIs, and React Native Expo apps for iOS and Android (développeur full-stack et mobile)."
                 path="/projects"
             />
             <div

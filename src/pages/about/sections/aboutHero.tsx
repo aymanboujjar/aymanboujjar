@@ -84,8 +84,8 @@ export default function AboutHero() {
                     </h2>
                     <p className="max-w-xl text-base leading-relaxed text-white/65 sm:text-lg">
                         <TransText
-                            en="I'm a Full-Stack & Mobile Developer based in Morocco, building web and mobile products with Laravel, React, React Native, Expo, APIs, and modern frontend tooling. I ship intuitive applications for communities, studios, and institutions."
-                            fr="Je suis un développeur Full-Stack & Mobile basé au Maroc, qui conçoit des produits web et mobile avec Laravel, React, React Native, Expo, des APIs et des outils frontend modernes. Je livre des applications intuitives pour des communautés, studios et institutions."
+                            en="I'm a Full-Stack & Mobile Developer based in Casablanca, Morocco — building frontend and backend web products with Laravel, React, and APIs, plus cross-platform iOS and Android apps with React Native and Expo. I ship intuitive applications for communities, studios, and institutions."
+                            fr="Je suis développeur full-stack et mobile basé à Casablanca, Maroc — frontend et backend avec Laravel, React et APIs, et applications iOS et Android avec React Native et Expo. Je livre des applications intuitives pour des communautés, studios et institutions."
                         />
                     </p>
                     <p className="max-w-xl text-sm leading-relaxed text-white/50 sm:text-base">

@@ -175,6 +175,31 @@ export default function Skills() {
                                 fr="Mes outils au quotidien — survolez un nœud pour figer le scan, changez de canal pour filtrer."
                             />
                         </motion.p>
+                        <motion.ul
+                            className="mt-4 max-w-lg space-y-1 text-sm leading-relaxed text-white/45 sm:text-base"
+                            initial={{ opacity: 0, y: 12 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                        >
+                            <li>
+                                <TransText
+                                    en="Frontend: React, TypeScript, Tailwind, Inertia"
+                                    fr="Frontend : React, TypeScript, Tailwind, Inertia"
+                                />
+                            </li>
+                            <li>
+                                <TransText
+                                    en="Backend: Laravel, PHP, REST APIs, MySQL"
+                                    fr="Backend : Laravel, PHP, APIs REST, MySQL"
+                                />
+                            </li>
+                            <li>
+                                <TransText
+                                    en="Mobile: React Native, Expo — iOS and Android"
+                                    fr="Mobile : React Native, Expo — iOS et Android"
+                                />
+                            </li>
+                        </motion.ul>
                     </div>
 
                     <motion.div

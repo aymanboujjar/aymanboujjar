@@ -2,7 +2,7 @@ export const SITE_URL = "https://aymanboujjar.com";
 export const SITE_NAME = "Ayman Boujjar";
 export const DEFAULT_TITLE = "Ayman Boujjar — Full-Stack & Mobile Developer";
 export const DEFAULT_DESCRIPTION =
-    "Ayman Boujjar is a Full-Stack & Mobile Developer specializing in Laravel, React, React Native, Expo, iOS, Android, APIs and AI-powered applications.";
+    "Ayman Boujjar — full-stack and mobile developer in Casablanca, Morocco. Frontend, backend, Laravel, React, React Native, Expo, iOS and Android apps, APIs and AI. Développeur full-stack et mobile.";
 export const OG_IMAGE = `${SITE_URL}/og-image.jpg`;
 export const PERSON_ID = `${SITE_URL}/#person`;
 export const WEBSITE_ID = `${SITE_URL}/#website`;
@@ -38,7 +38,7 @@ export function buildPersonGraph() {
                 name: SITE_NAME,
                 description: DEFAULT_DESCRIPTION,
                 publisher: { "@id": PERSON_ID },
-                inLanguage: "en",
+                inLanguage: ["en", "fr"],
             },
             {
                 "@type": "ProfilePage",
@@ -53,13 +53,26 @@ export function buildPersonGraph() {
                 "@id": PERSON_ID,
                 name: SITE_NAME,
                 url: `${SITE_URL}/`,
-                jobTitle: "Full-Stack & Mobile Developer",
+                jobTitle: [
+                    "Full-Stack & Mobile Developer",
+                    "Développeur Full-Stack & Mobile",
+                ],
                 description:
-                    "Full-Stack & Mobile Developer based in Morocco, building web and mobile products with Laravel, React, React Native, Expo, APIs and AI integrations.",
+                    "Full-stack and mobile developer based in Casablanca, Morocco — frontend, backend, Laravel, React, React Native, Expo, iOS, Android, APIs and AI integrations. Développeur full-stack et mobile.",
                 image: OG_IMAGE,
                 sameAs: [...SAME_AS],
+                address: {
+                    "@type": "PostalAddress",
+                    addressLocality: "Casablanca",
+                    addressCountry: "MA",
+                },
+                homeLocation: {
+                    "@type": "Place",
+                    name: "Casablanca, Morocco",
+                },
                 knowsAbout: [
                     "Full-Stack Development",
+                    "Développement Full-Stack",
                     "Laravel",
                     "PHP",
                     "React",
@@ -70,6 +83,7 @@ export function buildPersonGraph() {
                     "Frontend Development",
                     "Backend Development",
                     "Mobile App Development",
+                    "Développement Mobile",
                     "iOS Development",
                     "Android Development",
                     "REST APIs",
@@ -117,11 +131,27 @@ export function buildProjectJsonLd(project: Project) {
 }
 
 export function projectPageTitle(project: Project): string {
-    const techHint = project.techs
-        .map((t) => t.name)
-        .filter((n) =>
-            /laravel|react native|expo|react|inertia/i.test(n)
-        )
+    const techNames = project.techs.map((t) => t.name);
+    const isMobile =
+        Boolean(project.appStore || project.playStore) ||
+        techNames.some((n) => /react native|expo/i.test(n)) ||
+        /mobile/i.test(project.name);
+
+    if (isMobile) {
+        return `${project.name} — React Native iOS & Android App | Ayman Boujjar`;
+    }
+
+    const hasLaravel = techNames.some((n) => /laravel/i.test(n));
+    const hasReact = techNames.some((n) => /^react$/i.test(n) || /inertia/i.test(n));
+    if (hasLaravel && hasReact) {
+        return `${project.name} — Laravel Full-Stack Web App | Ayman Boujjar`;
+    }
+    if (hasLaravel) {
+        return `${project.name} — Laravel Backend Project | Ayman Boujjar`;
+    }
+
+    const techHint = techNames
+        .filter((n) => /next\.js|react|three\.js|python|vue/i.test(n))
         .slice(0, 2)
         .join(" & ");
 

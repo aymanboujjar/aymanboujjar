@@ -147,8 +147,8 @@ export default function Hero() {
                         className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-white/60 sm:text-lg"
                     >
                         <TransText
-                            en="I conceive and build intuitive websites and mobile applications."
-                            fr="Je conçois et développe des sites web et applications mobiles intuitifs."
+                            en="Full-stack developer for frontend and backend web apps (Laravel, React, APIs) and mobile developer for iOS and Android with React Native and Expo."
+                            fr="Développeur full-stack pour le frontend et le backend (Laravel, React, APIs) et développeur mobile iOS et Android avec React Native et Expo."
                         />
                     </motion.p>
 
