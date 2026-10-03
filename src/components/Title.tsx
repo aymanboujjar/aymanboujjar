@@ -1,5 +1,6 @@
-export default function Title({ title }: TitleProps) {
+export default function Title({ title, as = "h2" }: TitleProps) {
+    const Tag = as;
     return (
-        <p className="text-4xl font-semibold title w-fit z-10 after:bg-alpha">{title}</p>
+        <Tag className="text-4xl font-semibold title w-fit z-10 after:bg-alpha">{title}</Tag>
     )
 }

@@ -2,9 +2,10 @@ import { Link, useLocation } from "react-router-dom";
 import { useRef, useState } from "react";
 import Logo from "../../../components/Logo";
 import { useScroll, useMotionValue, useSpring, motion, AnimatePresence } from "framer-motion";
-import { LinkedInIcon, HamburgerIcon, EnglishFlagIcon, FrenchFlagIcon } from "../../../components/icons";
+import { LinkedInIcon, GitHubIcon, HamburgerIcon, EnglishFlagIcon, FrenchFlagIcon } from "../../../components/icons";
 import { useAppContext } from "../../../contexts/AppContext";
 import { TransText } from "../../../components/TransText";
+import { GITHUB_URL, LINKEDIN_URL } from "../../../constants/seo";
 
 function MagneticNode({
     children,
@@ -50,7 +51,8 @@ export default function Navbar() {
     const navLinks = [
         { to: "/", index: "01", label: <TransText en="Home" fr="Accueil" /> },
         { to: "/about", index: "02", label: <TransText en="About Me" fr="À Propos" /> },
-        { to: "/projects", index: "03", label: <TransText en="Projects" fr="Projets" /> },
+        { to: "/services", index: "03", label: <TransText en="Services" fr="Services" /> },
+        { to: "/projects", index: "04", label: <TransText en="Projects" fr="Projets" /> },
     ];
 
     const isActive = (to: string) =>
@@ -109,7 +111,19 @@ export default function Navbar() {
                         <div className="ml-2 flex items-center gap-2 border-l border-white/10 pl-4">
                             <MagneticNode>
                                 <a
-                                    href="https://linkedin.com/in/aymanboujjar"
+                                    href={GITHUB_URL}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="GitHub"
+                                    className="flex h-10 w-10 items-center justify-center rounded-full border border-white/12 bg-[#070b14]/80 text-white/80 transition-colors hover:border-alpha hover:text-alpha"
+                                >
+                                    <GitHubIcon size={18} />
+                                </a>
+                            </MagneticNode>
+
+                            <MagneticNode>
+                                <a
+                                    href={LINKEDIN_URL}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     aria-label="LinkedIn"
@@ -236,7 +250,16 @@ export default function Navbar() {
                                 className="flex items-center gap-3 pt-6"
                             >
                                 <a
-                                    href="https://linkedin.com/in/aymanboujjar"
+                                    href={GITHUB_URL}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="GitHub"
+                                    className="flex h-12 w-12 items-center justify-center rounded-full border border-white/12 bg-[#070b14] text-white/80 hover:border-alpha hover:text-alpha"
+                                >
+                                    <GitHubIcon size={22} />
+                                </a>
+                                <a
+                                    href={LINKEDIN_URL}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     aria-label="LinkedIn"

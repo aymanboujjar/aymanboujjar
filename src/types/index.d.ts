@@ -1,5 +1,6 @@
 type TitleProps = {
     title: string | React.ReactNode
+    as?: "h1" | "h2"
 }
 
 type IconProps = {

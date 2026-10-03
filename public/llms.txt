@@ -1,22 +1,24 @@
 # Ayman Boujjar
 
-> Full-Stack & Mobile Developer (Développeur full-stack et mobile) based in Casablanca, Morocco.
+> Full-Stack & Mobile Developer and Freelancer (Développeur full-stack et mobile freelance) based in Casablanca, Morocco. Available for worldwide remote freelance and contract work.
 
 ## Who
 
 - Name: Ayman Boujjar
-- Roles: Full-Stack Developer, Mobile Developer, Frontend Developer, Backend Developer
+- Roles: Full-Stack & Mobile Developer, Freelancer, Frontend Developer, Backend Developer
+- Availability: Freelance and contract work, worldwide remote
 - Location: Casablanca, Morocco
+- Current affiliation: LionsGeek Association (Full Stack Developer)
 - Site: https://aymanboujjar.com/
 - GitHub: https://github.com/aymanboujjar
 - LinkedIn: https://www.linkedin.com/in/aymanboujjar
 
 ## Capabilities
 
-- Frontend web apps with React, TypeScript, Tailwind, Inertia
-- Backend APIs and platforms with Laravel and PHP
+- Web applications with Laravel, React, Inertia, TypeScript, and Tailwind
 - Cross-platform mobile apps for iOS and Android with React Native and Expo
-- Real-time features, REST APIs, and AI-powered experiences
+- Backend APIs, third-party integrations, authentication, and notifications
+- Real-time features and AI-powered application experiences (where project scope includes them)
 
 ## Award
 
@@ -33,5 +35,6 @@
 
 - Home: https://aymanboujjar.com/
 - About: https://aymanboujjar.com/about
+- Services: https://aymanboujjar.com/services
 - Projects: https://aymanboujjar.com/projects
 - CV: https://aymanboujjar.com/Ayman_Boujjar_CV.pdf

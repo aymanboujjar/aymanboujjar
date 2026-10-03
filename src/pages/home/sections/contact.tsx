@@ -172,8 +172,8 @@ export default function Contact() {
                             </h3>
                             <p className="max-w-md text-base leading-relaxed text-white/60 lg:text-lg">
                                 <TransText
-                                    en="Open to new opportunities and interesting projects. Questions, collabs, or a quick hello — reach out anytime."
-                                    fr="Ouvert aux nouvelles opportunités et aux projets intéressants. Questions, collabs, ou un simple bonjour — écrivez-moi."
+                                    en="Available for freelance and contract work worldwide — remotely. Web apps, mobile apps, APIs, or a quick hello — reach out anytime."
+                                    fr="Disponible pour des missions freelance et contrats dans le monde entier — en remote. Apps web, mobiles, APIs, ou un simple bonjour — écrivez-moi."
                                 />
                             </p>
                         </div>

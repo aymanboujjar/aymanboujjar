@@ -1,17 +1,25 @@
 export const SITE_URL = "https://aymanboujjar.com";
 export const SITE_NAME = "Ayman Boujjar";
-export const DEFAULT_TITLE = "Ayman Boujjar — Full-Stack & Mobile Developer";
+export const DEFAULT_TITLE =
+    "Ayman Boujjar — Full-Stack & Mobile Developer and Freelancer";
 export const DEFAULT_DESCRIPTION =
-    "Ayman Boujjar — full-stack and mobile developer in Casablanca, Morocco. Frontend, backend, Laravel, React, React Native, Expo, iOS and Android apps, APIs and AI. Développeur full-stack et mobile.";
+    "Ayman Boujjar — full-stack & mobile developer and freelancer in Casablanca, Morocco. Available for worldwide remote work. Laravel, React, React Native, Expo — web apps, mobile apps, APIs and integrations. Développeur full-stack et mobile freelance.";
 export const OG_IMAGE = `${SITE_URL}/og-image.jpg`;
 export const PERSON_ID = `${SITE_URL}/#person`;
 export const WEBSITE_ID = `${SITE_URL}/#website`;
 export const PROFILE_ID = `${SITE_URL}/#profile`;
 
+/** Canonical professional profile URLs — keep UI and Person sameAs in sync */
 export const SAME_AS = [
     "https://github.com/aymanboujjar",
     "https://www.linkedin.com/in/aymanboujjar",
 ] as const;
+
+export const GITHUB_URL = SAME_AS[0];
+export const LINKEDIN_URL = SAME_AS[1];
+
+export const PERSON_DESCRIPTION =
+    "Ayman Boujjar is a full-stack and mobile developer and freelancer based in Casablanca, Morocco — available for worldwide remote freelance and contract work. Builds web applications with Laravel and React, mobile apps with React Native and Expo, plus APIs, integrations, and AI-powered features.";
 
 export type PageSeo = {
     title: string;
@@ -27,6 +35,12 @@ export function absoluteUrl(path: string): string {
     return `${SITE_URL}${clean === "/" ? "/" : clean.replace(/\/$/, "")}`;
 }
 
+/**
+ * Canonical Person / WebSite / ProfilePage graph.
+ * Consumed as the TypeScript source of truth; mirrored in index.html for
+ * static crawlers. Do not also inject this via Seo.jsonLd on the homepage
+ * (that would duplicate the static script in index.html).
+ */
 export function buildPersonGraph() {
     return {
         "@context": "https://schema.org",
@@ -55,10 +69,11 @@ export function buildPersonGraph() {
                 url: `${SITE_URL}/`,
                 jobTitle: [
                     "Full-Stack & Mobile Developer",
+                    "Freelance Developer",
                     "Développeur Full-Stack & Mobile",
+                    "Développeur Freelance",
                 ],
-                description:
-                    "Full-stack and mobile developer based in Casablanca, Morocco — frontend, backend, Laravel, React, React Native, Expo, iOS, Android, APIs and AI integrations. Développeur full-stack et mobile.",
+                description: PERSON_DESCRIPTION,
                 image: OG_IMAGE,
                 sameAs: [...SAME_AS],
                 address: {
@@ -72,7 +87,9 @@ export function buildPersonGraph() {
                 },
                 knowsAbout: [
                     "Full-Stack Development",
-                    "Développement Full-Stack",
+                    "Web Application Development",
+                    "Mobile Application Development",
+                    "Freelance Software Development",
                     "Laravel",
                     "PHP",
                     "React",
@@ -82,16 +99,32 @@ export function buildPersonGraph() {
                     "JavaScript",
                     "Frontend Development",
                     "Backend Development",
-                    "Mobile App Development",
-                    "Développement Mobile",
-                    "iOS Development",
-                    "Android Development",
+                    "API Development",
                     "REST APIs",
                     "Real-Time Applications",
+                    "iOS Development",
+                    "Android Development",
                     "Artificial Intelligence",
+                    "AI Integrations",
                 ],
             },
         ],
+    };
+}
+
+export function buildServicesPageJsonLd() {
+    return {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "@id": `${SITE_URL}/services#webpage`,
+        url: `${SITE_URL}/services`,
+        name: "Freelance Full-Stack & Mobile Development — Ayman Boujjar",
+        description:
+            "Freelance full-stack and mobile development by Ayman Boujjar — Laravel, React, React Native, and Expo. Web apps, mobile apps, APIs, real-time integrations, and AI-powered features. Available worldwide remotely from Casablanca, Morocco.",
+        isPartOf: { "@id": WEBSITE_ID },
+        about: { "@id": PERSON_ID },
+        mainEntity: { "@id": PERSON_ID },
+        inLanguage: ["en", "fr"],
     };
 }
 

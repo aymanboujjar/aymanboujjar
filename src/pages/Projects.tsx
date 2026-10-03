@@ -36,7 +36,7 @@ export default function Projects() {
         <div className="relative min-h-screen overflow-hidden py-16 lg:py-28">
             <Seo
                 title="Projects — Ayman Boujjar | Full-Stack & Mobile Developer"
-                description="Web and mobile projects by Ayman Boujjar — full-stack Laravel/React apps, frontend and backend APIs, and React Native Expo apps for iOS and Android (développeur full-stack et mobile)."
+                description="Web and mobile projects by Ayman Boujjar — freelance full-stack Laravel/React apps, APIs, and React Native Expo apps for iOS and Android. Worldwide remote from Casablanca, Morocco."
                 path="/projects"
             />
             <div
@@ -57,7 +57,7 @@ export default function Projects() {
             <div className="relative px-4 sm:px-6 lg:px-16">
                 <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
                     <div>
-                        <Title title={<TransText en="My Projects" fr="Mes Projets" />} />
+                        <Title as="h1" title={<TransText en="My Projects" fr="Mes Projets" />} />
                         <motion.p
                             className="mt-4 max-w-lg text-sm leading-relaxed text-white/55 sm:text-base"
                             initial={{ opacity: 0, y: 12 }}

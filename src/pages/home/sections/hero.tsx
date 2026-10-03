@@ -144,11 +144,21 @@ export default function Hero() {
 
                     <motion.p
                         variants={itemVariants}
+                        className="mt-3 font-mono text-[11px] uppercase tracking-[0.28em] text-white/50 sm:text-xs"
+                    >
+                        <TransText
+                            en="Freelancer · Worldwide remote"
+                            fr="Freelance · Remote mondial"
+                        />
+                    </motion.p>
+
+                    <motion.p
+                        variants={itemVariants}
                         className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-white/60 sm:text-lg"
                     >
                         <TransText
-                            en="Full-stack developer for frontend and backend web apps (Laravel, React, APIs) and mobile developer for iOS and Android with React Native and Expo."
-                            fr="Développeur full-stack pour le frontend et le backend (Laravel, React, APIs) et développeur mobile iOS et Android avec React Native et Expo."
+                            en="Full-stack & mobile developer and freelancer in Casablanca, Morocco — Laravel, React, React Native, and Expo for web apps, mobile apps, and APIs. Available for worldwide remote freelance and contract work."
+                            fr="Développeur full-stack & mobile et freelance à Casablanca, Maroc — Laravel, React, React Native et Expo pour apps web, mobiles et APIs. Disponible en remote dans le monde entier pour missions freelance et contrats."
                         />
                     </motion.p>
 
@@ -177,8 +187,15 @@ export default function Hero() {
                         </MagneticCta>
 
                         <MagneticCta
-                            href="#contact"
+                            href="/services"
                             className="inline-flex items-center gap-2 border border-alpha/60 bg-[#070b14]/70 px-7 py-3.5 font-semibold text-alpha backdrop-blur-md transition-colors hover:border-alpha hover:bg-alpha/10"
+                        >
+                            <TransText en="What I build" fr="Ce que je construis" />
+                        </MagneticCta>
+
+                        <MagneticCta
+                            href="#contact"
+                            className="inline-flex items-center gap-2 border border-white/15 bg-transparent px-7 py-3.5 font-semibold text-white/80 transition-colors hover:border-alpha hover:text-alpha"
                         >
                             <TransText en="Get In Touch" fr="Contactez-Moi" />
                         </MagneticCta>
@@ -186,7 +203,7 @@ export default function Hero() {
                         <MagneticCta
                             href="/Ayman_Boujjar_CV.pdf?v=20260930"
                             download="Ayman_Boujjar_CV.pdf"
-                            className="inline-flex items-center gap-2 border border-white/15 bg-transparent px-7 py-3.5 font-semibold text-white/80 transition-colors hover:border-alpha hover:text-alpha"
+                            className="inline-flex items-center gap-2 border border-white/10 bg-transparent px-7 py-3.5 font-semibold text-white/70 transition-colors hover:border-alpha hover:text-alpha"
                         >
                             <TransText en="Download CV" fr="Télécharger le CV" />
                             <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

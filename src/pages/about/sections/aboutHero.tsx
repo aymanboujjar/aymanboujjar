@@ -78,20 +78,20 @@ export default function AboutHero() {
                     </h1>
                     <h2 className="text-xl font-semibold text-alpha sm:text-2xl lg:text-3xl">
                         <TransText
-                            en="Full-Stack & Mobile Developer"
-                            fr="Développeur Full-Stack & Mobile"
+                            en="Full-Stack & Mobile Developer · Freelancer"
+                            fr="Développeur Full-Stack & Mobile · Freelance"
                         />
                     </h2>
                     <p className="max-w-xl text-base leading-relaxed text-white/65 sm:text-lg">
                         <TransText
-                            en="I'm a Full-Stack & Mobile Developer based in Casablanca, Morocco — building frontend and backend web products with Laravel, React, and APIs, plus cross-platform iOS and Android apps with React Native and Expo. I ship intuitive applications for communities, studios, and institutions."
-                            fr="Je suis développeur full-stack et mobile basé à Casablanca, Maroc — frontend et backend avec Laravel, React et APIs, et applications iOS et Android avec React Native et Expo. Je livre des applications intuitives pour des communautés, studios et institutions."
+                            en="I'm a Full-Stack & Mobile Developer and freelancer based in Casablanca, Morocco — building web products with Laravel and React, and iOS/Android apps with React Native and Expo. I ship applications for communities, studios, and institutions."
+                            fr="Je suis développeur full-stack & mobile et freelance basé à Casablanca, Maroc — produits web avec Laravel et React, et apps iOS/Android avec React Native et Expo. Je livre des applications pour des communautés, studios et institutions."
                         />
                     </p>
                     <p className="max-w-xl text-sm leading-relaxed text-white/50 sm:text-base">
                         <TransText
-                            en="When I'm not coding, you'll find me exploring new technologies and contributing to open source projects."
-                            fr="Quand je ne code pas, vous me trouverez en train d'explorer de nouvelles technologies et de contribuer à des projets open source."
+                            en="Available for freelance and contract work worldwide, working remotely with clients and teams on web and mobile products."
+                            fr="Disponible pour des missions freelance et contrats dans le monde entier, en remote avec des clients et des équipes sur des produits web et mobile."
                         />
                     </p>
 
