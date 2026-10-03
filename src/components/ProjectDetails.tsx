@@ -71,9 +71,23 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
                         <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
                             {project.name}
                         </h1>
+                        {project.role && (
+                            <p className="mt-3 font-mono text-sm text-alpha sm:text-base">
+                                <span className="uppercase tracking-[0.2em] text-alpha/70">
+                                    <TransText en="My role" fr="Mon rôle" />
+                                    {": "}
+                                </span>
+                                <TransText {...project.role} />
+                            </p>
+                        )}
                         <p className="mt-5 max-w-xl text-base leading-relaxed text-white/70 sm:text-lg sm:leading-8">
                             <TransText {...project.desc} />
                         </p>
+                        {project.teamContext && (
+                            <p className="mt-3 max-w-xl text-sm leading-relaxed text-white/45">
+                                <TransText {...project.teamContext} />
+                            </p>
+                        )}
 
                         <div className="mt-7 flex flex-wrap gap-2.5">
                             {project.website && (
@@ -192,30 +206,75 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
             <Band
                 id="overview"
                 n="01"
-                title={<TransText en="Overview" fr="Aperçu" />}
+                title={<TransText en="About the Project" fr="À propos du projet" />}
             >
                 <p className="max-w-3xl text-base leading-relaxed text-white/70 sm:text-lg sm:leading-8">
                     <TransText {...project.detailedDesc} />
                 </p>
             </Band>
 
-            <Band id="stack" n="02" title={<TransText en="Stack" fr="Stack" />}>
+            {!!project.contributions?.length && (
+                <Band
+                    id="contributions"
+                    n="02"
+                    title={
+                        <TransText
+                            en="Selected Contributions"
+                            fr="Contributions sélectionnées"
+                        />
+                    }
+                    flush
+                >
+                    <ul className="divide-y divide-white/10">
+                        {project.contributions.map((item, i) => (
+                            <li
+                                key={i}
+                                className="group relative grid gap-3 px-4 py-6 sm:grid-cols-[3rem_1fr] sm:px-6 sm:py-7 lg:px-12"
+                            >
+                                <span
+                                    aria-hidden
+                                    className="absolute left-0 top-1/2 hidden h-px w-3 -translate-y-1/2 bg-alpha/50 sm:block"
+                                />
+                                <span className="font-mono text-sm text-alpha">
+                                    {String(i + 1).padStart(2, "0")}
+                                </span>
+                                <p className="text-base leading-relaxed text-white/70 sm:text-lg sm:leading-8">
+                                    <TransText {...item} />
+                                </p>
+                            </li>
+                        ))}
+                    </ul>
+                </Band>
+            )}
+
+            <Band
+                id="stack"
+                n={project.contributions?.length ? "03" : "02"}
+                title={<TransText en="Technologies" fr="Technologies" />}
+            >
                 <div className="flex flex-wrap gap-2.5">
                     {project.techs.map((tech) => (
-                        <span
+                        <Link
                             key={tech.name}
-                            className="border border-white/15 px-4 py-2 font-mono text-sm text-white/80 transition-colors hover:border-alpha/50"
+                            to={`/projects?tech=${encodeURIComponent(tech.name)}`}
+                            className="border border-white/15 px-4 py-2 font-mono text-sm text-white/80 transition-colors hover:border-alpha/50 hover:text-alpha"
                         >
                             {tech.name}
-                        </span>
+                        </Link>
                     ))}
                 </div>
+                <p className="mt-4 text-xs text-white/35">
+                    <TransText
+                        en="Browse other projects using the same technology."
+                        fr="Parcourir d’autres projets utilisant la même technologie."
+                    />
+                </p>
             </Band>
 
             {!!project.keyFeatures?.length && (
                 <Band
                     id="features"
-                    n="03"
+                    n={project.contributions?.length ? "04" : "03"}
                     title={<TransText en="Features" fr="Fonctions" />}
                     flush
                 >
@@ -244,7 +303,7 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
             {(!!project.challenges?.length || !!project.solutions?.length) && (
                 <Band
                     id="process"
-                    n="04"
+                    n={project.contributions?.length ? "05" : "04"}
                     title={<TransText en="Process" fr="Processus" />}
                     flush
                 >
@@ -294,7 +353,7 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
             {!!project.lessonsLearned?.length && (
                 <Band
                     id="lessons"
-                    n="05"
+                    n={project.contributions?.length ? "06" : "05"}
                     title={<TransText en="Lessons" fr="Leçons" />}
                     flush
                 >
@@ -321,7 +380,11 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
             )}
 
             {!!project.futureImprovements?.length && (
-                <Band id="future" n="06" title={<TransText en="Future" fr="Suite" />}>
+                <Band
+                    id="future"
+                    n={project.contributions?.length ? "07" : "06"}
+                    title={<TransText en="Future" fr="Suite" />}
+                >
                     <ul className="space-y-5">
                         {project.futureImprovements.map((item, i) => (
                             <li
@@ -340,7 +403,9 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
                 <section id="gallery" className="scroll-mt-24 overflow-hidden border-x border-white/10">
                     <div className="relative flex items-baseline justify-between gap-4 px-4 py-8 sm:px-5 lg:px-8">
                         <div className="flex items-baseline gap-3">
-                            <span className="font-mono text-sm text-alpha">07</span>
+                            <span className="font-mono text-sm text-alpha">
+                                {project.contributions?.length ? "08" : "07"}
+                            </span>
                             <h2 className="text-xl font-bold text-white sm:text-2xl">
                                 <TransText en="Gallery" fr="Galerie" />
                             </h2>

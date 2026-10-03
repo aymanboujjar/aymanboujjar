@@ -56,13 +56,19 @@ export const experience: Experience[] = [
                 fr: "Construit et fait évoluer MyLionsGeek (réservations, fil social, jobs, messagerie, admin) et LionsGeek Mobile (iOS/Android) utilisés par étudiants, coachs et staff"
             },
             {
-                en: "Delivered the public LionsGeek website and SONOTIC corporate site with Laravel, Inertia, React, and Tailwind",
-                fr: "Livré le site public LionsGeek et le site corporate SONOTIC avec Laravel, Inertia, React et Tailwind"
+                en: "Delivered the public LionsGeek website (Laravel, Inertia, React, Tailwind)",
+                fr: "Livré le site public LionsGeek (Laravel, Inertia, React, Tailwind)"
             },
             {
-                en: "Competed at the [IN]VISIBLE Festival 2026 in Brussels (XR4Heritage) with LionsGeek’s Ada Lovelace AI avatar — won Prix Coup de Cœur Jury (Concours AVATARS — Héroïnes de la Science)",
-                fr: "Concouru au festival [IN]VISIBLE 2026 à Bruxelles (XR4Heritage) avec l’avatar IA Ada Lovelace de LionsGeek — Prix Coup de Cœur Jury remporté (Concours AVATARS — Héroïnes de la Science)"
+                en: "On LionsGeek’s Ada Lovelace AI avatar for [IN]VISIBLE Festival 2026 (Brussels / XR4Heritage): created the 3D avatar and integrated Moroccan Darija into teammates’ existing parts — team won Prix Coup de Cœur Jury",
+                fr: "Sur l’avatar IA Ada Lovelace de LionsGeek pour le festival [IN]VISIBLE 2026 (Bruxelles / XR4Heritage) : créé l’avatar 3D et intégré la darija marocaine aux parties déjà faites par l’équipe — Prix Coup de Cœur Jury remporté"
             }
+        ],
+        relatedProjects: [
+            { id: 10, name: "MyLionsGeek" },
+            { id: 12, name: "LionsGeek Mobile" },
+            { id: 11, name: "LionsGeek" },
+            { id: 14, name: "Ada Lovelace" },
         ]
     },
     {
@@ -86,6 +92,9 @@ export const experience: Experience[] = [
                 en: "Worked on Laravel + React / Inertia flows for registrations, candidacies, and multilingual institutional content",
                 fr: "Travaillé sur les flux Laravel + React / Inertia pour inscriptions, candidatures et contenu institutionnel multilingue"
             }
+        ],
+        relatedProjects: [
+            { id: 9, name: "Tilila" },
         ]
     },
     {
@@ -98,8 +107,8 @@ export const experience: Experience[] = [
         period: "2024",
         achievements: [
             {
-                en: "Developed the official site redesign for Atelier A1, presenting 190+ architecture projects, the studio’s approach, and contact",
-                fr: "Développé le redesign du site officiel d’Atelier A1, présentant plus de 190 projets d’architecture, l’approche du studio et le contact"
+                en: "Developed work for Atelier A1 spanning public studio presence and project-management / scheduling tooling — live at ateliera1.com",
+                fr: "Développé des livrables pour Atelier A1 couvrant la présence studio et des outils de gestion de projets / planification — en ligne sur ateliera1.com"
             },
             {
                 en: "Built with Laravel, Inertia, React, and Tailwind — aesthetic, functional, and aligned with the agency’s identity",
@@ -109,6 +118,9 @@ export const experience: Experience[] = [
                 en: "Delivered project management, client meeting coordination, and scheduling features to streamline studio workflows",
                 fr: "Livré des fonctionnalités de gestion de projets, coordination de rendez-vous clients et planification pour fluidifier les flux du studio"
             }
+        ],
+        relatedProjects: [
+            { id: 1, name: "A1 Atelier" },
         ]
     },
     {
@@ -132,6 +144,9 @@ export const experience: Experience[] = [
                 en: "Delivered a cross-platform iOS and Android client backed by a Laravel API with LionsGeek",
                 fr: "Livré un client iOS et Android multiplateforme branché sur une API Laravel avec LionsGeek"
             }
+        ],
+        relatedProjects: [
+            { id: 2, name: "Casatourat" },
         ]
     },
     {
@@ -155,6 +170,12 @@ export const experience: Experience[] = [
                 en: "Contributed to Her Day For Her and YES Learning / MOOC initiatives within the YES Africa ecosystem",
                 fr: "Contribué aux initiatives Her Day For Her et YES Learning / MOOC au sein de l’écosystème YES Africa"
             }
+        ],
+        relatedProjects: [
+            { id: 3, name: "YES Africa" },
+            { id: 6, name: "YES Mobile App" },
+            { id: 4, name: "Her Day For Her" },
+            { id: 5, name: "MOOC Platform" },
         ]
     }
 ];

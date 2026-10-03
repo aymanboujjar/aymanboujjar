@@ -63,6 +63,11 @@ export default function ProjectCard({
                     >
                         {project.name}
                     </h3>
+                    {project.role && (
+                        <p className="mt-2 font-mono text-[11px] text-alpha/90">
+                            <TransText {...project.role} />
+                        </p>
+                    )}
                 </div>
 
                 <p

@@ -1,5 +1,5 @@
-import { useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useMemo, useState } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import ProjectCard from "../components/ProjectCard";
 import Title from "../components/Title";
@@ -9,20 +9,35 @@ import { TransText } from "../components/TransText";
 import { projectImageAlt } from "../constants/seo";
 
 export default function Projects() {
+    const [searchParams, setSearchParams] = useSearchParams();
+    const techParam = searchParams.get("tech")?.trim() || "";
     const [active, setActive] = useState(0);
     const [filter, setFilter] = useState<"all" | "web" | "mobile">("all");
 
+    useEffect(() => {
+        setActive(0);
+    }, [filter, techParam]);
+
     const filtered = useMemo(() => {
-        if (filter === "all") return proProjects;
-        return proProjects.filter((p) => {
-            const techs = p.techs.map((t) => t.name.toLowerCase()).join(" ");
-            const isMobile =
-                techs.includes("react native") ||
-                techs.includes("expo") ||
-                p.name.toLowerCase().includes("mobile");
-            return filter === "mobile" ? isMobile : !isMobile;
-        });
-    }, [filter]);
+        let list = proProjects;
+        if (filter !== "all") {
+            list = list.filter((p) => {
+                const techs = p.techs.map((t) => t.name.toLowerCase()).join(" ");
+                const isMobile =
+                    techs.includes("react native") ||
+                    techs.includes("expo") ||
+                    p.name.toLowerCase().includes("mobile");
+                return filter === "mobile" ? isMobile : !isMobile;
+            });
+        }
+        if (techParam) {
+            const needle = techParam.toLowerCase();
+            list = list.filter((p) =>
+                p.techs.some((t) => t.name.toLowerCase().includes(needle))
+            );
+        }
+        return list;
+    }, [filter, techParam]);
 
     const current = filtered[Math.min(active, filtered.length - 1)] ?? filtered[0];
 
@@ -177,6 +192,27 @@ export default function Projects() {
                         <TransText en="cases" fr="cas" />
                     </span>
                 </div>
+
+                {techParam && (
+                    <div className="mt-4 flex flex-wrap items-center gap-3 font-mono text-sm text-white/60">
+                        <span>
+                            <TransText en="Technology filter" fr="Filtre technologie" />
+                            {": "}
+                            <span className="text-alpha">{techParam}</span>
+                        </span>
+                        <button
+                            type="button"
+                            onClick={() => {
+                                const next = new URLSearchParams(searchParams);
+                                next.delete("tech");
+                                setSearchParams(next, { replace: true });
+                            }}
+                            className="border border-white/15 px-3 py-1 text-xs text-white/70 transition-colors hover:border-alpha hover:text-alpha"
+                        >
+                            <TransText en="Clear" fr="Effacer" />
+                        </button>
+                    </div>
+                )}
 
                 {/* quick jump rail */}
                 <div className="mt-6 flex gap-2 overflow-x-auto pb-2 scrollbar-thin">

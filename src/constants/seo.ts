@@ -137,24 +137,38 @@ export function buildProjectJsonLd(project: Project) {
     if (isMobile || project.appStore) osParts.push("iOS");
     if (isMobile || project.playStore) osParts.push("Android");
 
+    const soleAuthor = project.authorship === "sole";
+    const roleHint = project.role?.en ? ` Role: ${project.role.en}.` : "";
+    const teamHint = project.teamContext?.en
+        ? ` ${project.teamContext.en}`
+        : "";
+
     const data: Record<string, unknown> = {
         "@context": "https://schema.org",
-        "@type": isMobile ? "SoftwareApplication" : "SoftwareApplication",
+        "@type": "SoftwareApplication",
         "@id": `${SITE_URL}/project/${project.id}#software`,
         name: project.name,
-        description: project.desc.en,
+        description: `${project.desc.en}${roleHint}${teamHint}`,
         url: `${SITE_URL}/project/${project.id}`,
-        author: { "@id": PERSON_ID },
         applicationCategory: isMobile ? "MobileApplication" : "WebApplication",
     };
+
+    // Team / contributor work: do not imply sole authorship via author
+    if (soleAuthor) {
+        data.author = { "@id": PERSON_ID };
+    } else {
+        data.contributor = { "@id": PERSON_ID };
+    }
 
     if (osParts.length) {
         data.operatingSystem = [...new Set(osParts)].join(", ");
     }
 
-    if (project.website) {
-        data.sameAs = [project.website];
-    }
+    const sameAs: string[] = [];
+    if (project.website) sameAs.push(project.website);
+    if (project.appStore) sameAs.push(project.appStore);
+    if (project.playStore) sameAs.push(project.playStore);
+    if (sameAs.length) data.sameAs = sameAs;
 
     if (techNames.length) {
         data.keywords = techNames.join(", ");

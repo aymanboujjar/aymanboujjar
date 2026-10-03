@@ -72,14 +72,37 @@ import ada2 from "../assets/images/projects/ada-lovelace/ada2.jpg";
 export const awardProject: Project = {
     id: 14,
     name: 'Ada Lovelace',
+    role: {
+        en: "Team Member — 3D avatar & Moroccan Darija integration",
+        fr: "Membre de l’équipe — avatar 3D & intégration darija marocaine"
+    },
+    authorship: "contributor",
+    teamContext: {
+        en: "Team project with LionsGeek: Mehdi Forkani, Fatima Zahra Chourfi, Ayman Boujjar, and Yahya Moussair. Teammates built other parts of the system; Ayman focused on the 3D avatar and Darija integration.",
+        fr: "Projet d’équipe LionsGeek : Mehdi Forkani, Fatima Zahra Chourfi, Ayman Boujjar et Yahya Moussair. Les coéquipiers ont construit d’autres parties du système ; Ayman s’est concentré sur l’avatar 3D et l’intégration de la darija."
+    },
+    contributions: [
+        {
+            en: "Created the conversational 3D Ada Lovelace avatar (Three.js) for the festival experience.",
+            fr: "Créé l’avatar conversationnel 3D d’Ada Lovelace (Three.js) pour l’expérience festival."
+        },
+        {
+            en: "Integrated Moroccan Darija into existing team-built parts of the conversational experience.",
+            fr: "Intégré la darija marocaine aux parties déjà construites par l’équipe pour l’expérience conversationnelle."
+        },
+        {
+            en: "Shared the Prix Coup de Cœur Jury award with the LionsGeek team (Concours AVATARS — Héroïnes de la Science).",
+            fr: "Partagé avec l’équipe LionsGeek le Prix Coup de Cœur Jury (Concours AVATARS — Héroïnes de la Science)."
+        }
+    ],
     website: '',
     desc: {
         en: "Built to compete at the [IN]VISIBLE Festival 2026 in Brussels (XR4Heritage) — our LionsGeek team won the Jury’s Coup de Cœur for a conversational 3D AI avatar of Ada Lovelace (Concours AVATARS — Héroïnes de la Science).",
         fr: "Conçu pour concourir au festival [IN]VISIBLE 2026 à Bruxelles (XR4Heritage) — notre équipe LionsGeek a remporté le Prix Coup de Cœur du Jury avec un avatar IA conversationnel 3D d’Ada Lovelace (Concours AVATARS — Héroïnes de la Science)."
     },
     detailedDesc: {
-        en: "This project was made to compete in the Concours AVATARS — Héroïnes de la Science at the [IN]VISIBLE Festival 2026 in Brussels (by XR4Heritage). With the LionsGeek team (Mehdi Forkani, Fatima Zahra Chourfi, Ayman Boujjar, Yahya Moussair), we built an interactive conversational 3D avatar of Ada Lovelace — a Next.js + Three.js front end with a LiveKit real-time voice agent (speech-to-text, LLM replies, text-to-speech) and lip-sync. We won the Prix Coup de Cœur Jury for the historical figure Ada Lovelace. The gallery shows us on stage holding the award certificate.",
-        fr: "Ce projet a été conçu pour concourir au Concours AVATARS — Héroïnes de la Science du festival [IN]VISIBLE 2026 à Bruxelles (par XR4Heritage). Avec l’équipe LionsGeek (Mehdi Forkani, Fatima Zahra Chourfi, Ayman Boujjar, Yahya Moussair), nous avons créé un avatar conversationnel 3D interactif d’Ada Lovelace — front Next.js + Three.js et agent vocal temps réel LiveKit (reconnaissance vocale, réponses LLM, synthèse vocale) avec lip-sync. Nous avons remporté le Prix Coup de Cœur Jury pour le personnage historique Ada Lovelace. La galerie nous montre sur scène avec le diplôme."
+        en: "This project was made to compete in the Concours AVATARS — Héroïnes de la Science at the [IN]VISIBLE Festival 2026 in Brussels (by XR4Heritage). With the LionsGeek team (Mehdi Forkani, Fatima Zahra Chourfi, Ayman Boujjar, Yahya Moussair), we shipped an interactive conversational 3D avatar of Ada Lovelace — Next.js + Three.js front end with a LiveKit real-time voice agent (speech-to-text, LLM replies, text-to-speech) and lip-sync. Ayman’s contribution focused on creating the 3D avatar and integrating Moroccan Darija into parts built by teammates. We won the Prix Coup de Cœur Jury. The gallery shows the team on stage holding the award certificate.",
+        fr: "Ce projet a été conçu pour concourir au Concours AVATARS — Héroïnes de la Science du festival [IN]VISIBLE 2026 à Bruxelles (par XR4Heritage). Avec l’équipe LionsGeek (Mehdi Forkani, Fatima Zahra Chourfi, Ayman Boujjar, Yahya Moussair), nous avons livré un avatar conversationnel 3D interactif d’Ada Lovelace — front Next.js + Three.js et agent vocal temps réel LiveKit (reconnaissance vocale, réponses LLM, synthèse vocale) avec lip-sync. La contribution d’Ayman s’est concentrée sur la création de l’avatar 3D et l’intégration de la darija marocaine aux parties construites par ses coéquipiers. Nous avons remporté le Prix Coup de Cœur Jury. La galerie montre l’équipe sur scène avec le diplôme."
     },
     techs: [
         { name: 'Next.js', color: 'bg-white text-black' },
@@ -129,6 +152,29 @@ export const proProjects: Project[] = [
     {
         id: 9,
         name: 'Tilila',
+        role: {
+            en: "Full-Stack Contributor — LionsGeek team",
+            fr: "Contributeur Full-Stack — équipe LionsGeek"
+        },
+        authorship: "contributor",
+        teamContext: {
+            en: "Team project with LionsGeek for CPD — Comité Parité et Diversité 2M. Not a sole-author platform.",
+            fr: "Projet d’équipe avec LionsGeek pour le CPD — Comité Parité et Diversité 2M. Pas une plateforme en solo."
+        },
+        contributions: [
+            {
+                en: "Contributed to the Laravel + React / Inertia Tilila platform (tilila.org) for equity, diversity, and inclusion in media.",
+                fr: "Contribué à la plateforme Tilila Laravel + React / Inertia (tilila.org) pour l’équité, la diversité et l’inclusion dans les médias."
+            },
+            {
+                en: "Worked on program experiences for Tilila Awards, Tililab mentoring, and the Expertes directory with search and filters.",
+                fr: "Travaillé sur les parcours Tilila Awards, Tililab et l’annuaire Expertes avec recherche et filtres."
+            },
+            {
+                en: "Worked on registration, candidacy, and multilingual institutional content flows.",
+                fr: "Travaillé sur les flux d’inscription, de candidature et de contenu institutionnel multilingue."
+            }
+        ],
         website: 'https://tilila.org/',
         desc: {
             en: "A multi-program platform built with the LionsGeek team for equity, diversity, and inclusion in media. Tilila brings together Tilila Awards, Tililab, and an expert directory — connecting campaigns, emerging storytellers, and women experts across Morocco, Africa, and the diaspora.",
@@ -183,6 +229,33 @@ export const proProjects: Project[] = [
     {
         id: 10,
         name: 'MyLionsGeek',
+        role: {
+            en: "Full-Stack Developer — LionsGeek team",
+            fr: "Développeur Full-Stack — équipe LionsGeek"
+        },
+        authorship: "contributor",
+        teamContext: {
+            en: "Ongoing internal platform at LionsGeek Association. Built and upgraded with the LionsGeek team — not sole authorship.",
+            fr: "Plateforme interne en cours chez LionsGeek Association. Construite et fait évoluer avec l’équipe LionsGeek — pas en solo."
+        },
+        contributions: [
+            {
+                en: "Built and upgraded MyLionsGeek with Laravel, Inertia, React, and TypeScript for students, coaches, and staff.",
+                fr: "Construit et fait évoluer MyLionsGeek avec Laravel, Inertia, React et TypeScript pour étudiants, coachs et staff."
+            },
+            {
+                en: "Worked on studio/cowork reservation flows (Spaces booking UI, calendars, availability).",
+                fr: "Travaillé sur les réservations studios/cowork (UI Spaces, calendriers, disponibilités)."
+            },
+            {
+                en: "Worked on social feed, jobs, messaging, leaderboards, and member profiles.",
+                fr: "Travaillé sur le fil social, les jobs, la messagerie, le classement et les profils membres."
+            },
+            {
+                en: "Worked on the admin dashboard for members, computers, equipment, and reservations with role-based access.",
+                fr: "Travaillé sur le dashboard admin (membres, ordinateurs, équipements, réservations) avec accès basé sur les rôles."
+            }
+        ],
         website: 'https://mylionsgeek.ma/',
         desc: {
             en: "The internal community and operations platform for LionsGeek. MyLionsGeek combines a social feed, jobs, leaderboards, messaging, and studio/cowork reservations — plus an admin dashboard to manage members, equipment, and bookings.",
@@ -238,6 +311,29 @@ export const proProjects: Project[] = [
     {
         id: 11,
         name: 'LionsGeek',
+        role: {
+            en: "Full-Stack Developer — LionsGeek team",
+            fr: "Développeur Full-Stack — équipe LionsGeek"
+        },
+        authorship: "contributor",
+        teamContext: {
+            en: "Public association website delivered with LionsGeek (Laravel, Inertia, React). Ongoing production site.",
+            fr: "Site public de l’association livré avec LionsGeek (Laravel, Inertia, React). Site en production continue."
+        },
+        contributions: [
+            {
+                en: "Delivered the public LionsGeek.ma site with Laravel, Inertia, React, and Tailwind.",
+                fr: "Livré le site public LionsGeek.ma avec Laravel, Inertia, React et Tailwind."
+            },
+            {
+                en: "Worked on public pages for training programs, events & hackathon registration, coworking, and LionsGeek Pro services.",
+                fr: "Travaillé sur les pages publiques formations, événements & inscriptions hackathons, coworking et services LionsGeek Pro."
+            },
+            {
+                en: "Worked on multilingual content support (EN / FR / AR) and dark / light mode.",
+                fr: "Travaillé sur le support multilingue (EN / FR / AR) et les modes sombre / clair."
+            }
+        ],
         website: 'https://lionsgeek.ma/',
         desc: {
             en: "The public website for LionsGeek, a non-profit empowering young Moroccans with free digital skills. It presents training programs, events & hackathons, coworking, and LionsGeek Pro services — with multilingual support and dark mode.",
@@ -291,6 +387,33 @@ export const proProjects: Project[] = [
     {
         id: 12,
         name: 'LionsGeek Mobile',
+        role: {
+            en: "Mobile Developer — LionsGeek team",
+            fr: "Développeur Mobile — équipe LionsGeek"
+        },
+        authorship: "contributor",
+        teamContext: {
+            en: "Team project with LionsGeek. Production app on the App Store and Google Play — not a sole-author app.",
+            fr: "Projet d’équipe avec LionsGeek. Application en production sur l’App Store et Google Play — pas une app en solo."
+        },
+        contributions: [
+            {
+                en: "Built and upgraded LionsGeek Mobile (React Native / Expo / TypeScript) used by students, coaches, and staff.",
+                fr: "Construit et fait évoluer LionsGeek Mobile (React Native / Expo / TypeScript) utilisée par étudiants, coachs et staff."
+            },
+            {
+                en: "Worked on community feed (Stories, posts), messaging with calls support, and member profiles.",
+                fr: "Travaillé sur le fil communautaire (Stories, posts), la messagerie avec appels, et les profils membres."
+            },
+            {
+                en: "Worked on studio/cowork reservation calendars and event / info-session flows with QR participant check-in for staff.",
+                fr: "Travaillé sur les calendriers de réservation studios/cowork et les flux événements / infosessions avec check-in QR pour le staff."
+            },
+            {
+                en: "Shipped a production Expo app to both the App Store and Google Play with the LionsGeek team.",
+                fr: "Publié une app Expo en production sur l’App Store et Google Play avec l’équipe LionsGeek."
+            }
+        ],
         website: '',
         appStore: 'https://apps.apple.com/us/app/lionsgeek/id6759228520',
         playStore: 'https://play.google.com/store/apps/details?id=com.lionsgeek_pro.lionsgeek',
@@ -346,6 +469,25 @@ export const proProjects: Project[] = [
     {
         id: 13,
         name: 'ISRAR',
+        role: {
+            en: "Full-Stack Contributor",
+            fr: "Contributeur Full-Stack"
+        },
+        authorship: "contributor",
+        teamContext: {
+            en: "Client platform for Coalition ISRAR (Laravel, Inertia, React). Individual module ownership is not fully specified in the portfolio — contribution described conservatively.",
+            fr: "Plateforme client pour la Coalition ISRAR (Laravel, Inertia, React). La propriété individuelle des modules n’est pas entièrement précisée — contribution décrite de façon conservative."
+        },
+        contributions: [
+            {
+                en: "Contributed to Coalition ISRAR’s 2025 digital platform using Laravel, Inertia, and React.",
+                fr: "Contribué à la plateforme numérique 2025 de la Coalition ISRAR avec Laravel, Inertia et React."
+            },
+            {
+                en: "Worked on public institutional pages covering programs, publications, petitions, blog, and help-seeking pathways (French / Arabic).",
+                fr: "Travaillé sur les pages institutionnelles publiques : programmes, publications, pétitions, blog et parcours d’aide (français / arabe)."
+            }
+        ],
         website: 'https://israr.ma/',
         desc: {
             en: "Digital platform for Coalition ISRAR — a national network of 19 associations across 8 Moroccan regions fighting gender-based violence. Listening, support, advocacy, programs, and legal-aid pathways in French and Arabic.",
@@ -399,14 +541,33 @@ export const proProjects: Project[] = [
     {
         id: 1,
         name: 'A1 Atelier',
-        website: 'https://a1.mylionsgeek.ma/',
+        role: {
+            en: "Full-Stack Contributor",
+            fr: "Contributeur Full-Stack"
+        },
+        authorship: "contributor",
+        teamContext: {
+            en: "Collaborative delivery for Atelier A1. Live site: ateliera1.com.",
+            fr: "Livraison collaborative pour Atelier A1. Site live : ateliera1.com."
+        },
+        contributions: [
+            {
+                en: "Contributed to a Laravel + Inertia + Tailwind platform for A1 Atelier project management, client meetings, and resource scheduling.",
+                fr: "Contribué à une plateforme Laravel + Inertia + Tailwind pour la gestion de projets, rendez-vous clients et planification des ressources d’A1 Atelier."
+            },
+            {
+                en: "Worked on centralized scheduling (including FullCalendar integration) and an SPA-like client dashboard via Inertia.",
+                fr: "Travaillé sur la planification centralisée (dont intégration FullCalendar) et un tableau de bord client de type SPA via Inertia."
+            }
+        ],
+        website: 'https://ateliera1.com/',
         desc: {
             en: "We collaborated with A1 Atelier, an architecture company, to build a modern platform that streamlines project management, client meetings, and resource scheduling. Leveraging Laravel, Inertia, and Tailwind, we created a system that improves both internal workflows and client communication.",
             fr: "Nous avons collaboré avec A1 Atelier, une entreprise d’architecture, pour développer une plateforme moderne qui rationalise la gestion de projets, les réunions clients et la planification des ressources. En tirant parti de Laravel, Inertia et Tailwind, nous avons conçu un système qui améliore à la fois les flux de travail internes et la communication avec les clients."
         },
         detailedDesc: {
-            en: "A robust project management solution tailored for A1 Atelier’s architectural workflows. The system simplifies scheduling, centralizes project timelines, and provides tools for client collaboration, all while offering a clean and intuitive user interface.",
-            fr: "Une solution de gestion de projet robuste adaptée aux flux de travail architecturaux de A1 Atelier. Le système simplifie la planification, centralise les échéances des projets et fournit des outils de collaboration avec les clients, tout en offrant une interface utilisateur claire et intuitive."
+            en: "A robust project management solution tailored for A1 Atelier’s architectural workflows. The system simplifies scheduling, centralizes project timelines, and provides tools for client collaboration, all while offering a clean and intuitive user interface. Live at ateliera1.com.",
+            fr: "Une solution de gestion de projet robuste adaptée aux flux de travail architecturaux de A1 Atelier. Le système simplifie la planification, centralise les échéances des projets et fournit des outils de collaboration avec les clients, tout en offrant une interface claire. En ligne sur ateliera1.com."
         },
         techs: [
             { name: 'Laravel', color: 'bg-[#ff2d20]' },
@@ -414,7 +575,7 @@ export const proProjects: Project[] = [
             { name: 'Tailwind', color: 'bg-[#38bdf8]' },
         ],
         client: 'A1 Atelier',
-        clientWebsite: 'https://a1atelier.ma/', // replace with real if available
+        clientWebsite: 'https://ateliera1.com/',
         preview: lionsPreview,
         timeline: {
             en: "4 months (January 2024 - April 2024)",
@@ -453,13 +614,36 @@ export const proProjects: Project[] = [
     {
         id: 2,
         name: 'Casatourat',
+        role: {
+            en: "Mobile App Developer — with LionsGeek / Casa Mémoire",
+            fr: "Développeur d’applications mobiles — avec LionsGeek / Casa Mémoire"
+        },
+        authorship: "contributor",
+        teamContext: {
+            en: "Helped ship with LionsGeek for Casa Mémoire — team delivery, not sole authorship.",
+            fr: "Contribué à la livraison avec LionsGeek pour Casa Mémoire — livraison en équipe, pas en solo."
+        },
+        contributions: [
+            {
+                en: "Helped ship Casatourat — a React Native / Expo heritage guide for exploring Casablanca’s buildings and history.",
+                fr: "Contribué à Casatourat — un guide patrimoine React Native / Expo pour découvrir l’histoire des bâtiments de Casablanca."
+            },
+            {
+                en: "Integrated GPS-based location services for interactive tours.",
+                fr: "Intégré des services de géolocalisation GPS pour des visites interactives."
+            },
+            {
+                en: "Delivered a cross-platform iOS and Android client backed by a Laravel API with LionsGeek.",
+                fr: "Livré un client iOS et Android multiplateforme branché sur une API Laravel avec LionsGeek."
+            }
+        ],
         website: 'http://casatourat.ma/',
         desc: {
-            en: "A mobile application built with React Native and Expo for the Casa Memoire association, designed to showcase the rich history of Casablanca. This project provided invaluable experience in mobile app development, user interface design, and a deeper understanding of the differences and requirements between Android and iOS platforms",
-            fr: "Une application mobile développée avec React Native et Expo pour l’association Casa Mémoire, conçue pour mettre en valeur la riche histoire de Casablanca. Ce projet a offert une expérience précieuse en développement mobile, en design d’interface utilisateur, ainsi qu’une meilleure compréhension des différences et exigences entre les plateformes Android et iOS."
+            en: "A mobile application built with React Native and Expo for the Casa Mémoire association to showcase Casablanca’s history — shipped with LionsGeek as a cross-platform iOS/Android client backed by a Laravel API.",
+            fr: "Une application mobile React Native et Expo pour l’association Casa Mémoire mettant en valeur l’histoire de Casablanca — livrée avec LionsGeek en client iOS/Android multiplateforme branché sur une API Laravel."
         },
         detailedDesc: {
-            en: "An immersive mobile experience that brings Casablanca's rich history to life through interactive tours, historical content, and location-based features. Built for Casa Memoire association to promote cultural heritage.",
+            en: "An immersive mobile experience that brings Casablanca's rich history to life through interactive tours, historical content, and location-based features. Built for Casa Mémoire association to promote cultural heritage.",
             fr: "Une expérience mobile immersive qui donne vie à la riche histoire de Casablanca à travers des visites interactives, du contenu historique et des fonctionnalités basées sur la géolocalisation. Développée pour l’association Casa Mémoire afin de promouvoir le patrimoine culturel."
         },
         techs: [
@@ -506,14 +690,33 @@ export const proProjects: Project[] = [
     {
         id: 3,
         name: 'YES Africa',
+        role: {
+            en: "Web Developer — contributor (Jadara Foundation)",
+            fr: "Développeur Web — contributeur (Fondation Jadara)"
+        },
+        authorship: "contributor",
+        teamContext: {
+            en: "Contributor work on the YES Africa / Jadara summit web platform — not described as sole authorship.",
+            fr: "Travail de contributeur sur la plateforme web YES Africa / Jadara — non décrit comme auteur unique."
+        },
+        contributions: [
+            {
+                en: "Contributed to the YES Africa web platform — multilingual summit site, NGO registration, interactive map, and event operations.",
+                fr: "Contribué à la plateforme web YES Africa — site summit multilingue, inscription ONG, carte interactive et opérations événementielles."
+            },
+            {
+                en: "Worked with a React + Tailwind + Laravel stack for NGO directory, programs, and multi-language support.",
+                fr: "Travaillé avec une stack React + Tailwind + Laravel pour l’annuaire ONG, les programmes et le support multilingue."
+            }
+        ],
         website: 'https://youthempowermentsummit.africa/',
         desc: {
-            en: "This is the website for the Foundation Jadara, an NGO dedicated to supporting NEET youth across African countries. The goal of this platform is to connect and highlight various NGO foundations, helping them reach more young people throughout the continent and provide the necessary support for their education, employment, and training.",
-            fr: "Il s'agit du site web de la Fondation Jadara, une ONG dédiée au soutien des jeunes NEET (ni en éducation, ni en emploi, ni en formation) à travers les pays africains. Cette plateforme vise à connecter et mettre en valeur diverses fondations, afin de toucher plus de jeunes sur le continent et leur offrir le soutien nécessaire en matière d’éducation, d’emploi et de formation."
+            en: "YES Africa summit web platform for Fondation Jadara — connecting NGOs and supporting NEET youth across African countries with multilingual summit operations.",
+            fr: "Plateforme web du summit YES Africa pour la Fondation Jadara — connecter les ONG et soutenir les jeunes NEET à travers l’Afrique avec des opérations summit multilingues."
         },
         detailedDesc: {
-            en: "A comprehensive platform connecting NGOs across Africa to support NEET (Not in Education, Employment, or Training) youth. The platform facilitates collaboration, resource sharing, and program coordination across multiple countries.",
-            fr: "Une plateforme complète connectant les ONG à travers l’Afrique pour soutenir les jeunes NEET (ni en éducation, ni en emploi, ni en formation). Elle facilite la collaboration, le partage de ressources et la coordination des programmes dans plusieurs pays."
+            en: "A platform connecting NGOs across Africa to support NEET (Not in Education, Employment, or Training) youth. Per experience records: multilingual summit site, NGO registration, interactive map, and event operations. Facilitates collaboration, resource sharing, and program coordination across multiple countries.",
+            fr: "Une plateforme connectant les ONG à travers l’Afrique pour soutenir les jeunes NEET. Selon l’expérience : site summit multilingue, inscription ONG, carte interactive et opérations événementielles. Facilite la collaboration, le partage de ressources et la coordination des programmes."
         },
         techs: [
             { name: 'ReactJS', color: 'bg-[#00d8ff]' },
@@ -521,27 +724,27 @@ export const proProjects: Project[] = [
             { name: 'Laravel', color: 'bg-[#ff2d20] text-white' },
         ],
         client: 'Jadara Foundation',
-        clientWebsite: 'https://jadara.foundation/',
+        clientWebsite: 'https://jadara.ngo/',
         preview: africaPreview,
         timeline: {
             en: "2 months (January 2025 - February 2025)",
             fr: "2 mois (Janvier 2025 - Février 2025)",
         },
         challenges: [
-            { en: "Multi-language support for African countries", fr: "Support multilingue pour les pays africains" },
-            { en: "Complex data visualization for impact metrics", fr: "Visualisation complexe des données pour les indicateurs d’impact" },
-            { en: "Scalable architecture for multiple NGOs", fr: "Architecture évolutive pour plusieurs ONG" }
+            { en: "Multi-language support for an Africa-wide summit audience", fr: "Support multilingue pour un public de summit à l’échelle africaine" },
+            { en: "NGO registration and event-operations flows on one platform", fr: "Flux d’inscription ONG et d’opérations événementielles sur une seule plateforme" },
+            { en: "Presenting programs and NGO directory clearly for many organizations", fr: "Présenter clairement programmes et annuaire ONG pour de nombreuses organisations" }
         ],
         solutions: [
-            { en: "Implemented custom component for multiple languages", fr: "Mise en place d’un composant personnalisé pour plusieurs langues" },
-            { en: "Built custom dashboard with Chart.js", fr: "Création d’un tableau de bord personnalisé avec Chart.js" },
-            { en: "Created modular architecture for easy scaling", fr: "Développement d’une architecture modulaire pour une mise à l’échelle facile" }
+            { en: "Implemented multilingual UI patterns for summit content", fr: "Mise en place de patterns UI multilingues pour le contenu du summit" },
+            { en: "Structured NGO directory, registration, and program presentation", fr: "Structuration de l’annuaire ONG, des inscriptions et de la présentation des programmes" },
+            { en: "Used React + Laravel architecture for maintainable summit pages", fr: "Architecture React + Laravel pour des pages summit maintenables" }
         ],
         keyFeatures: [
-            { en: "NGO directory and profiles", fr: "Annuaire et profils des ONG" },
-            { en: "Program management system", fr: "Système de gestion des programmes" },
-            { en: "Impact tracking and reporting", fr: "Suivi et rapport d’impact" },
-            { en: "Multi-language support", fr: "Support multilingue" }
+            { en: "Multilingual summit website", fr: "Site summit multilingue" },
+            { en: "NGO registration and directory", fr: "Inscription et annuaire des ONG" },
+            { en: "Interactive map", fr: "Carte interactive" },
+            { en: "Program and event operations content", fr: "Contenu programmes et opérations événementielles" }
         ],
         lessonsLearned: [
             { en: "International web development considerations", fr: "Considérations pour le développement web international" },
@@ -557,52 +760,67 @@ export const proProjects: Project[] = [
     {
         id: 4,
         name: 'Her Day For Her',
+        role: {
+            en: "Web Contributor — YES Africa / Jadara ecosystem",
+            fr: "Contributeur Web — écosystème YES Africa / Jadara"
+        },
+        authorship: "contributor",
+        teamContext: {
+            en: "Contributed within the YES Africa / Jadara ecosystem (per experience). Detailed per-module ownership is limited in the repository.",
+            fr: "Contribué au sein de l’écosystème YES Africa / Jadara (selon l’expérience). La propriété détaillée par module est limitée dans le dépôt."
+        },
+        contributions: [
+            {
+                en: "Contributed to the Her Day For Her initiative website within the YES Africa ecosystem.",
+                fr: "Contribué au site de l’initiative Her Day For Her au sein de l’écosystème YES Africa."
+            },
+            {
+                en: "Worked with Inertia and Tailwind on a short delivery window (about 2 weeks).",
+                fr: "Travaillé avec Inertia et Tailwind sur une fenêtre de livraison courte (environ 2 semaines)."
+            }
+        ],
         website: 'https://herdayforher.ma/',
         desc: {
-            en: "This is the leadership initiative by the Fondation Marocaine de l’Étudiant (FME) aimed at empowering young Moroccan women scholars. The goal is to inspire and support female students through mentorship, soft skills training, and career guidance with the help of accomplished women professionals.",
-            fr: "Il s'agit d'une initiative de leadership de la Fondation Marocaine de l’Étudiant (FME), visant à autonomiser les jeunes étudiantes marocaines. Elle a pour objectif d'inspirer et de soutenir les étudiantes grâce à du mentorat, des formations aux compétences non techniques et des conseils d’orientation professionnelle offerts par des femmes professionnelles accomplies."
+            en: "Website for Her Day For Her — a leadership initiative by the Fondation Marocaine de l’Étudiant (FME) empowering young Moroccan women scholars through mentorship, soft skills training, and career guidance.",
+            fr: "Site pour Her Day For Her — une initiative de leadership de la Fondation Marocaine de l’Étudiant (FME) pour autonomiser les jeunes étudiantes marocaines via mentorat, soft skills et orientation professionnelle."
         },
         detailedDesc: {
-            en: "A leadership development program launched by the Fondation Marocaine de l’Étudiant (FME) to equip young Moroccan women—especially scholarship recipients—with the confidence, skills, and networks needed for personal and professional success. Through MasterClasses, mentorship, and outreach events, the initiative connects students with inspiring female role models and promotes gender equality in education and careers.",
-            fr: "Un programme de développement du leadership lancé par la Fondation Marocaine de l’Étudiant (FME), visant à doter les jeunes femmes marocaines — notamment les boursières — de la confiance, des compétences et des réseaux nécessaires à leur réussite personnelle et professionnelle. Grâce aux MasterClasses, au mentorat et aux événements de sensibilisation, l’initiative met en relation les étudiantes avec des femmes modèles inspirantes et promeut l’égalité des sexes dans l’éducation et les carrières."
+            en: "A leadership development program by the Fondation Marocaine de l’Étudiant (FME) for young Moroccan women — especially scholarship recipients — with MasterClasses, mentorship, and outreach events. This portfolio case documents the web presence delivered in the YES Africa / Jadara ecosystem; deeper feature-level contribution details need confirmation.",
+            fr: "Un programme de leadership de la Fondation Marocaine de l’Étudiant (FME) pour les jeunes femmes marocaines — notamment boursières — avec MasterClasses, mentorat et événements. Ce cas documente la présence web livrée dans l’écosystème YES Africa / Jadara ; le détail des contributions par fonctionnalité nécessite confirmation."
         },
         techs: [
             { name: 'Inertia', color: 'bg-[#00d8ff]' },
             { name: 'Tailwind', color: 'bg-[#30b8c7]' },
         ],
         client: 'Jadara Foundation',
-        clientWebsite: 'https://jadara.foundation/',
+        clientWebsite: 'https://jadara.ngo/',
         preview: herPreview,
         timeline: {
             en: "2 weeks (August 2025)",
             fr: "2 semaines (Août 2025)"
         },
         challenges: [
-            { en: "Multi-language support for African countries", fr: "Support multilingue pour les pays africains" },
-            { en: "Complex data visualization for impact metrics", fr: "Visualisation complexe des données pour les indicateurs d’impact" },
-            { en: "Scalable architecture for multiple NGOs", fr: "Architecture évolutive pour plusieurs ONG" }
+            { en: "Presenting a leadership initiative clearly for Moroccan women scholars", fr: "Présenter clairement une initiative de leadership pour les étudiantes marocaines" },
+            { en: "Shipping a polished institutional site in a short timeline", fr: "Livrer un site institutionnel soigné dans un délai court" },
+            { en: "Aligning content around mentorship, MasterClasses, and career guidance", fr: "Aligner le contenu autour du mentorat, des MasterClasses et de l’orientation" }
         ],
         solutions: [
-            { en: "Implemented i18n for multiple languages", fr: "Mise en œuvre de i18n pour plusieurs langues" },
-            { en: "Built custom dashboard with Chart.js", fr: "Création d’un tableau de bord personnalisé avec Chart.js" },
-            { en: "Created modular architecture for easy scaling", fr: "Développement d’une architecture modulaire pour une mise à l’échelle facile" }
+            { en: "Used Inertia + Tailwind for a fast, maintainable front-end delivery", fr: "Utilisation d’Inertia + Tailwind pour une livraison front rapide et maintenable" },
+            { en: "Focused pages on program storytelling and participation pathways", fr: "Pages centrées sur le storytelling du programme et les parcours de participation" },
+            { en: "Kept scope tight to match a two-week delivery window", fr: "Périmètre serré pour tenir une fenêtre de deux semaines" }
         ],
         keyFeatures: [
-            { en: "NGO directory and profiles", fr: "Annuaire et profils des ONG" },
-            { en: "Program management system", fr: "Système de gestion des programmes" },
-            { en: "Impact tracking and reporting", fr: "Suivi et rapport d’impact" },
-            { en: "Multi-language support", fr: "Support multilingue" },
-            { en: "Resource sharing platform", fr: "Plateforme de partage de ressources" }
+            { en: "Program presentation for Her Day For Her / FME", fr: "Présentation du programme Her Day For Her / FME" },
+            { en: "Mentorship and MasterClass-oriented content", fr: "Contenu orienté mentorat et MasterClasses" },
+            { en: "Institutional web presence for women scholars", fr: "Présence web institutionnelle pour les étudiantes" }
         ],
         lessonsLearned: [
-            { en: "International web development considerations", fr: "Considérations pour le développement web international" },
-            { en: "Complex data visualization techniques", fr: "Techniques de visualisation de données complexes" },
-            { en: "Collaborative platform architecture", fr: "Architecture de plateforme collaborative" }
+            { en: "Shipping institutional campaign sites under short deadlines", fr: "Livrer des sites de campagne institutionnels sous délais courts" },
+            { en: "Keeping contribution claims limited to verified scope", fr: "Limiter les claims de contribution au périmètre vérifié" }
         ],
         futureImprovements: [
-            { en: "Mobile application development", fr: "Développement d’une application mobile" },
-            { en: "AI-powered matching system", fr: "Système de mise en relation basé sur l’IA" },
-            { en: "Advanced analytics dashboard", fr: "Tableau de bord d’analytique avancé" }
+            { en: "Richer application / registration flows if the program expands", fr: "Flux de candidature / inscription plus riches si le programme s’étend" },
+            { en: "Deeper documentation of individual contribution areas", fr: "Documentation plus précise des zones de contribution individuelles" }
         ],
         additionalImages: [her2, her3]
     },
@@ -610,14 +828,33 @@ export const proProjects: Project[] = [
     {
         id: 5,
         name: 'MOOC Platform',
+        role: {
+            en: "Full-Stack Developer — YES Africa / Jadara (YES Learning)",
+            fr: "Développeur Full-Stack — YES Africa / Jadara (YES Learning)"
+        },
+        authorship: "contributor",
+        teamContext: {
+            en: "YES Learning / MOOC work under the YES Africa / Jadara Foundation ecosystem — not a personal side project.",
+            fr: "Travail YES Learning / MOOC dans l’écosystème YES Africa / Fondation Jadara — pas un projet personnel."
+        },
+        contributions: [
+            {
+                en: "Developed a Laravel + Vue.js + MySQL MOOC-style learning platform with course management and student enrollment for the YES / Jadara learning track.",
+                fr: "Développé une plateforme d’apprentissage type MOOC Laravel + Vue.js + MySQL avec gestion des cours et inscription des étudiants pour le parcours YES / Jadara."
+            },
+            {
+                en: "Implemented progress tracking, quizzes/assessments, and role-based access for students, instructors, and admins.",
+                fr: "Mis en place le suivi des progrès, quiz/évaluations et accès basé sur les rôles pour étudiants, enseignants et admins."
+            }
+        ],
         website: '',
         desc: {
-            en: "A comprehensive Massive Open Online Course (MOOC) platform designed to provide accessible education to learners worldwide. This platform features course management, student enrollment, progress tracking, and interactive learning modules with a modern, user-friendly interface.",
-            fr: "Une plateforme complète de cours en ligne ouverts et massifs (MOOC) conçue pour offrir un accès à l'éducation à des apprenants du monde entier. Elle comprend la gestion des cours, l’inscription des étudiants, le suivi des progrès et des modules d’apprentissage interactifs avec une interface moderne et conviviale."
+            en: "YES Learning / MOOC platform in the YES Africa / Jadara ecosystem — course management, student enrollment, progress tracking, and interactive learning modules.",
+            fr: "Plateforme YES Learning / MOOC dans l’écosystème YES Africa / Jadara — gestion des cours, inscription des étudiants, suivi des progrès et modules d’apprentissage interactifs."
         },
         detailedDesc: {
-            en: "An advanced educational platform that democratizes access to quality education through online courses. The platform supports multiple learning formats, assessment tools, and provides detailed analytics for both instructors and students.",
-            fr: "Une plateforme éducative avancée qui démocratise l’accès à une éducation de qualité via des cours en ligne. Elle prend en charge plusieurs formats d’apprentissage, propose des outils d’évaluation et fournit des analyses détaillées pour les enseignants comme pour les étudiants."
+            en: "An educational platform for online courses with multiple learning formats, assessment tools, and analytics for instructors and students. Built with Laravel, Vue.js, MySQL, and Tailwind as part of YES Learning under Jadara / YES Africa.",
+            fr: "Une plateforme éducative pour cours en ligne avec plusieurs formats d’apprentissage, outils d’évaluation et analyses pour enseignants et étudiants. Développée avec Laravel, Vue.js, MySQL et Tailwind dans le cadre de YES Learning sous Jadara / YES Africa."
         },
         techs: [
             { name: 'Laravel', color: 'bg-[#ff2d20] text-white' },
@@ -625,11 +862,12 @@ export const proProjects: Project[] = [
             { name: 'MySQL', color: 'bg-[#4479A1] text-white' },
             { name: 'Tailwind', color: 'bg-[#30b8c7]' },
         ],
-        client: 'Educational Institution',
+        client: 'Jadara Foundation',
+        clientWebsite: 'https://jadara.ngo/',
         preview: moocPreview,
         timeline: {
-            en: "3 months (Personal project)",
-            fr: "3 mois (Projet personnel)"
+            en: "3 months (2025 — YES Learning / Jadara)",
+            fr: "3 mois (2025 — YES Learning / Jadara)"
         },
         challenges: [
             { en: "Scalable video streaming and content delivery", fr: "Diffusion vidéo évolutive et livraison de contenu" },
@@ -664,14 +902,33 @@ export const proProjects: Project[] = [
     {
         id: 6,
         name: 'YES Mobile App',
+        role: {
+            en: "Mobile Developer — Jadara / YES Africa companion app",
+            fr: "Développeur Mobile — app compagnon Jadara / YES Africa"
+        },
+        authorship: "contributor",
+        teamContext: {
+            en: "About experience records this as YES Mobile for Jadara Foundation participants during the summit. The previous “Personal project” timeline label was incorrect relative to that evidence.",
+            fr: "L’expérience About enregistre YES Mobile pour les participants Jadara pendant le summit. L’ancien libellé « Projet personnel » était incorrect par rapport à cette preuve."
+        },
+        contributions: [
+            {
+                en: "Built YES Mobile, the React Native / Expo companion app (Firebase, Redux) used by participants during the YES Africa summit.",
+                fr: "Développé YES Mobile, l’app compagnon React Native / Expo (Firebase, Redux) utilisée par les participants pendant le summit YES Africa."
+            },
+            {
+                en: "Worked on mobile access to NGO resources, program information, offline content access, and push notifications.",
+                fr: "Travaillé sur l’accès mobile aux ressources ONG, infos programmes, contenu hors ligne et notifications push."
+            }
+        ],
         website: 'https://youthempowermentsummit.africa/',
         desc: {
-            en: "The mobile companion app for the YES Africa platform, built with React Native. This app extends the reach of the youth empowerment initiative by providing mobile access to NGO resources, program information, and community features for young people across African countries.",
-            fr: "L'application mobile compagnon de la plateforme YES Africa, développée avec React Native. Elle étend la portée de l’initiative d’autonomisation des jeunes en offrant un accès mobile aux ressources des ONG, aux informations sur les programmes et aux fonctionnalités communautaires pour les jeunes à travers les pays africains."
+            en: "Mobile companion app for the YES Africa platform — React Native / Expo access to NGO resources, program information, and community features for summit participants.",
+            fr: "Application mobile compagnon de la plateforme YES Africa — accès React Native / Expo aux ressources ONG, infos programmes et fonctionnalités communautaires pour les participants du summit."
         },
         detailedDesc: {
-            en: "A mobile application that brings the YES Africa platform to smartphones, making youth empowerment resources more accessible across the continent. Features offline capabilities, push notifications, and location-based services to connect young people with nearby opportunities.",
-            fr: "Une application mobile qui rend la plateforme YES Africa accessible sur smartphone, facilitant l’accès aux ressources d’autonomisation des jeunes à l’échelle du continent. Elle offre des fonctionnalités hors ligne, des notifications push et des services basés sur la localisation pour connecter les jeunes aux opportunités proches."
+            en: "A mobile application that brings the YES Africa platform to smartphones for participants. Features offline capabilities, push notifications, and location-based services. Stack: React Native, Expo, Firebase, Redux. Delivered in the Jadara Foundation / YES Africa context.",
+            fr: "Une application mobile qui porte YES Africa sur smartphone pour les participants. Fonctionnalités hors ligne, notifications push et services basés sur la localisation. Stack : React Native, Expo, Firebase, Redux. Livrée dans le contexte Fondation Jadara / YES Africa."
         },
         techs: [
             { name: 'React Native', color: 'bg-[#00d8ff]' },
@@ -679,15 +936,17 @@ export const proProjects: Project[] = [
             { name: 'Firebase', color: "bg-alpha text-white" },
             { name: 'Redux', color: 'bg-[#764ABC] text-white' },
         ],
+        client: 'Jadara Foundation',
+        clientWebsite: 'https://jadara.ngo/',
         preview: yesmobilePreview,
         timeline: {
-            en: "3 months (Personal project)",
-            fr: "3 mois (Projet personnel)"
+            en: "3 months (2025 — Jadara / YES Africa companion app)",
+            fr: "3 mois (2025 — app compagnon Jadara / YES Africa)"
         },
         challenges: [
             { en: "Cross-platform mobile development for diverse African markets", fr: "Développement mobile multiplateforme pour divers marchés africains" },
             { en: "Offline functionality for areas with limited connectivity", fr: "Fonctionnalité hors ligne pour les zones à connectivité limitée" },
-            { en: "Multi-language support for various African languages", fr: "Support multilingue pour différentes langues africaines" }
+            { en: "Multi-language support for summit participants", fr: "Support multilingue pour les participants du summit" }
         ],
         solutions: [
             { en: "Used React Native with Expo for efficient cross-platform development", fr: "Utilisation de React Native avec Expo pour un développement multiplateforme efficace" },
@@ -709,8 +968,7 @@ export const proProjects: Project[] = [
         ],
         futureImprovements: [
             { en: "Voice interface for accessibility", fr: "Interface vocale pour l’accessibilité" },
-            { en: "AI-powered opportunity matching", fr: "Correspondance des opportunités basée sur l’IA" },
-            { en: "Blockchain-based achievement verification", fr: "Vérification des réalisations via la blockchain" }
+            { en: "Richer offline sync for program content", fr: "Sync hors ligne plus riche pour le contenu des programmes" }
         ],
         additionalImages: [yesmobile2, yesmobile3, yesmobile4, yesmobile5]
     },
@@ -775,14 +1033,33 @@ export const proProjects: Project[] = [
     {
     id: 8,
     name: 'SONOTIC',
+    role: {
+        en: "Frontend Developer — personal static site",
+        fr: "Développeur Frontend — site statique personnel"
+    },
+    authorship: "sole",
+    teamContext: {
+        en: "Personal project: a static marketing website with no backend. Stack is React, Vite, and Tailwind CSS only.",
+        fr: "Projet personnel : site marketing statique sans backend. Stack React, Vite et Tailwind CSS uniquement."
+    },
+    contributions: [
+        {
+            en: "Built the full SONOTIC static corporate website alone with React, Vite, and Tailwind CSS.",
+            fr: "Construit seul l’ensemble du site corporate statique SONOTIC avec React, Vite et Tailwind CSS."
+        },
+        {
+            en: "Implemented a responsive product catalog presentation for PVC, HDPE, steel, and concrete materials plus contact/inquiry forms — no backend/API layer.",
+            fr: "Mis en place une présentation catalogue responsive pour PVC, HDPE, acier et béton, plus formulaires de contact/demande — sans couche backend/API."
+        }
+    ],
     website: 'https://sonotic.ma/',
     desc: {
-        en: "SONOTIC is Morocco's trusted partner for over 25 years, providing industrial and food-grade pipes for water supply, sanitation, irrigation, and industrial infrastructure. We built a modern, responsive website showcasing their comprehensive range of materials including PVC, HDPE, steel, and concrete, all meeting the strictest international and Moroccan standards.",
-        fr: "SONOTIC est le partenaire de confiance du Maroc depuis plus de 25 ans, fournissant des tuyaux industriels et alimentaires pour l'approvisionnement en eau, l'assainissement, l'irrigation et les infrastructures industrielles. Nous avons développé un site web moderne et réactif mettant en valeur leur large gamme de matériaux incluant PVC, HDPE, acier et béton, tous conformes aux normes internationales et marocaines les plus strictes."
+        en: "Personal static corporate website for SONOTIC — Morocco’s industrial and food-grade pipe supplier. React + Vite + Tailwind only; no backend.",
+        fr: "Site corporate statique personnel pour SONOTIC — fournisseur marocain de tuyaux industriels et alimentaires. React + Vite + Tailwind uniquement ; pas de backend."
     },
     detailedDesc: {
-        en: "A professional corporate website for SONOTIC, a leading supplier of industrial and food-grade pipes in Morocco. The platform highlights their 25+ years of expertise, showcasing their diverse product range including PVC, HDPE, steel, and concrete pipes. Built with modern web technologies to ensure fast performance, excellent user experience, and mobile responsiveness.",
-        fr: "Un site web d'entreprise professionnel pour SONOTIC, un fournisseur leader de tuyaux industriels et alimentaires au Maroc. La plateforme met en valeur leurs plus de 25 ans d'expertise, présentant leur gamme diversifiée de produits incluant des tuyaux en PVC, HDPE, acier et béton. Développé avec des technologies web modernes pour assurer des performances rapides, une excellente expérience utilisateur et une réactivité mobile."
+        en: "A static professional corporate website for SONOTIC highlighting company expertise and a diverse pipe product range. Built personally with React and Vite for performance, styled with Tailwind CSS. There is no Laravel or other backend on this project.",
+        fr: "Un site web d'entreprise statique pour SONOTIC mettant en valeur l’expertise et une gamme diversifiée de tuyaux. Construit personnellement avec React et Vite pour les performances, stylé avec Tailwind CSS. Pas de Laravel ni d’autre backend sur ce projet."
     },
     techs: [
         { name: 'React', color: 'bg-[#00d8ff]' },
@@ -793,8 +1070,8 @@ export const proProjects: Project[] = [
     clientWebsite: 'https://sonotic.ma/',
     preview: sonoticPreview,
     timeline: {
-        en: "2 months (Project timeline)",
-        fr: "2 mois (Durée du projet)"
+        en: "2 months (Personal static site)",
+        fr: "2 mois (Site statique personnel)"
     },
     challenges: [
         { en: "Showcasing technical product specifications in an accessible way", fr: "Présenter les spécifications techniques des produits de manière accessible" },
@@ -804,24 +1081,23 @@ export const proProjects: Project[] = [
     solutions: [
         { en: "Designed intuitive product catalog with clear categorization", fr: "Conception d'un catalogue de produits intuitif avec catégorisation claire" },
         { en: "Implemented modern UI with Tailwind CSS for professional aesthetics", fr: "Mise en œuvre d'une interface moderne avec Tailwind CSS pour une esthétique professionnelle" },
-        { en: "Built fast, responsive website using React and Vite for optimal performance", fr: "Développement d'un site web rapide et réactif utilisant React et Vite pour des performances optimales" }
+        { en: "Built a fast static site with React and Vite — no backend required", fr: "Développement d’un site statique rapide avec React et Vite — sans backend" }
     ],
     keyFeatures: [
         { en: "Product catalog showcasing PVC, HDPE, steel, and concrete pipes", fr: "Catalogue de produits présentant des tuyaux en PVC, HDPE, acier et béton" },
         { en: "Company history and expertise presentation", fr: "Présentation de l'histoire et de l'expertise de l'entreprise" },
         { en: "Responsive design for all devices", fr: "Design réactif pour tous les appareils" },
         { en: "Contact and inquiry forms", fr: "Formulaires de contact et de demande" },
-        { en: "Fast loading times and optimized performance", fr: "Temps de chargement rapides et performances optimisées" }
+        { en: "Fast loading times and optimized static performance", fr: "Temps de chargement rapides et performances statiques optimisées" }
     ],
     lessonsLearned: [
-        { en: "Best practices for corporate website development", fr: "Meilleures pratiques pour le développement de sites web d'entreprise" },
+        { en: "Best practices for static corporate website development", fr: "Meilleures pratiques pour le développement de sites corporate statiques" },
         { en: "Balancing technical content with user-friendly presentation", fr: "Équilibrer le contenu technique avec une présentation conviviale" },
         { en: "Optimizing React applications with Vite for production", fr: "Optimisation des applications React avec Vite pour la production" }
     ],
     futureImprovements: [
         { en: "Product configurator tool for custom pipe specifications", fr: "Outil de configuration de produits pour des spécifications de tuyaux personnalisées" },
-        { en: "Multi-language support (Arabic, French, English)", fr: "Support multilingue (Arabe, Français, Anglais)" },
-        { en: "Integration with CRM for lead management", fr: "Intégration avec un CRM pour la gestion des prospects" }
+        { en: "Multi-language support (Arabic, French, English)", fr: "Support multilingue (Arabe, Français, Anglais)" }
     ],
     additionalImages: [sonotic1, sonotic2, sonotic3]
     }

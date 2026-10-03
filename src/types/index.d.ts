@@ -48,6 +48,18 @@ type Project = {
     playStore?: string,
     desc: LocalizedString;
     detailedDesc: LocalizedString;
+    /** Ayman's role on this project — keep factual; prefer contributor language for team work */
+    role: LocalizedString;
+    /** Concrete contribution bullets supported by portfolio content */
+    contributions?: LocalizedString[];
+    /** Explicit team / org context when not sole work */
+    teamContext?: LocalizedString;
+    /**
+     * Controls project JSON-LD relationship:
+     * - sole: Person as author
+     * - contributor: Person as contributor (no sole-author implication)
+     */
+    authorship?: "sole" | "contributor";
     techs: Tech[],
     client?: string,
     clientWebsite?: string,
@@ -78,6 +90,8 @@ type Experience = {
     website: string;
     period: string;
     achievements: LocalizedString[];
+    /** Internal links to portfolio project case pages when the relationship is clear */
+    relatedProjects?: { id: number; name: string }[];
 }
 
 type ExperienceCardProps = {

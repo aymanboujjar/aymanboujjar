@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { TransText } from "./TransText";
 import { motion } from "framer-motion";
 
@@ -80,6 +81,23 @@ export default function ExperienceCard({
                         </li>
                     ))}
                 </ul>
+
+                {!!experience.relatedProjects?.length && (
+                    <div className="mt-5 flex flex-wrap gap-2 border-t border-white/10 pt-4">
+                        <span className="w-full font-mono text-[10px] uppercase tracking-[0.25em] text-alpha/80">
+                            <TransText en="Related cases" fr="Cas liés" />
+                        </span>
+                        {experience.relatedProjects.map((p) => (
+                            <Link
+                                key={p.id}
+                                to={`/project/${p.id}`}
+                                className="border border-white/15 px-3 py-1.5 font-mono text-xs text-white/70 transition-colors hover:border-alpha hover:text-alpha"
+                            >
+                                {p.name}
+                            </Link>
+                        ))}
+                    </div>
+                )}
 
                 <div
                     className={`absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-alpha to-transparent transition-all duration-500 ${active ? "w-full" : "w-0 group-hover:w-full"}`}
