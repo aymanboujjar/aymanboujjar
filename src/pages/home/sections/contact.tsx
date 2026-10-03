@@ -33,12 +33,14 @@ function MagneticLink({
     download,
     className,
     onActivate,
+    ariaLabel,
 }: {
     children: React.ReactNode;
     href: string;
     download?: string;
     className: string;
     onActivate?: () => void;
+    ariaLabel?: string;
 }) {
     const ref = useRef<HTMLAnchorElement>(null);
     const mx = useMotionValue(0);
@@ -56,6 +58,7 @@ function MagneticLink({
             className={className}
             style={{ x, y }}
             whileTap={{ scale: 0.98 }}
+            aria-label={ariaLabel}
             onMouseEnter={onActivate}
             onFocus={onActivate}
             onMouseMove={(e) => {
@@ -116,8 +119,8 @@ export default function Contact() {
                             variants={itemVariants}
                         >
                             <TransText
-                                en="Open channel — pick a line, lock the signal, say hello."
-                                fr="Canal ouvert — choisissez une ligne, verrouillez le signal, dites bonjour."
+                                en="Email, GitHub, and LinkedIn — public ways to reach Ayman Boujjar."
+                                fr="Email, GitHub et LinkedIn — les canaux publics pour joindre Ayman Boujjar."
                             />
                         </motion.p>
                     </div>
@@ -212,6 +215,7 @@ export default function Contact() {
                                 <MagneticLink
                                     key={soc.name}
                                     href={soc.link}
+                                    ariaLabel={soc.ariaLabel}
                                     onActivate={() => setActive(i)}
                                     className={`group relative flex items-center gap-5 overflow-hidden border px-5 py-5 transition-[border-color,background-color,box-shadow] duration-400
                                         ${on

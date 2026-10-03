@@ -5,13 +5,14 @@
 ## Who
 
 - Name: Ayman Boujjar
-- Roles: Full-Stack & Mobile Developer, Freelancer, Frontend Developer, Backend Developer
-- Availability: Freelance and contract work, worldwide remote
+- Primary title: Full-Stack & Mobile Developer
+- Positioning: Freelance Developer
+- Work model: Remote worldwide
 - Location: Casablanca, Morocco
-- Current affiliation: LionsGeek Association (Full Stack Developer)
+- Current affiliation: LionsGeek Association — Full Stack Developer (team contributor on LionsGeek deliveries; not founder/owner)
 - Site: https://aymanboujjar.com/
-- GitHub: https://github.com/aymanboujjar
-- LinkedIn: https://www.linkedin.com/in/aymanboujjar
+- GitHub (public developer profile): https://github.com/aymanboujjar
+- LinkedIn (professional profile): https://www.linkedin.com/in/aymanboujjar
 
 ## Capabilities
 

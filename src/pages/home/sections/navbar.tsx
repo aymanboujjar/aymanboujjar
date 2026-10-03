@@ -5,7 +5,12 @@ import { useScroll, useMotionValue, useSpring, motion, AnimatePresence } from "f
 import { LinkedInIcon, GitHubIcon, HamburgerIcon, EnglishFlagIcon, FrenchFlagIcon } from "../../../components/icons";
 import { useAppContext } from "../../../contexts/AppContext";
 import { TransText } from "../../../components/TransText";
-import { GITHUB_URL, LINKEDIN_URL } from "../../../constants/seo";
+import {
+    GITHUB_ARIA_LABEL,
+    GITHUB_URL,
+    LINKEDIN_ARIA_LABEL,
+    LINKEDIN_URL,
+} from "../../../constants/seo";
 
 function MagneticNode({
     children,
@@ -114,7 +119,8 @@ export default function Navbar() {
                                     href={GITHUB_URL}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    aria-label="GitHub"
+                                    aria-label={GITHUB_ARIA_LABEL}
+                                    title={GITHUB_ARIA_LABEL}
                                     className="flex h-10 w-10 items-center justify-center rounded-full border border-white/12 bg-[#070b14]/80 text-white/80 transition-colors hover:border-alpha hover:text-alpha"
                                 >
                                     <GitHubIcon size={18} />
@@ -126,7 +132,8 @@ export default function Navbar() {
                                     href={LINKEDIN_URL}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    aria-label="LinkedIn"
+                                    aria-label={LINKEDIN_ARIA_LABEL}
+                                    title={LINKEDIN_ARIA_LABEL}
                                     className="flex h-10 w-10 items-center justify-center rounded-full border border-white/12 bg-[#070b14]/80 text-white/80 transition-colors hover:border-alpha hover:text-alpha"
                                 >
                                     <LinkedInIcon size={18} />
@@ -253,7 +260,8 @@ export default function Navbar() {
                                     href={GITHUB_URL}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    aria-label="GitHub"
+                                    aria-label={GITHUB_ARIA_LABEL}
+                                    title={GITHUB_ARIA_LABEL}
                                     className="flex h-12 w-12 items-center justify-center rounded-full border border-white/12 bg-[#070b14] text-white/80 hover:border-alpha hover:text-alpha"
                                 >
                                     <GitHubIcon size={22} />
@@ -262,7 +270,8 @@ export default function Navbar() {
                                     href={LINKEDIN_URL}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    aria-label="LinkedIn"
+                                    aria-label={LINKEDIN_ARIA_LABEL}
+                                    title={LINKEDIN_ARIA_LABEL}
                                     className="flex h-12 w-12 items-center justify-center rounded-full border border-white/12 bg-[#070b14] text-white/80 hover:border-alpha hover:text-alpha"
                                 >
                                     <LinkedInIcon size={22} />

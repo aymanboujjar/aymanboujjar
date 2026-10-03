@@ -18,8 +18,18 @@ export const SAME_AS = [
 export const GITHUB_URL = SAME_AS[0];
 export const LINKEDIN_URL = SAME_AS[1];
 
+/** Accessible labels for icon-only profile links */
+export const GITHUB_ARIA_LABEL = "Ayman Boujjar on GitHub";
+export const LINKEDIN_ARIA_LABEL = "Ayman Boujjar on LinkedIn";
+
+/** Current affiliation — matches About experience; not founder/owner */
+export const LIONSGEEK_ORG = {
+    name: "LionsGeek Association",
+    url: "https://lionsgeek.ma/",
+} as const;
+
 export const PERSON_DESCRIPTION =
-    "Ayman Boujjar is a full-stack and mobile developer and freelancer based in Casablanca, Morocco — available for worldwide remote freelance and contract work. Builds web applications with Laravel and React, mobile apps with React Native and Expo, plus APIs, integrations, and AI-powered features.";
+    "Ayman Boujjar is a full-stack and mobile developer and freelancer based in Casablanca, Morocco — available for worldwide remote freelance and contract work. Builds web applications with Laravel and React, mobile apps with React Native and Expo, plus APIs, integrations, and AI-powered features. Full Stack Developer at LionsGeek Association.";
 
 export type PageSeo = {
     title: string;
@@ -76,6 +86,11 @@ export function buildPersonGraph() {
                 description: PERSON_DESCRIPTION,
                 image: OG_IMAGE,
                 sameAs: [...SAME_AS],
+                worksFor: {
+                    "@type": "Organization",
+                    name: LIONSGEEK_ORG.name,
+                    url: LIONSGEEK_ORG.url,
+                },
                 address: {
                     "@type": "PostalAddress",
                     addressLocality: "Casablanca",

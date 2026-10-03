@@ -90,8 +90,8 @@ export default function AboutHero() {
                     </p>
                     <p className="max-w-xl text-sm leading-relaxed text-white/50 sm:text-base">
                         <TransText
-                            en="Available for freelance and contract work worldwide, working remotely with clients and teams on web and mobile products."
-                            fr="Disponible pour des missions freelance et contrats dans le monde entier, en remote avec des clients et des équipes sur des produits web et mobile."
+                            en="Full Stack Developer at LionsGeek Association. Available for freelance and contract work worldwide — remote with clients and teams on web and mobile products. Public profiles on GitHub and LinkedIn."
+                            fr="Développeur Full Stack à LionsGeek Association. Disponible pour des missions freelance et contrats dans le monde entier — en remote avec des clients et des équipes sur des produits web et mobile. Profils publics sur GitHub et LinkedIn."
                         />
                     </p>
 

@@ -1,4 +1,9 @@
-import { GITHUB_URL, LINKEDIN_URL } from "./seo";
+import {
+    GITHUB_ARIA_LABEL,
+    GITHUB_URL,
+    LINKEDIN_ARIA_LABEL,
+    LINKEDIN_URL,
+} from "./seo";
 
 export const socials = [
     {
@@ -9,6 +14,7 @@ export const socials = [
         </svg>,
         link: 'mailto:boujjarr@gmail.com',
         label: 'boujjarr@gmail.com',
+        ariaLabel: 'Email Ayman Boujjar',
     },
     {
         name: 'GitHub',
@@ -17,6 +23,7 @@ export const socials = [
         </svg>,
         link: GITHUB_URL,
         label: 'github.com/aymanboujjar',
+        ariaLabel: GITHUB_ARIA_LABEL,
     },
     {
         name: 'LinkedIn',
@@ -25,5 +32,6 @@ export const socials = [
         </svg>,
         link: LINKEDIN_URL,
         label: 'linkedin.com/in/aymanboujjar',
+        ariaLabel: LINKEDIN_ARIA_LABEL,
     },
 ]
