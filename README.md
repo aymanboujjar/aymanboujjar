@@ -49,15 +49,24 @@ https://aymanboujjar.com/project/10
 
 ## Contact form (production)
 
-The `/contact` page posts to a Vercel serverless function (`/api/contact`) and sends email via [Resend](https://resend.com). Visitors stay on your site; nothing redirects to a third-party form host.
+The `/contact` page posts to `/api/contact` (Vercel) and emails **boujjarr@gmail.com** via [Resend](https://resend.com). Visitors stay on your site.
 
-Set these in the Vercel project **Environment Variables** (see `.env.example`):
+**Required (one-time):**
 
-- `RESEND_API_KEY`
-- `CONTACT_TO_EMAIL` — your inbox (e.g. Gmail)
-- `CONTACT_FROM_EMAIL` — a sender on a domain verified in Resend (e.g. `Ayman Boujjar <contact@aymanboujjar.com>`)
+1. Create a free account at https://resend.com — use **boujjarr@gmail.com** (Resend’s test sender can only deliver to the signup email until you verify a domain).
+2. Create an API key: https://resend.com/api-keys
+3. In Vercel → your project → **Settings → Environment Variables**, add:
+   - `RESEND_API_KEY` = `re_...` (Production + Preview)
+4. Redeploy the site.
 
-Local `npm run dev` does not run the API; use `npx vercel dev` to test the full flow, or test after deploy.
+Optional overrides (defaults already point to your Gmail):
+
+- `CONTACT_TO_EMAIL` — default `boujjarr@gmail.com`
+- `CONTACT_FROM_EMAIL` — default `Ayman Boujjar <onboarding@resend.dev>`
+
+After verifying `aymanboujjar.com` in Resend, set `CONTACT_FROM_EMAIL` to e.g. `Ayman Boujjar <contact@aymanboujjar.com>`.
+
+Local API testing: `npx vercel dev` (plain `npm run dev` does not run `/api`).
 
 ## Links
 

@@ -56,11 +56,15 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
     const apiKey = process.env.RESEND_API_KEY;
-    const to = process.env.CONTACT_TO_EMAIL;
-    const from = process.env.CONTACT_FROM_EMAIL;
+    // Public inbox already shown on the site — default so only RESEND_API_KEY is required
+    const to = process.env.CONTACT_TO_EMAIL?.trim() || "boujjarr@gmail.com";
+    // Resend test sender works without a verified domain; replace after verifying aymanboujjar.com
+    const from =
+        process.env.CONTACT_FROM_EMAIL?.trim() ||
+        "Ayman Boujjar <onboarding@resend.dev>";
 
-    if (!apiKey || !to || !from) {
-        console.error("[contact] Missing RESEND_API_KEY, CONTACT_TO_EMAIL, or CONTACT_FROM_EMAIL");
+    if (!apiKey) {
+        console.error("[contact] Missing RESEND_API_KEY");
         return res.status(503).json({ error: "Contact form is not configured" });
     }
 
