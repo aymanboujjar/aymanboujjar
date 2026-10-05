@@ -36,6 +36,27 @@
 
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <meta name="theme-color" content="#050505" />
+    <!-- Prevent FOUC: match site bg + hide crawlable SPA shell H1 until React mounts -->
+    <style>
+      html,
+      body {
+        margin: 0;
+        background: #050505;
+        color: #e1e1e1;
+      }
+      /* Keep H1 in page source for Bingbot; hide from visual users (React replaces #root) */
+      #root > main.seo-shell {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+    </style>
 
     <!-- Mirrors buildPersonGraph() in src/constants/seo.ts — keep in sync -->
     <script type="application/ld+json">
@@ -118,9 +139,9 @@
     </script>
   </head>
   <body>
-    <!-- Static H1 for crawlers (Bingbot, etc.); React replaces #root on load -->
+    <!-- Static H1 for crawlers (Bingbot, etc.); visually hidden; React replaces #root on load -->
     <div id="root">
-      <main>
+      <main class="seo-shell">
         <h1>Ayman Boujjar — Full-Stack &amp; Mobile Developer and Freelancer</h1>
       </main>
     </div>

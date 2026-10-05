@@ -74,7 +74,7 @@ function applyPageMeta(html, { title, description, path: routePath, type }, site
         // Crawlable H1 in page source (SPA shell). React replaces #root on hydrate.
         // Vite may move <script> into <head>, so only rewrite the #root inner HTML.
         .replace(
-            /(<div id="root">\s*<main>\s*)<h1>[^<]*<\/h1>(\s*<\/main>\s*<\/div>)/,
+            /(<div id="root">\s*<main class="seo-shell">\s*)<h1>[^<]*<\/h1>(\s*<\/main>\s*<\/div>)/,
             `$1<h1>${h1}</h1>$2`
         );
 }
