@@ -7,6 +7,7 @@ import Contact from './pages/Contact'
 import Services from './pages/Services'
 import Projects from './pages/Projects'
 import ProjectPage from './pages/ProjectPage'
+import NotFound from './pages/NotFound'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="projects" element={<Projects />} />
           <Route path="contact" element={<Contact />} />
           <Route path="project/:id" element={<ProjectPage />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </Router>
