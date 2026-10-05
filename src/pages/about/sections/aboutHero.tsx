@@ -150,7 +150,7 @@ export default function AboutHero() {
                         <div className="relative overflow-hidden border border-white/12 bg-[#070b14] p-2 shadow-[0_0_48px_rgba(0,119,190,0.15)]">
                             <img
                                 src={profile}
-                                alt="Ayman Boujjar"
+                                alt="Portrait of Ayman Boujjar, full-stack and mobile developer and freelancer in Casablanca"
                                 className="aspect-[4/5] w-64 object-cover sm:w-72 lg:w-80"
                             />
                             <span

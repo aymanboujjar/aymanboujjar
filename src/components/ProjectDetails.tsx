@@ -198,7 +198,11 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
                                             : "border-white/25 opacity-70 hover:opacity-100"
                                     }`}
                                 >
-                                    <img src={src} alt="" className="h-full w-full object-cover" />
+                                    <img
+                                        src={src}
+                                        alt={`${imageAlt} — thumbnail ${i + 1}`}
+                                        className="h-full w-full object-cover"
+                                    />
                                 </button>
                             ))}
                         </div>

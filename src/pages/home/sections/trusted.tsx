@@ -86,7 +86,7 @@ function MagneticLogo({
                     )}
                     <img
                         src={partner.image}
-                        alt=""
+                        alt={`${partner.name} logo`}
                         className="h-[56%] w-[56%] object-contain select-none"
                         draggable={false}
                     />
@@ -230,7 +230,7 @@ export default function Trusted() {
                                 <motion.img
                                     key={current.name}
                                     src={current.image}
-                                    alt={current.name}
+                                    alt={`${current.name} logo`}
                                     className="mt-2 h-14 w-14 object-contain sm:h-16 sm:w-16"
                                     initial={{ opacity: 0, scale: 0.65, rotate: -10 }}
                                     animate={{ opacity: 1, scale: 1, rotate: 0 }}
@@ -267,7 +267,11 @@ export default function Trusted() {
                                         className={`flex h-28 w-36 shrink-0 flex-col items-center justify-center gap-2 border transition-colors
                                             ${active === real ? "border-alpha bg-alpha/10" : "border-white/10 bg-white/[0.03]"}`}
                                     >
-                                        <img src={partner.image} alt={partner.name} className="h-12 w-20 object-contain" />
+                                        <img
+                                            src={partner.image}
+                                            alt={`${partner.name} logo`}
+                                            className="h-12 w-20 object-contain"
+                                        />
                                         <span className="text-[11px] tracking-wide text-white/70">{partner.name}</span>
                                     </a>
                                 );

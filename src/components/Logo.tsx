@@ -8,7 +8,7 @@ export default function Logo({ size }: LogoProps) {
     return (
         <img 
             src={logo} 
-            alt="Ayman Boujjar logo" 
+            alt="Ayman Boujjar logo — full-stack and mobile developer" 
             className={size} // if you're using Tailwind
         />
     )
