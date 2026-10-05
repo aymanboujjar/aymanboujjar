@@ -3,7 +3,7 @@ export const SITE_NAME = "Ayman Boujjar";
 export const DEFAULT_TITLE =
     "Ayman Boujjar — Full-Stack & Mobile Developer and Freelancer";
 export const DEFAULT_DESCRIPTION =
-    "Ayman Boujjar — full-stack & mobile developer and freelancer in Casablanca, Morocco. Available for worldwide remote work. Laravel, React, React Native, Expo — web apps, mobile apps, APIs and integrations. Développeur full-stack et mobile freelance.";
+    "Ayman Boujjar — full-stack & mobile freelancer in Casablanca. Laravel, React, React Native & Expo. Worldwide remote.";
 export const OG_IMAGE = `${SITE_URL}/og-image.jpg`;
 export const PERSON_ID = `${SITE_URL}/#person`;
 export const WEBSITE_ID = `${SITE_URL}/#website`;
@@ -43,7 +43,7 @@ export type PageSeo = {
 export const ABOUT_PAGE_SEO: PageSeo = {
     title: "About Ayman Boujjar — Full-Stack & Mobile Developer and Freelancer",
     description:
-        "About Ayman Boujjar — full-stack & mobile developer and freelancer in Casablanca, Morocco. Full Stack Developer at LionsGeek Association. Available for worldwide remote work. Laravel, React, React Native, Expo — web apps, mobile apps, and APIs.",
+        "About Ayman Boujjar — full-stack & mobile developer in Casablanca. Laravel, React, React Native & Expo. Worldwide remote.",
     path: "/about",
     type: "profile",
 };
@@ -51,21 +51,29 @@ export const ABOUT_PAGE_SEO: PageSeo = {
 export const SERVICES_PAGE_SEO: PageSeo = {
     title: "Freelance Full-Stack & Mobile Development — Ayman Boujjar",
     description:
-        "Freelance full-stack and mobile development by Ayman Boujjar — Laravel, React, React Native, Expo. Web apps, mobile apps, APIs, real-time integrations, and AI-powered features. Worldwide remote from Casablanca, Morocco.",
+        "Freelance full-stack & mobile development by Ayman Boujjar — Laravel, React, React Native, Expo. Worldwide remote.",
     path: "/services",
 };
 
 export const PROJECTS_PAGE_SEO: PageSeo = {
     title: "Projects — Ayman Boujjar | Full-Stack & Mobile Developer",
     description:
-        "Web and mobile projects by Ayman Boujjar — freelance full-stack Laravel/React apps, APIs, and React Native Expo apps for iOS and Android. Worldwide remote from Casablanca, Morocco.",
+        "Web and mobile projects by Ayman Boujjar — Laravel, React, React Native & Expo. Remote from Casablanca, Morocco.",
     path: "/projects",
+};
+
+export const CONTACT_PAGE_SEO: PageSeo = {
+    title: "Contact — Ayman Boujjar | Full-Stack & Mobile Freelancer",
+    description:
+        "Contact Ayman Boujjar for freelance full-stack and mobile work — Laravel, React, React Native, Expo. Worldwide remote.",
+    path: "/contact",
 };
 
 export const STATIC_PAGE_SEO: PageSeo[] = [
     ABOUT_PAGE_SEO,
     SERVICES_PAGE_SEO,
     PROJECTS_PAGE_SEO,
+    CONTACT_PAGE_SEO,
 ];
 
 export function absoluteUrl(path: string): string {
@@ -156,6 +164,21 @@ export function buildPersonGraph() {
     };
 }
 
+export function buildContactPageJsonLd() {
+    return {
+        "@context": "https://schema.org",
+        "@type": "ContactPage",
+        "@id": `${SITE_URL}/contact#webpage`,
+        url: `${SITE_URL}/contact`,
+        name: "Contact — Ayman Boujjar",
+        description: CONTACT_PAGE_SEO.description,
+        isPartOf: { "@id": WEBSITE_ID },
+        about: { "@id": PERSON_ID },
+        mainEntity: { "@id": PERSON_ID },
+        inLanguage: ["en", "fr"],
+    };
+}
+
 export function buildServicesPageJsonLd() {
     return {
         "@context": "https://schema.org",
@@ -163,8 +186,7 @@ export function buildServicesPageJsonLd() {
         "@id": `${SITE_URL}/services#webpage`,
         url: `${SITE_URL}/services`,
         name: "Freelance Full-Stack & Mobile Development — Ayman Boujjar",
-        description:
-            "Freelance full-stack and mobile development by Ayman Boujjar — Laravel, React, React Native, and Expo. Web apps, mobile apps, APIs, real-time integrations, and AI-powered features. Available worldwide remotely from Casablanca, Morocco.",
+        description: SERVICES_PAGE_SEO.description,
         isPartOf: { "@id": WEBSITE_ID },
         about: { "@id": PERSON_ID },
         mainEntity: { "@id": PERSON_ID },
@@ -221,11 +243,23 @@ export function buildProjectJsonLd(project: Project) {
     return data;
 }
 
+/** Meta description length: Google/SEO tools expect ~25–160 characters */
+const META_DESC_MAX = 160;
+
+function clipMetaDescription(text: string): string {
+    const cleaned = text.replace(/\s+/g, " ").trim();
+    if (cleaned.length <= META_DESC_MAX) return cleaned;
+    const cut = cleaned.slice(0, META_DESC_MAX - 1);
+    const lastSpace = cut.lastIndexOf(" ");
+    const clipped = (lastSpace > 40 ? cut.slice(0, lastSpace) : cut).trimEnd();
+    return `${clipped}…`;
+}
+
 export function projectPageDescription(project: Project): string {
     const role = project.role?.en ? ` ${project.role.en}.` : "";
-    const techs = project.techs.map((t) => t.name).slice(0, 5).join(", ");
-    const techHint = techs ? ` Technologies: ${techs}.` : "";
-    return `${project.desc.en}${role}${techHint}`.slice(0, 300);
+    const techs = project.techs.map((t) => t.name).slice(0, 4).join(", ");
+    const techHint = techs ? ` ${techs}.` : "";
+    return clipMetaDescription(`${project.desc.en}${role}${techHint}`);
 }
 
 export function projectPageSeo(project: Project): PageSeo {

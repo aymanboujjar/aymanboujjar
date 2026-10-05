@@ -5,6 +5,7 @@ import {
     useMotionValue,
     useSpring,
 } from "framer-motion";
+import { Link } from "react-router-dom";
 import Title from "../../../components/Title";
 import { socials } from "../../../constants/socials";
 import { TransText } from "../../../components/TransText";
@@ -181,26 +182,34 @@ export default function Contact() {
                             </p>
                         </div>
 
-                        <MagneticLink
-                            href="/Ayman_Boujjar_CV.pdf?v=20260930"
-                            download="Ayman_Boujjar_CV.pdf"
-                            className="inline-flex w-fit items-center gap-3 border border-alpha bg-alpha px-6 py-3.5 font-semibold text-white transition-shadow duration-300 hover:shadow-[0_0_32px_rgba(0,119,190,0.35)]"
-                        >
-                            <TransText en="Download CV" fr="Télécharger le CV" />
-                            <svg
-                                className="h-5 w-5"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
+                        <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                            <Link
+                                to="/contact"
+                                className="inline-flex w-fit items-center gap-3 border border-alpha bg-alpha px-6 py-3.5 font-semibold text-white transition-shadow duration-300 hover:shadow-[0_0_32px_rgba(0,119,190,0.35)]"
                             >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                                />
-                            </svg>
-                        </MagneticLink>
+                                <TransText en="Send a message" fr="Envoyer un message" />
+                            </Link>
+                            <MagneticLink
+                                href="/Ayman_Boujjar_CV.pdf?v=20260930"
+                                download="Ayman_Boujjar_CV.pdf"
+                                className="inline-flex w-fit items-center gap-3 border border-white/15 bg-[#070b14]/80 px-6 py-3.5 font-semibold text-white transition-colors hover:border-alpha/40"
+                            >
+                                <TransText en="Download CV" fr="Télécharger le CV" />
+                                <svg
+                                    className="h-5 w-5"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                                    />
+                                </svg>
+                            </MagneticLink>
+                        </div>
                     </motion.div>
 
                     {/* contact channels */}

@@ -120,21 +120,27 @@ export default function Hero() {
                         className="mt-5 text-5xl font-bold tracking-tight sm:text-6xl lg:text-8xl"
                     >
                         Ayman Boujjar
+                        <span className="mt-5 block text-xl font-semibold text-alpha sm:text-3xl lg:text-4xl">
+                            <TransText
+                                en="Full-Stack & Mobile Developer and Freelancer"
+                                fr="Développeur Full-Stack & Mobile et Freelance"
+                            />
+                        </span>
                     </motion.h1>
 
                     <motion.div
                         variants={itemVariants}
                         className="mt-5 flex items-center justify-center gap-3"
+                        aria-hidden
                     >
                         <span className="hidden h-px w-10 bg-alpha/50 sm:block" />
-                        <h2 className="text-xl font-semibold text-alpha sm:text-3xl lg:text-4xl">
+                        <span className="font-mono text-[11px] uppercase tracking-[0.28em] text-white/50 sm:text-xs">
                             <TransText
-                                en="FULL-STACK & MOBILE DEVELOPER"
-                                fr="DÉVELOPPEUR FULL-STACK & MOBILE"
+                                en="Laravel · React · React Native · Expo"
+                                fr="Laravel · React · React Native · Expo"
                             />
-                        </h2>
+                        </span>
                         <motion.span
-                            aria-hidden
                             className="h-8 w-[3px] bg-alpha sm:h-10"
                             animate={{ opacity: [1, 0.25, 1] }}
                             transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}

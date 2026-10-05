@@ -34,7 +34,7 @@
   ],
   "rewrites": [
     {
-      "source": "/((?!robots\\.txt$|sitemap\\.xml$|llms\\.txt$|og-image\\.jpg$|favicon\\.ico$|Ayman_Boujjar_CV\\.pdf$|.*\\..*).*)",
+      "source": "/((?!api/|robots\\.txt$|sitemap\\.xml$|llms\\.txt$|og-image\\.jpg$|favicon\\.ico$|Ayman_Boujjar_CV\\.pdf$|.*\\..*).*)",
       "destination": "/index.html"
     }
   ]

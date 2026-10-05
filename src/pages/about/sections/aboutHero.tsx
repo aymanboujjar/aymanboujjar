@@ -75,13 +75,19 @@ export default function AboutHero() {
                     </p>
                     <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
                         Ayman Boujjar
+                        <span className="mt-3 block text-xl font-semibold text-alpha sm:text-2xl lg:text-3xl">
+                            <TransText
+                                en="Full-Stack & Mobile Developer and Freelancer"
+                                fr="Développeur Full-Stack & Mobile et Freelance"
+                            />
+                        </span>
                     </h1>
-                    <h2 className="text-xl font-semibold text-alpha sm:text-2xl lg:text-3xl">
+                    <p className="font-mono text-sm uppercase tracking-[0.2em] text-white/45 sm:text-base">
                         <TransText
-                            en="Full-Stack & Mobile Developer · Freelancer"
-                            fr="Développeur Full-Stack & Mobile · Freelance"
+                            en="Casablanca, Morocco · Worldwide remote"
+                            fr="Casablanca, Maroc · Remote mondial"
                         />
-                    </h2>
+                    </p>
                     <p className="max-w-xl text-base leading-relaxed text-white/65 sm:text-lg">
                         <TransText
                             en="I'm a Full-Stack & Mobile Developer and freelancer based in Casablanca, Morocco — building web products with Laravel and React, and iOS/Android apps with React Native and Expo. I ship applications for communities, studios, and institutions."

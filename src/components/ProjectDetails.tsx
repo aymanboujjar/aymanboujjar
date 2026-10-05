@@ -70,6 +70,12 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
                         </p>
                         <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
                             {project.name}
+                            <span className="mt-2 block text-lg font-semibold text-alpha sm:text-xl lg:text-2xl">
+                                <TransText
+                                    en="Project by Ayman Boujjar"
+                                    fr="Projet par Ayman Boujjar"
+                                />
+                            </span>
                         </h1>
                         {project.role && (
                             <p className="mt-3 font-mono text-sm text-alpha sm:text-base">

@@ -68,7 +68,15 @@ export default function Projects() {
             <div className="relative px-4 sm:px-6 lg:px-16">
                 <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
                     <div>
-                        <Title as="h1" title={<TransText en="My Projects" fr="Mes Projets" />} />
+                        <Title
+                            as="h1"
+                            title={
+                                <TransText
+                                    en="Projects — Full-Stack & Mobile Work"
+                                    fr="Projets — Full-Stack & Mobile"
+                                />
+                            }
+                        />
                         <motion.p
                             className="mt-4 max-w-lg text-sm leading-relaxed text-white/55 sm:text-base"
                             initial={{ opacity: 0, y: 12 }}

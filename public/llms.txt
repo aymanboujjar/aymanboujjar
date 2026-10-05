@@ -38,4 +38,5 @@
 - About: https://aymanboujjar.com/about
 - Services: https://aymanboujjar.com/services
 - Projects: https://aymanboujjar.com/projects
+- Contact (message form): https://aymanboujjar.com/contact
 - CV: https://aymanboujjar.com/Ayman_Boujjar_CV.pdf
