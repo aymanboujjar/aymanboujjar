@@ -21,9 +21,54 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://aymanboujjar.com/services/full-stack-development</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://aymanboujjar.com/services/laravel-development</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://aymanboujjar.com/services/mobile-app-development</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://aymanboujjar.com/projects</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://aymanboujjar.com/articles</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://aymanboujjar.com/articles/laravel-react-community-platform-mylionsgeek</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aymanboujjar.com/articles/reservation-flows-laravel-react-mylionsgeek</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aymanboujjar.com/articles/react-native-expo-production-lionsgeek-mobile</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aymanboujjar.com/articles/laravel-react-production-web-experience</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aymanboujjar.com/articles/conversational-3d-avatar-ada-lovelace</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://aymanboujjar.com/contact</loc>

@@ -122,8 +122,8 @@ export default function Hero() {
                         Ayman Boujjar
                         <span className="mt-5 block text-xl font-semibold text-alpha sm:text-3xl lg:text-4xl">
                             <TransText
-                                en="Full-Stack & Mobile Developer and Freelancer"
-                                fr="Développeur Full-Stack & Mobile et Freelance"
+                                en="Full-Stack & Mobile Developer"
+                                fr="Développeur Full-Stack & Mobile"
                             />
                         </span>
                     </motion.h1>
@@ -131,9 +131,8 @@ export default function Hero() {
                     <motion.div
                         variants={itemVariants}
                         className="mt-5 flex items-center justify-center gap-3"
-                        aria-hidden
                     >
-                        <span className="hidden h-px w-10 bg-alpha/50 sm:block" />
+                        <span className="hidden h-px w-10 bg-alpha/50 sm:block" aria-hidden />
                         <span className="font-mono text-[11px] uppercase tracking-[0.28em] text-white/50 sm:text-xs">
                             <TransText
                                 en="Laravel · React · React Native · Expo"
@@ -141,11 +140,12 @@ export default function Hero() {
                             />
                         </span>
                         <motion.span
+                            aria-hidden
                             className="h-8 w-[3px] bg-alpha sm:h-10"
                             animate={{ opacity: [1, 0.25, 1] }}
                             transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
                         />
-                        <span className="hidden h-px w-10 bg-alpha/50 sm:block" />
+                        <span className="hidden h-px w-10 bg-alpha/50 sm:block" aria-hidden />
                     </motion.div>
 
                     <motion.p
@@ -153,8 +153,8 @@ export default function Hero() {
                         className="mt-3 font-mono text-[11px] uppercase tracking-[0.28em] text-white/50 sm:text-xs"
                     >
                         <TransText
-                            en="Freelancer · Worldwide remote"
-                            fr="Freelance · Remote mondial"
+                            en="Casablanca, Morocco · Worldwide remote"
+                            fr="Casablanca, Maroc · Remote mondial"
                         />
                     </motion.p>
 
@@ -163,8 +163,8 @@ export default function Hero() {
                         className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-white/60 sm:text-lg"
                     >
                         <TransText
-                            en="Full-stack & mobile developer and freelancer in Casablanca, Morocco — Laravel, React, React Native, and Expo for web apps, mobile apps, and APIs. Available for worldwide remote freelance and contract work."
-                            fr="Développeur full-stack & mobile et freelance à Casablanca, Maroc — Laravel, React, React Native et Expo pour apps web, mobiles et APIs. Disponible en remote dans le monde entier pour missions freelance et contrats."
+                            en="Ayman Boujjar is a full-stack and mobile developer based in Casablanca, Morocco, specializing in Laravel, React, React Native and Expo for production web and mobile applications."
+                            fr="Ayman Boujjar est un développeur full-stack et mobile basé à Casablanca, Maroc, spécialisé en Laravel, React, React Native et Expo pour des applications web et mobiles en production."
                         />
                     </motion.p>
 

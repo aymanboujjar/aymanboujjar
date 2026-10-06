@@ -1,15 +1,19 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import Seo from "../components/Seo";
 import { TransText } from "../components/TransText";
 
 export default function NotFound() {
+    const { pathname } = useLocation();
+    const path = pathname && pathname !== "/" ? pathname : "/404";
+
     return (
         <div className="relative flex min-h-[70vh] items-center overflow-hidden py-16 lg:py-28">
             <Seo
                 title="Page not found — Ayman Boujjar"
                 description="This page does not exist on aymanboujjar.com. Return home or browse projects and services."
-                path="/404"
+                path={path}
+                robots="noindex"
             />
 
             <div

@@ -49,7 +49,7 @@ export default function Projects() {
 
     return (
         <div className="relative min-h-screen overflow-hidden py-16 lg:py-28">
-            <Seo {...PROJECTS_PAGE_SEO} />
+            <Seo {...PROJECTS_PAGE_SEO} jsonLd={PROJECTS_PAGE_SEO.jsonLd} />
             <div
                 aria-hidden
                 className="pointer-events-none absolute inset-0 opacity-[0.05]"

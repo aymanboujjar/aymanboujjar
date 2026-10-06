@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import Seo from "../components/Seo";
 import { TransText } from "../components/TransText";
 import { services, servicesIntro } from "../constants/services";
+import { serviceLandings } from "../constants/serviceLandings";
 import { awardProject, proProjects } from "../constants/projects";
 import { SERVICES_PAGE_SEO, buildServicesPageJsonLd } from "../constants/seo";
 
@@ -66,7 +67,47 @@ export default function Services() {
                     </motion.p>
                 </div>
 
-                <div className="mt-14 space-y-6 lg:mt-16">
+                <div className="mt-14 grid grid-cols-1 gap-4 md:grid-cols-3 lg:mt-16">
+                    {serviceLandings.map((landing, i) => (
+                        <motion.article
+                            key={landing.slug}
+                            initial={{ opacity: 0, y: 16 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: Math.min(i * 0.05, 0.2) }}
+                            className="flex flex-col border border-white/10 bg-[#070b14]/80 p-6 backdrop-blur-md transition-colors hover:border-alpha/40"
+                        >
+                            <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.3em] text-alpha">
+                                {landing.index}
+                            </p>
+                            <h2 className="text-xl font-semibold text-white">
+                                <Link
+                                    to={`/services/${landing.slug}`}
+                                    className="hover:text-alpha"
+                                >
+                                    <TransText {...landing.name} />
+                                </Link>
+                            </h2>
+                            <p className="mt-3 flex-1 text-sm leading-relaxed text-white/55">
+                                <TransText {...landing.positioning} />
+                            </p>
+                            <Link
+                                to={`/services/${landing.slug}`}
+                                className="mt-5 inline-flex font-mono text-sm text-alpha hover:text-white"
+                            >
+                                <TransText en="Open page" fr="Ouvrir la page" /> →
+                            </Link>
+                        </motion.article>
+                    ))}
+                </div>
+
+                <p className="mt-12 font-mono text-[10px] uppercase tracking-[0.3em] text-white/40">
+                    <TransText
+                        en="Also covered on this site"
+                        fr="Aussi couvert sur ce site"
+                    />
+                </p>
+
+                <div className="mt-6 space-y-6">
                     {services.map((service, i) => {
                         const related = service.projectIds
                             .map(projectById)
@@ -118,7 +159,7 @@ export default function Services() {
                                                     project ? (
                                                         <li key={project.id}>
                                                             <Link
-                                                                to={`/project/${project.id}`}
+                                                                to={`/project/${project.name.replace(/\s+/g, "-")}`}
                                                                 className="inline-flex items-center gap-2 text-sm text-white/70 transition-colors hover:text-alpha"
                                                             >
                                                                 <span className="font-mono text-[10px] text-alpha">
@@ -158,7 +199,7 @@ export default function Services() {
                     </p>
                     <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
                         <Link
-                            to="/#contact"
+                            to="/contact"
                             className="inline-flex items-center gap-2 border border-alpha bg-alpha px-6 py-3.5 font-semibold text-white transition-shadow hover:shadow-[0_0_28px_rgba(0,119,190,0.35)]"
                         >
                             <TransText en="Get in touch" fr="Me contacter" /> →

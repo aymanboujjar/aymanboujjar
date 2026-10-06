@@ -4,24 +4,20 @@ import ProjectDetails from "../components/ProjectDetails";
 import Seo from "../components/Seo";
 import { awardProject, proProjects, persoProjects } from "../constants/projects";
 import { TransText } from "../components/TransText";
-import {
-    buildProjectJsonLd,
-    projectPageSeo,
-} from "../constants/seo";
+import { projectPageSeo } from "../constants/seo";
 
 export default function ProjectPage() {
-    const { id } = useParams<{ id: string }>();
+    const { name } = useParams<{ name: string }>();
 
-    if (!id) {
+    if (!name) {
         return <Navigate to="/" replace />;
     }
-
-    const projectId = parseInt(id, 10);
-    if (isNaN(projectId)) {
-        return <Navigate to="/" replace />;
-    }
-
-    const project = [awardProject, ...proProjects, ...persoProjects].find((p) => p.id === projectId);
+    
+    const project = [awardProject, ...proProjects, ...persoProjects].find(
+        (p) =>
+            p.name.toLowerCase() === decodeURIComponent(name).toLowerCase() ||
+            p.name.toLowerCase().replace(/\s+/g, "-") === name.toLowerCase()
+    );
 
     if (!project) {
         return (
@@ -29,7 +25,7 @@ export default function ProjectPage() {
                 <Seo
                     title="Project Not Found | Ayman Boujjar"
                     description="The requested project case file was not found on Ayman Boujjar’s portfolio."
-                    path={`/project/${id}`}
+                    path={`/project/${name}`}
                 />
                 <div
                     aria-hidden
@@ -69,12 +65,11 @@ export default function ProjectPage() {
 }
 
 function ProjectSeoDetails({ project }: { project: Project }) {
-    const jsonLd = useMemo(() => buildProjectJsonLd(project), [project]);
     const pageSeo = useMemo(() => projectPageSeo(project), [project]);
 
     return (
         <>
-            <Seo {...pageSeo} jsonLd={jsonLd} />
+            <Seo {...pageSeo} jsonLd={pageSeo.jsonLd} />
             <ProjectDetails project={project} />
         </>
     );

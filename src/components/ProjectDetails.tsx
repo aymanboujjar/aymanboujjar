@@ -2,15 +2,34 @@ import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { TransText } from "./TransText";
-import { projectImageAlt } from "../constants/seo";
+import { awardProject, proProjects, persoProjects } from "../constants/projects";
+import { getRelatedServiceLandings } from "../constants/serviceLandings";
+import { getArticlesForProject } from "../constants/articles";
+import { getRelatedProjects, projectImageAlt } from "../constants/seo";
 
 interface ProjectDetailsProps {
     project: Project;
 }
 
+const projectCatalog = [awardProject, ...proProjects, ...persoProjects];
+
 export default function ProjectDetails({ project }: ProjectDetailsProps) {
     const [galleryIndex, setGalleryIndex] = useState(0);
     const imageAlt = projectImageAlt(project);
+    const soleAuthor = project.authorship === "sole";
+    const related = useMemo(
+        () => getRelatedProjects(project, projectCatalog),
+        [project]
+    );
+    const relatedArticles = useMemo(
+        () => getArticlesForProject(project.id),
+        [project.id]
+    );
+
+    const relatedServices = useMemo(
+        () => getRelatedServiceLandings(project),
+        [project]
+    );
 
     const gallery = useMemo(() => {
         const extras = project.additionalImages ?? [];
@@ -46,6 +65,39 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
                     />
 
                     <div>
+                        <nav
+                            aria-label="Breadcrumb"
+                            className="mb-6 font-mono text-[10px] uppercase tracking-[0.2em] text-white/40"
+                        >
+                            <ol className="flex flex-wrap items-center gap-2">
+                                <li>
+                                    <Link to="/" className="hover:text-alpha">
+                                        <TransText en="Home" fr="Accueil" />
+                                    </Link>
+                                </li>
+                                <li aria-hidden className="text-white/25">
+                                    /
+                                </li>
+                                <li>
+                                    <Link
+                                        to="/projects"
+                                        className="hover:text-alpha"
+                                    >
+                                        <TransText
+                                            en="Projects"
+                                            fr="Projets"
+                                        />
+                                    </Link>
+                                </li>
+                                <li aria-hidden className="text-white/25">
+                                    /
+                                </li>
+                                <li className="text-white/70" aria-current="page">
+                                    {project.name}
+                                </li>
+                            </ol>
+                        </nav>
+
                         <div className="mb-8 flex items-center justify-between gap-3 lg:justify-start lg:gap-6">
                             <Link
                                 to="/projects"
@@ -71,10 +123,17 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
                         <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
                             {project.name}
                             <span className="mt-2 block text-lg font-semibold text-alpha sm:text-xl lg:text-2xl">
-                                <TransText
-                                    en="Project by Ayman Boujjar"
-                                    fr="Projet par Ayman Boujjar"
-                                />
+                                {soleAuthor ? (
+                                    <TransText
+                                        en="Project by Ayman Boujjar"
+                                        fr="Projet par Ayman Boujjar"
+                                    />
+                                ) : (
+                                    <TransText
+                                        en="Contribution by Ayman Boujjar"
+                                        fr="Contribution d'Ayman Boujjar"
+                                    />
+                                )}
                             </span>
                         </h1>
                         {project.role && (
@@ -453,6 +512,72 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
                             </button>
                         ))}
                     </div>
+                </section>
+            )}
+
+            {relatedServices.length > 0 && (
+                <section className="mt-2 border border-t-0 border-white/10 px-4 py-8 sm:px-5 lg:px-8">
+                    <p className="mb-4 font-mono text-[10px] uppercase tracking-[0.3em] text-alpha">
+                        <TransText
+                            en="Related expertise"
+                            fr="Expertise liée"
+                        />
+                    </p>
+                    <ul className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                        {relatedServices.map((s) => (
+                            <li key={s.slug}>
+                                <Link
+                                    to={`/services/${s.slug}`}
+                                    className="inline-flex border border-white/12 bg-[#070b14]/80 px-4 py-2.5 text-sm text-white/80 transition-colors hover:border-alpha/40 hover:text-alpha"
+                                >
+                                    <TransText {...s.name} />
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+                </section>
+            )}
+
+            {relatedArticles.length > 0 && (
+                <section className="mt-2 border border-t-0 border-white/10 px-4 py-8 sm:px-5 lg:px-8">
+                    <p className="mb-4 font-mono text-[10px] uppercase tracking-[0.3em] text-alpha">
+                        <TransText
+                            en="Related articles"
+                            fr="Articles liés"
+                        />
+                    </p>
+                    <ul className="flex flex-col gap-3">
+                        {relatedArticles.map((a) => (
+                            <li key={a.slug}>
+                                <Link
+                                    to={`/articles/${a.slug}`}
+                                    className="inline-flex border border-white/12 bg-[#070b14]/80 px-4 py-2.5 text-sm text-white/80 transition-colors hover:border-alpha/40 hover:text-alpha"
+                                >
+                                    {a.headline}
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+                </section>
+            )}
+
+            {related.length > 0 && (
+                <section className="mt-2 border border-t-0 border-white/10 px-4 py-10 sm:px-5 lg:px-8">
+                    <p className="mb-4 font-mono text-[10px] uppercase tracking-[0.3em] text-alpha">
+                        <TransText en="Related work" fr="Travaux liés" />
+                    </p>
+                    <ul className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                        {related.map((p) => (
+                            <li key={p.id}>
+                                <Link
+                                    to={`/project/${p.id}`}
+                                    className="inline-flex border border-white/12 bg-[#070b14]/80 px-4 py-2.5 text-sm text-white/80 transition-colors hover:border-alpha/40 hover:text-alpha"
+                                >
+                                    {p.name}
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
                 </section>
             )}
 

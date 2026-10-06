@@ -7,7 +7,7 @@ import { ABOUT_PAGE_SEO } from '../../constants/seo'
 export default function About() {
   return (
     <>
-      <Seo {...ABOUT_PAGE_SEO} />
+      <Seo {...ABOUT_PAGE_SEO} jsonLd={ABOUT_PAGE_SEO.jsonLd} />
       <AboutHero />
       <AboutEducation />
       <AboutExperience />

@@ -36,10 +36,8 @@
     {
       "source": "/llm.txt",
       "destination": "/llms.txt"
-    },
-    {
-      "source": "/((?!api/|robots\\.txt$|sitemap\\.xml$|llms\\.txt$|404\\.html$|og-image\\.jpg$|favicon\\.ico$|Ayman_Boujjar_CV\\.pdf$|.*\\..*).*)",
-      "destination": "/index.html"
     }
-  ]
+  ],
+  "cleanUrls": true,
+  "trailingSlash": false
 }

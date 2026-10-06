@@ -2,7 +2,8 @@
  * Post-build: emit per-route HTML shells with unique title / description / canonical
  * (and matching OG/Twitter tags) so crawlers do not see homepage meta on every path.
  *
- * Keeps the Person / WebSite / ProfilePage JSON-LD block from dist/index.html unchanged.
+ * When a page provides jsonLd, replaces the homepage Person graph in the shell so
+ * project pages do not publish duplicate / incorrect homepage structured data.
  * Client-side <Seo /> still owns SPA navigations after hydration.
  */
 import fs from "node:fs/promises";
@@ -29,15 +30,20 @@ function absoluteUrl(siteUrl, routePath) {
     return `${siteUrl}${clean.replace(/\/$/, "")}`;
 }
 
-function applyPageMeta(html, { title, description, path: routePath, type }, siteUrl) {
+function applyPageMeta(
+    html,
+    { title, description, path: routePath, type, robots, jsonLd },
+    siteUrl
+) {
     const url = absoluteUrl(siteUrl, routePath);
-    const ogType = type === "profile" ? "profile" : "website";
+    const ogType =
+        type === "profile" ? "profile" : type === "article" ? "article" : "website";
     const t = escapeHtml(title);
     const d = escapeHtml(description);
     const u = escapeHtml(url);
     const h1 = escapeHtml(title);
 
-    return html
+    let next = html
         .replace(/<title>[^<]*<\/title>/, `<title>${t}</title>`)
         .replace(
             /<meta\s+name="description"\s+content="[^"]*"\s*\/>/,
@@ -72,11 +78,35 @@ function applyPageMeta(html, { title, description, path: routePath, type }, site
             `<meta\n      name="twitter:description"\n      content="${d}"\n    />`
         )
         // Crawlable H1 in page source (SPA shell). React replaces #root on hydrate.
-        // Vite may move <script> into <head>, so only rewrite the #root inner HTML.
         .replace(
             /(<div id="root">\s*<main class="seo-shell">\s*)<h1>[^<]*<\/h1>(\s*<\/main>\s*<\/div>)/,
             `$1<h1>${h1}</h1>$2`
         );
+
+    // Drop leftover robots meta, then set when requested.
+    next = next.replace(
+        /\s*<meta\s+name="robots"\s+content="[^"]*"\s*\/>/g,
+        ""
+    );
+    if (robots) {
+        next = next.replace(
+            /(<link rel="canonical"[^>]*>)/,
+            `$1\n    <meta name="robots" content="${escapeHtml(robots)}" />`
+        );
+    }
+
+    if (jsonLd) {
+        const serialized = JSON.stringify(jsonLd, null, 2)
+            .split("\n")
+            .map((line, i) => (i === 0 ? line : `      ${line}`))
+            .join("\n");
+        next = next.replace(
+            /<script(?:\s+id="page-json-ld")?\s+type="application\/ld\+json">[\s\S]*?<\/script>/,
+            `<script id="page-json-ld" type="application/ld+json">\n      ${serialized}\n    </script>`
+        );
+    }
+
+    return next;
 }
 
 async function writeRouteHtml(baseHtml, page, siteUrl) {
@@ -105,10 +135,24 @@ async function main() {
             "/src/constants/projects.tsx"
         );
 
+        const landingsMod = await server.ssrLoadModule(
+            "/src/constants/serviceLandings.ts"
+        );
+
+        const articlesMod = await server.ssrLoadModule(
+            "/src/constants/articles.ts"
+        );
+
         const pages = [
             ...seo.STATIC_PAGE_SEO,
+            ...landingsMod.serviceLandings.map((service) =>
+                seo.serviceLandingPageSeo(service)
+            ),
             ...[projectsMod.awardProject, ...projectsMod.proProjects, ...projectsMod.persoProjects].map(
                 (project) => seo.projectPageSeo(project)
+            ),
+            ...articlesMod.articles.map((article) =>
+                seo.articlePageSeo(article)
             ),
         ];
 

@@ -61,7 +61,12 @@ export default function ProjectCard({
                     <h3
                         className={`font-bold text-white transition-colors group-hover:text-alpha ${stack ? "text-xl lg:text-2xl" : "text-2xl lg:text-3xl"}`}
                     >
-                        {project.name}
+                        <Link
+                            to={`/project/${project.name.replace(/\s+/g, "-")}`}
+                            className="hover:text-alpha"
+                        >
+                            {project.name}
+                        </Link>
                     </h3>
                     {project.role && (
                         <p className="mt-2 font-mono text-[11px] text-alpha/90">
@@ -139,7 +144,7 @@ export default function ProjectCard({
                         </a>
                     )}
                     <Link
-                        to={`/project/${project.id}`}
+                        to={`/project/${project.name.replace(/\s+/g, "-")}`}
                         className={`inline-flex items-center justify-center gap-2 border border-alpha/50 bg-alpha/10 px-4 py-3 text-center font-medium text-white transition-all duration-300 hover:bg-alpha hover:shadow-[0_0_28px_rgba(0,119,190,0.3)] ${stack ? "flex-1" : "w-full"}`}
                     >
                         <TransText

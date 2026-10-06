@@ -1,6 +1,6 @@
 # Ayman Boujjar
 
-> Full-Stack & Mobile Developer and Freelancer (Développeur full-stack et mobile freelance) based in Casablanca, Morocco. Available for worldwide remote freelance and contract work.
+> Full-Stack & Mobile Developer based in Casablanca, Morocco. Specializes in Laravel, React, React Native and Expo for production web and mobile applications. Also available for worldwide remote freelance and contract work.
 
 ## Who
 
@@ -32,11 +32,23 @@
 - Tilila — Laravel + React platform for CPD / 2M media initiatives
 - YES Mobile, Casatourat, ISRAR, LionsGeek.ma, and other client projects
 
+## Technical articles
+
+- Laravel + Inertia + React community platform (MyLionsGeek): https://aymanboujjar.com/articles/laravel-react-community-platform-mylionsgeek
+- Reservation flows on Laravel + React (MyLionsGeek): https://aymanboujjar.com/articles/reservation-flows-laravel-react-mylionsgeek
+- React Native / Expo production shipping (LionsGeek Mobile): https://aymanboujjar.com/articles/react-native-expo-production-lionsgeek-mobile
+- Laravel + React across production web products: https://aymanboujjar.com/articles/laravel-react-production-web-experience
+- Conversational 3D avatar (Ada Lovelace contribution): https://aymanboujjar.com/articles/conversational-3d-avatar-ada-lovelace
+
 ## Pages
 
 - Home: https://aymanboujjar.com/
 - About: https://aymanboujjar.com/about
 - Services: https://aymanboujjar.com/services
+- Full-Stack Development: https://aymanboujjar.com/services/full-stack-development
+- Laravel Development: https://aymanboujjar.com/services/laravel-development
+- Mobile App Development: https://aymanboujjar.com/services/mobile-app-development
 - Projects: https://aymanboujjar.com/projects
+- Articles: https://aymanboujjar.com/articles
 - Contact (message form): https://aymanboujjar.com/contact
 - CV: https://aymanboujjar.com/Ayman_Boujjar_CV.pdf

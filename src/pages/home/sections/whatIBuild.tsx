@@ -2,11 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Title from "../../../components/Title";
 import { TransText } from "../../../components/TransText";
-import { services } from "../../../constants/services";
-
-const homeServices = services.filter((s) =>
-    ["web", "mobile", "api"].includes(s.id)
-);
+import { serviceLandings } from "../../../constants/serviceLandings";
 
 export default function WhatIBuild() {
     return (
@@ -41,8 +37,8 @@ export default function WhatIBuild() {
                             viewport={{ once: true }}
                         >
                             <TransText
-                                en="Freelance full-stack & mobile work — web apps, mobile apps, and APIs with Laravel, React, React Native, and Expo."
-                                fr="Missions freelance full-stack & mobile — apps web, mobiles et APIs avec Laravel, React, React Native et Expo."
+                                en="Full-stack, Laravel, and mobile work from Casablanca — linked to real project case studies."
+                                fr="Travail full-stack, Laravel et mobile depuis Casablanca — relié à de vraies études de cas."
                             />
                         </motion.p>
                     </div>
@@ -65,9 +61,9 @@ export default function WhatIBuild() {
                 </div>
 
                 <div className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-3 lg:mt-12">
-                    {homeServices.map((service, i) => (
+                    {serviceLandings.map((service, i) => (
                         <motion.article
-                            key={service.id}
+                            key={service.slug}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, amount: 0.2 }}
@@ -78,10 +74,15 @@ export default function WhatIBuild() {
                                 {service.index}
                             </p>
                             <h3 className="text-xl font-semibold text-white">
-                                <TransText {...service.title} />
+                                <Link
+                                    to={`/services/${service.slug}`}
+                                    className="hover:text-alpha"
+                                >
+                                    <TransText {...service.name} />
+                                </Link>
                             </h3>
                             <p className="mt-3 flex-1 text-sm leading-relaxed text-white/55">
-                                <TransText {...service.description} />
+                                <TransText {...service.positioning} />
                             </p>
                             <div className="mt-5 flex flex-wrap gap-2">
                                 {service.techs.slice(0, 4).map((tech) => (
@@ -94,7 +95,7 @@ export default function WhatIBuild() {
                                 ))}
                             </div>
                             <Link
-                                to={`/services#${service.id}`}
+                                to={`/services/${service.slug}`}
                                 className="mt-5 inline-flex items-center gap-2 font-mono text-sm text-alpha transition-colors hover:text-white"
                             >
                                 <TransText en="Details" fr="Détails" /> →
@@ -102,21 +103,6 @@ export default function WhatIBuild() {
                         </motion.article>
                     ))}
                 </div>
-
-                <motion.p
-                    className="mt-8 text-center text-sm text-white/45"
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                >
-                    <TransText
-                        en="Also: real-time integrations and AI-powered features when the product needs them."
-                        fr="Aussi : intégrations temps réel et fonctionnalités IA quand le produit l’exige."
-                    />{" "}
-                    <Link to="/services" className="text-alpha hover:underline">
-                        <TransText en="See the full offer" fr="Voir l’offre complète" />
-                    </Link>
-                </motion.p>
             </div>
         </section>
     );

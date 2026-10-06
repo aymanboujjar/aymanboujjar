@@ -58,7 +58,8 @@ export default function Navbar() {
         { to: "/about", index: "02", label: <TransText en="About Me" fr="À Propos" /> },
         { to: "/services", index: "03", label: <TransText en="Services" fr="Services" /> },
         { to: "/projects", index: "04", label: <TransText en="Projects" fr="Projets" /> },
-        { to: "/contact", index: "05", label: <TransText en="Contact" fr="Contact" /> },
+        // { to: "/articles", index: "05", label: <TransText en="Articles" fr="Articles" /> },
+        { to: "/contact", index: "06", label: <TransText en="Contact" fr="Contact" /> },
     ];
 
     const isActive = (to: string) =>

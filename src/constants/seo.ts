@@ -1,9 +1,9 @@
 export const SITE_URL = "https://aymanboujjar.com";
 export const SITE_NAME = "Ayman Boujjar";
 export const DEFAULT_TITLE =
-    "Ayman Boujjar — Full-Stack & Mobile Developer and Freelancer";
+    "Ayman Boujjar — Full-Stack & Mobile Developer in Casablanca, Morocco";
 export const DEFAULT_DESCRIPTION =
-    "Ayman Boujjar — full-stack & mobile freelancer in Casablanca. Laravel, React, React Native & Expo. Worldwide remote.";
+    "Ayman Boujjar is a full-stack and mobile developer based in Casablanca, Morocco, specializing in Laravel, React, React Native and Expo.";
 export const OG_IMAGE = `${SITE_URL}/og-image.jpg`;
 export const PERSON_ID = `${SITE_URL}/#person`;
 export const WEBSITE_ID = `${SITE_URL}/#website`;
@@ -29,13 +29,15 @@ export const LIONSGEEK_ORG = {
 } as const;
 
 export const PERSON_DESCRIPTION =
-    "Ayman Boujjar is a full-stack and mobile developer and freelancer based in Casablanca, Morocco — available for worldwide remote freelance and contract work. Builds web applications with Laravel and React, mobile apps with React Native and Expo, plus APIs, integrations, and AI-powered features. Full Stack Developer at LionsGeek Association.";
+    "Ayman Boujjar is a full-stack and mobile developer based in Casablanca, Morocco, specializing in Laravel, React, React Native and Expo. Builds production web and mobile applications. Full Stack Developer at LionsGeek Association; also available for freelance and contract work worldwide.";
 
 export type PageSeo = {
     title: string;
     description: string;
     path: string;
     type?: "website" | "profile" | "article";
+    /** Meta robots content (e.g. "noindex"). Omit for default indexable pages. */
+    robots?: string;
     jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 };
 
@@ -69,17 +71,136 @@ export const CONTACT_PAGE_SEO: PageSeo = {
     path: "/contact",
 };
 
+export const ARTICLES_PAGE_SEO: PageSeo = {
+    title: "Technical Articles — Ayman Boujjar | Laravel, React & React Native",
+    description:
+        "Experience-based technical articles by Ayman Boujjar on Laravel, React, React Native, and Expo — tied to real portfolio projects.",
+    path: "/articles",
+};
+
+export function buildAboutPageJsonLd() {
+    return {
+        "@context": "https://schema.org",
+        "@type": "ProfilePage",
+        "@id": `${SITE_URL}/about#webpage`,
+        url: `${SITE_URL}/about`,
+        name: ABOUT_PAGE_SEO.title,
+        description: ABOUT_PAGE_SEO.description,
+        isPartOf: { "@id": WEBSITE_ID },
+        about: { "@id": PERSON_ID },
+        mainEntity: { "@id": PERSON_ID },
+        inLanguage: ["en", "fr"],
+    };
+}
+
+export function buildProjectsPageJsonLd() {
+    return {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "@id": `${SITE_URL}/projects#webpage`,
+        url: `${SITE_URL}/projects`,
+        name: PROJECTS_PAGE_SEO.title,
+        description: PROJECTS_PAGE_SEO.description,
+        isPartOf: { "@id": WEBSITE_ID },
+        about: { "@id": PERSON_ID },
+        mainEntity: { "@id": PERSON_ID },
+        inLanguage: ["en", "fr"],
+    };
+}
+
+export function buildArticlesPageJsonLd() {
+    return {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "@id": `${SITE_URL}/articles#webpage`,
+        url: `${SITE_URL}/articles`,
+        name: "Technical Articles — Ayman Boujjar",
+        description: ARTICLES_PAGE_SEO.description,
+        isPartOf: { "@id": WEBSITE_ID },
+        about: { "@id": PERSON_ID },
+        mainEntity: { "@id": PERSON_ID },
+        inLanguage: "en",
+    };
+}
+
+/**
+ * Attach page schemas so emit-route-html replaces the homepage Person graph
+ * on every static shell (not only after SPA hydration).
+ */
+ABOUT_PAGE_SEO.jsonLd = buildAboutPageJsonLd();
+PROJECTS_PAGE_SEO.jsonLd = buildProjectsPageJsonLd();
+ARTICLES_PAGE_SEO.jsonLd = buildArticlesPageJsonLd();
+
 export const STATIC_PAGE_SEO: PageSeo[] = [
     ABOUT_PAGE_SEO,
     SERVICES_PAGE_SEO,
     PROJECTS_PAGE_SEO,
     CONTACT_PAGE_SEO,
+    ARTICLES_PAGE_SEO,
 ];
 
 export function absoluteUrl(path: string): string {
     if (path.startsWith("http")) return path.split("?")[0];
     const clean = path.startsWith("/") ? path : `/${path}`;
     return `${SITE_URL}${clean === "/" ? "/" : clean.replace(/\/$/, "")}`;
+}
+
+/**
+ * Person entity for Ayman Boujjar.
+ * Reused by buildPersonGraph(); do not also inject via Seo.jsonLd on the
+ * homepage (index.html already embeds the graph for static crawlers).
+ */
+export function buildPersonJsonLd() {
+    return {
+        "@type": "Person",
+        "@id": PERSON_ID,
+        name: SITE_NAME,
+        url: `${SITE_URL}/`,
+        jobTitle: [
+            "Full-Stack & Mobile Developer",
+            "Freelance Developer",
+            "Développeur Full-Stack & Mobile",
+            "Développeur Freelance",
+        ],
+        description: PERSON_DESCRIPTION,
+        image: OG_IMAGE,
+        sameAs: [...SAME_AS],
+        worksFor: {
+            "@type": "Organization",
+            name: LIONSGEEK_ORG.name,
+            url: LIONSGEEK_ORG.url,
+        },
+        address: {
+            "@type": "PostalAddress",
+            addressLocality: "Casablanca",
+            addressCountry: "MA",
+        },
+        homeLocation: {
+            "@type": "Place",
+            name: "Casablanca, Morocco",
+        },
+        knowsAbout: [
+            "Full-Stack Development",
+            "Web Development",
+            "Mobile App Development",
+            "Web Application Development",
+            "Mobile Application Development",
+            "Laravel",
+            "React",
+            "React Native",
+            "Expo",
+            "TypeScript",
+            "JavaScript",
+            "PHP",
+            "Frontend Development",
+            "Backend Development",
+            "API Development",
+            "REST APIs",
+            "Real-Time Applications",
+            "iOS Development",
+            "Android Development",
+        ],
+    };
 }
 
 /**
@@ -109,57 +230,7 @@ export function buildPersonGraph() {
                 isPartOf: { "@id": WEBSITE_ID },
                 mainEntity: { "@id": PERSON_ID },
             },
-            {
-                "@type": "Person",
-                "@id": PERSON_ID,
-                name: SITE_NAME,
-                url: `${SITE_URL}/`,
-                jobTitle: [
-                    "Full-Stack & Mobile Developer",
-                    "Freelance Developer",
-                    "Développeur Full-Stack & Mobile",
-                    "Développeur Freelance",
-                ],
-                description: PERSON_DESCRIPTION,
-                image: OG_IMAGE,
-                sameAs: [...SAME_AS],
-                worksFor: {
-                    "@type": "Organization",
-                    name: LIONSGEEK_ORG.name,
-                    url: LIONSGEEK_ORG.url,
-                },
-                address: {
-                    "@type": "PostalAddress",
-                    addressLocality: "Casablanca",
-                    addressCountry: "MA",
-                },
-                homeLocation: {
-                    "@type": "Place",
-                    name: "Casablanca, Morocco",
-                },
-                knowsAbout: [
-                    "Full-Stack Development",
-                    "Web Application Development",
-                    "Mobile Application Development",
-                    "Freelance Software Development",
-                    "Laravel",
-                    "PHP",
-                    "React",
-                    "React Native",
-                    "Expo",
-                    "TypeScript",
-                    "JavaScript",
-                    "Frontend Development",
-                    "Backend Development",
-                    "API Development",
-                    "REST APIs",
-                    "Real-Time Applications",
-                    "iOS Development",
-                    "Android Development",
-                    "Artificial Intelligence",
-                    "AI Integrations",
-                ],
-            },
+            buildPersonJsonLd(),
         ],
     };
 }
@@ -194,53 +265,194 @@ export function buildServicesPageJsonLd() {
     };
 }
 
+/** Wire after builders exist (STATIC_PAGE_SEO is declared above). */
+SERVICES_PAGE_SEO.jsonLd = buildServicesPageJsonLd();
+CONTACT_PAGE_SEO.jsonLd = buildContactPageJsonLd();
+
+type ServiceLandingLike = {
+    slug: string;
+    name: LocalizedString;
+    title: string;
+    description: string;
+    techs: string[];
+};
+
+/**
+ * Service landing JSON-LD: Service + BreadcrumbList.
+ * Provider points at the existing Person entity (no duplicate Person node).
+ */
+export function buildServiceLandingJsonLd(service: ServiceLandingLike) {
+    const url = `${SITE_URL}/services/${service.slug}`;
+    const serviceName = service.name.en;
+
+    return {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Service",
+                "@id": `${url}#service`,
+                name: serviceName,
+                description: service.description,
+                url,
+                provider: { "@id": PERSON_ID },
+                areaServed: [
+                    {
+                        "@type": "City",
+                        name: "Casablanca",
+                    },
+                    {
+                        "@type": "Country",
+                        name: "Morocco",
+                    },
+                ],
+                serviceType: serviceName,
+                ...(service.techs.length
+                    ? { category: service.techs.join(", ") }
+                    : {}),
+            },
+            {
+                "@type": "BreadcrumbList",
+                "@id": `${url}#breadcrumb`,
+                itemListElement: [
+                    {
+                        "@type": "ListItem",
+                        position: 1,
+                        name: "Home",
+                        item: `${SITE_URL}/`,
+                    },
+                    {
+                        "@type": "ListItem",
+                        position: 2,
+                        name: "Services",
+                        item: `${SITE_URL}/services`,
+                    },
+                    {
+                        "@type": "ListItem",
+                        position: 3,
+                        name: serviceName,
+                        item: url,
+                    },
+                ],
+            },
+        ],
+    };
+}
+
+export function serviceLandingPageSeo(service: ServiceLandingLike): PageSeo {
+    return {
+        title: service.title,
+        description: service.description,
+        path: `/services/${service.slug}`,
+        jsonLd: buildServiceLandingJsonLd(service),
+    };
+}
+
+/** Short role fragment for titles — uses text before an em/en dash when present */
+export function projectRoleTitleHint(project: Project): string | null {
+    const role = project.role?.en?.trim();
+    if (!role) return null;
+    const primary = role.split(/\s*[—–]\s*/)[0]?.trim() || role;
+    if (primary.length <= 48) return primary;
+    return `${primary.slice(0, 45).trimEnd()}…`;
+}
+
+/**
+ * Project case-study JSON-LD (@graph): work entity + BreadcrumbList.
+ * Authorship: sole → author Person; contributor → contributor Person
+ * (and LionsGeek as creator when the project client is LionsGeek).
+ */
 export function buildProjectJsonLd(project: Project) {
     const techNames = project.techs.map((t) => t.name);
-    const isMobile = techNames.some((n) =>
-        /react native|expo|ios|android/i.test(n)
-    );
-    const osParts: string[] = [];
-    if (isMobile || project.appStore) osParts.push("iOS");
-    if (isMobile || project.playStore) osParts.push("Android");
+    const isMobileApp =
+        Boolean(project.appStore || project.playStore) ||
+        techNames.some((n) => /react native|expo/i.test(n));
+    const isStaticMarketingSite =
+        project.authorship === "sole" &&
+        !isMobileApp &&
+        techNames.every((n) => /react|vite|tailwind/i.test(n));
 
     const soleAuthor = project.authorship === "sole";
     const roleHint = project.role?.en ? ` Role: ${project.role.en}.` : "";
     const teamHint = project.teamContext?.en
         ? ` ${project.teamContext.en}`
         : "";
+    const projectUrl = `${SITE_URL}/project/${project.name.replace(/\s+/g, "-")}`;
 
-    const data: Record<string, unknown> = {
-        "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
-        "@id": `${SITE_URL}/project/${project.id}#software`,
+    const work: Record<string, unknown> = {
+        "@type": isStaticMarketingSite ? "CreativeWork" : "SoftwareApplication",
+        "@id": `${projectUrl}#work`,
         name: project.name,
         description: `${project.desc.en}${roleHint}${teamHint}`,
-        url: `${SITE_URL}/project/${project.id}`,
-        applicationCategory: isMobile ? "MobileApplication" : "WebApplication",
+        url: projectUrl,
+        isPartOf: { "@id": WEBSITE_ID },
     };
 
-    // Team / contributor work: do not imply sole authorship via author
-    if (soleAuthor) {
-        data.author = { "@id": PERSON_ID };
-    } else {
-        data.contributor = { "@id": PERSON_ID };
+    if (!isStaticMarketingSite) {
+        work.applicationCategory = isMobileApp
+            ? "MobileApplication"
+            : "WebApplication";
+        const osParts: string[] = [];
+        if (isMobileApp || project.appStore) osParts.push("iOS");
+        if (isMobileApp || project.playStore) osParts.push("Android");
+        if (osParts.length) {
+            work.operatingSystem = [...new Set(osParts)].join(", ");
+        }
     }
 
-    if (osParts.length) {
-        data.operatingSystem = [...new Set(osParts)].join(", ");
+    const lionsgeekClient = /lionsgeek/i.test(project.client ?? "");
+
+    if (soleAuthor) {
+        work.author = { "@id": PERSON_ID };
+    } else {
+        work.contributor = { "@id": PERSON_ID };
+        if (lionsgeekClient) {
+            work.creator = {
+                "@type": "Organization",
+                name: LIONSGEEK_ORG.name,
+                url: LIONSGEEK_ORG.url,
+            };
+        }
     }
 
     const sameAs: string[] = [];
     if (project.website) sameAs.push(project.website);
     if (project.appStore) sameAs.push(project.appStore);
     if (project.playStore) sameAs.push(project.playStore);
-    if (sameAs.length) data.sameAs = sameAs;
+    if (sameAs.length) work.sameAs = sameAs;
 
     if (techNames.length) {
-        data.keywords = techNames.join(", ");
+        work.keywords = techNames.join(", ");
     }
 
-    return data;
+    const breadcrumb = {
+        "@type": "BreadcrumbList",
+        "@id": `${projectUrl}#breadcrumb`,
+        itemListElement: [
+            {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: `${SITE_URL}/`,
+            },
+            {
+                "@type": "ListItem",
+                position: 2,
+                name: "Projects",
+                item: `${SITE_URL}/projects`,
+            },
+            {
+                "@type": "ListItem",
+                position: 3,
+                name: project.name,
+                item: projectUrl,
+            },
+        ],
+    };
+
+    return {
+        "@context": "https://schema.org",
+        "@graph": [work, breadcrumb],
+    };
 }
 
 /** Meta description length: Google/SEO tools expect ~25–160 characters */
@@ -256,21 +468,40 @@ function clipMetaDescription(text: string): string {
 }
 
 export function projectPageDescription(project: Project): string {
-    const role = project.role?.en ? ` ${project.role.en}.` : "";
-    const techs = project.techs.map((t) => t.name).slice(0, 4).join(", ");
+    const roleHint = projectRoleTitleHint(project);
+    const techs = project.techs.map((t) => t.name).slice(0, 3).join(", ");
     const techHint = techs ? ` ${techs}.` : "";
-    return clipMetaDescription(`${project.desc.en}${role}${techHint}`);
+    const sole = project.authorship === "sole";
+
+    // Lead with authorship so clipping long blurbs cannot drop the Person link.
+    const relation = sole
+        ? roleHint
+            ? `Built by Ayman Boujjar as ${roleHint}.`
+            : "Built by Ayman Boujjar."
+        : roleHint
+          ? `Ayman Boujjar contributed as ${roleHint}.`
+          : "Ayman Boujjar contributed to this project.";
+
+    return clipMetaDescription(
+        `${relation} ${project.desc.en}${techHint}`
+    );
 }
 
 export function projectPageSeo(project: Project): PageSeo {
     return {
         title: projectPageTitle(project),
         description: projectPageDescription(project),
-        path: `/project/${project.id}`,
+        path: `/project/${project.name.replace(/\s+/g, "-")}`,
+        jsonLd: buildProjectJsonLd(project),
     };
 }
 
 export function projectPageTitle(project: Project): string {
+    const roleHint = projectRoleTitleHint(project);
+    if (roleHint) {
+        return `${project.name} — ${roleHint} | Ayman Boujjar`;
+    }
+
     const techNames = project.techs.map((t) => t.name);
     const isMobile =
         Boolean(project.appStore || project.playStore) ||
@@ -278,16 +509,18 @@ export function projectPageTitle(project: Project): string {
         /mobile/i.test(project.name);
 
     if (isMobile) {
-        return `${project.name} — React Native iOS & Android App | Ayman Boujjar`;
+        return `${project.name} — React Native & Expo | Ayman Boujjar`;
     }
 
     const hasLaravel = techNames.some((n) => /laravel/i.test(n));
-    const hasReact = techNames.some((n) => /^react$/i.test(n) || /inertia/i.test(n));
+    const hasReact = techNames.some(
+        (n) => /^react$/i.test(n) || /inertia/i.test(n)
+    );
     if (hasLaravel && hasReact) {
-        return `${project.name} — Laravel Full-Stack Web App | Ayman Boujjar`;
+        return `${project.name} — Full-Stack Development | Ayman Boujjar`;
     }
     if (hasLaravel) {
-        return `${project.name} — Laravel Backend Project | Ayman Boujjar`;
+        return `${project.name} — Laravel Development | Ayman Boujjar`;
     }
 
     const techHint = techNames
@@ -296,9 +529,94 @@ export function projectPageTitle(project: Project): string {
         .join(" & ");
 
     if (techHint) {
-        return `${project.name} — ${techHint} Project | Ayman Boujjar`;
+        return `${project.name} — ${techHint} | Ayman Boujjar`;
     }
     return `${project.name} | Ayman Boujjar`;
+}
+
+/** Same-client related case studies for internal linking (max 3). */
+export function getRelatedProjects(
+    project: Project,
+    catalog: Project[],
+    limit = 3
+): Project[] {
+    if (!project.client) return [];
+    return catalog
+        .filter((p) => p.id !== project.id && p.client === project.client)
+        .slice(0, limit);
+}
+
+type ArticleLike = {
+    slug: string;
+    title: string;
+    headline: string;
+    description: string;
+    techs: string[];
+};
+
+/**
+ * Article / TechArticle JSON-LD + BreadcrumbList.
+ * Author references the canonical Person @id (no duplicate Person node).
+ * No datePublished / dateModified — portfolio does not define publication dates.
+ */
+export function buildArticleJsonLd(article: ArticleLike) {
+    const url = `${SITE_URL}/articles/${article.slug}`;
+
+    return {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "TechArticle",
+                "@id": `${url}#article`,
+                headline: article.headline,
+                name: article.headline,
+                description: article.description,
+                url,
+                mainEntityOfPage: url,
+                isPartOf: { "@id": WEBSITE_ID },
+                author: { "@id": PERSON_ID },
+                image: OG_IMAGE,
+                inLanguage: "en",
+                ...(article.techs.length
+                    ? { keywords: article.techs.join(", ") }
+                    : {}),
+            },
+            {
+                "@type": "BreadcrumbList",
+                "@id": `${url}#breadcrumb`,
+                itemListElement: [
+                    {
+                        "@type": "ListItem",
+                        position: 1,
+                        name: "Home",
+                        item: `${SITE_URL}/`,
+                    },
+                    {
+                        "@type": "ListItem",
+                        position: 2,
+                        name: "Articles",
+                        item: `${SITE_URL}/articles`,
+                    },
+                    {
+                        "@type": "ListItem",
+                        position: 3,
+                        name: article.headline,
+                        item: url,
+                    },
+                ],
+            },
+        ],
+    };
+}
+
+export function articlePageSeo(article: ArticleLike): PageSeo {
+    return {
+        title: article.title,
+        description: article.description,
+        path: `/articles/${article.slug}`,
+        type: "article",
+        jsonLd: buildArticleJsonLd(article),
+    };
 }
 
 export function projectImageAlt(project: Project): string {
