@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { featuredProjects } from '../constants/featuredProjects'
 import { TransText } from './TransText'
 
-const pieces = featuredProjects
+const pieces = [...featuredProjects].sort((a, b) => Number(b.name === 'Tilila') - Number(a.name === 'Tilila'))
 
 export default function WorkShowcase() {
   const [active, setActive] = useState(0)
