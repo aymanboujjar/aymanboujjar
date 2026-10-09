@@ -90,7 +90,7 @@ export default function ExperienceCard({
                         {experience.relatedProjects.map((p) => (
                             <Link
                                 key={p.id}
-                                to={`/project/${p.id}`}
+                                to={`/project/${p.name.replace(/\s+/g, "-")}`}
                                 className="border border-white/15 px-3 py-1.5 font-mono text-xs text-white/70 transition-colors hover:border-alpha hover:text-alpha"
                             >
                                 {p.name}

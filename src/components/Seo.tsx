@@ -5,6 +5,7 @@ import {
     OG_IMAGE,
     SITE_NAME,
     absoluteUrl,
+    enrichPageJsonLd,
     type PageSeo,
 } from "../constants/seo";
 
@@ -86,11 +87,11 @@ export default function Seo({
     description = DEFAULT_DESCRIPTION,
     path = "/",
     type = "website",
-    robots,
+    robots = "index, follow, max-image-preview:large",
     jsonLd,
 }: Partial<PageSeo>) {
     const jsonLdSerialized = useMemo(
-        () => (jsonLd ? JSON.stringify(jsonLd) : null),
+        () => (jsonLd ? JSON.stringify(enrichPageJsonLd(jsonLd)) : null),
         [jsonLd]
     );
 
@@ -117,11 +118,13 @@ export default function Seo({
         upsertMeta("property", "og:url", url);
         upsertMeta("property", "og:site_name", SITE_NAME);
         upsertMeta("property", "og:image", OG_IMAGE);
+        upsertMeta("property", "og:image:alt", "Ayman Boujjar — full-stack and mobile development");
 
         upsertMeta("name", "twitter:card", "summary_large_image");
         upsertMeta("name", "twitter:title", title);
         upsertMeta("name", "twitter:description", description);
         upsertMeta("name", "twitter:image", OG_IMAGE);
+        upsertMeta("name", "twitter:image:alt", "Ayman Boujjar — full-stack and mobile development");
 
         upsertJsonLd(jsonLdSerialized ? JSON.parse(jsonLdSerialized) : undefined);
     }, [title, description, path, type, robots, jsonLdSerialized]);

@@ -39,5 +39,102 @@
     }
   ],
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/articles",
+      "destination": "/projects",
+      "permanent": true
+    },
+    {
+      "source": "/articles/laravel-react-community-platform-mylionsgeek",
+      "destination": "/project/MyLionsGeek",
+      "permanent": true
+    },
+    {
+      "source": "/articles/reservation-flows-laravel-react-mylionsgeek",
+      "destination": "/project/MyLionsGeek",
+      "permanent": true
+    },
+    {
+      "source": "/articles/react-native-expo-production-lionsgeek-mobile",
+      "destination": "/project/LionsGeek-Mobile",
+      "permanent": true
+    },
+    {
+      "source": "/articles/laravel-react-production-web-experience",
+      "destination": "/services/full-stack-development",
+      "permanent": true
+    },
+    {
+      "source": "/articles/conversational-3d-avatar-ada-lovelace",
+      "destination": "/project/Ada-Lovelace",
+      "permanent": true
+    },
+    {
+      "source": "/project/14",
+      "destination": "/project/Ada-Lovelace",
+      "permanent": true
+    },
+    {
+      "source": "/project/9",
+      "destination": "/project/Tilila",
+      "permanent": true
+    },
+    {
+      "source": "/project/10",
+      "destination": "/project/MyLionsGeek",
+      "permanent": true
+    },
+    {
+      "source": "/project/11",
+      "destination": "/project/LionsGeek",
+      "permanent": true
+    },
+    {
+      "source": "/project/12",
+      "destination": "/project/LionsGeek-Mobile",
+      "permanent": true
+    },
+    {
+      "source": "/project/13",
+      "destination": "/project/ISRAR",
+      "permanent": true
+    },
+    {
+      "source": "/project/1",
+      "destination": "/project/A1-Atelier",
+      "permanent": true
+    },
+    {
+      "source": "/project/2",
+      "destination": "/project/Casatourat",
+      "permanent": true
+    },
+    {
+      "source": "/project/3",
+      "destination": "/project/YES-Africa",
+      "permanent": true
+    },
+    {
+      "source": "/project/4",
+      "destination": "/project/Her-Day-For-Her",
+      "permanent": true
+    },
+    {
+      "source": "/project/5",
+      "destination": "/project/MOOC-Platform",
+      "permanent": true
+    },
+    {
+      "source": "/project/6",
+      "destination": "/project/YES-Mobile-App",
+      "permanent": true
+    },
+    {
+      "source": "/project/8",
+      "destination": "/project/SONOTIC",
+      "permanent": true
+    }
+  ]
 }

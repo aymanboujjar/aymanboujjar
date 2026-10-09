@@ -26,6 +26,7 @@ export default function ProjectPage() {
                     title="Project Not Found | Ayman Boujjar"
                     description="The requested project case file was not found on Ayman Boujjar’s portfolio."
                     path={`/project/${name}`}
+                    robots="noindex, follow"
                 />
                 <div
                     aria-hidden
@@ -39,15 +40,15 @@ export default function ProjectPage() {
                 />
                 <div className="relative max-w-md border border-white/10 bg-[#070b14]/90 p-8 text-center backdrop-blur-md">
                     <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.35em] text-alpha">
-                        <TransText en="Signal lost" fr="Signal perdu" />
+                        <TransText en="Project not found" fr="Projet introuvable" />
                     </p>
                     <h1 className="mb-4 text-3xl font-bold text-white">
                         <TransText en="Project Not Found" fr="Projet Introuvable" />
                     </h1>
                     <p className="mb-8 text-white/55">
                         <TransText
-                            en="The case file you're looking for doesn't exist on this band."
-                            fr="Le dossier que vous recherchez n’existe pas sur cette bande."
+                            en="This project isn’t in the portfolio. Browse the collection to find another case study."
+                            fr="Ce projet ne figure pas dans le portfolio. Parcourez la collection pour découvrir d’autres projets."
                         />
                     </p>
                     <Link
@@ -70,7 +71,7 @@ function ProjectSeoDetails({ project }: { project: Project }) {
     return (
         <>
             <Seo {...pageSeo} jsonLd={pageSeo.jsonLd} />
-            <ProjectDetails project={project} />
+            <ProjectDetails key={project.id} project={project} />
         </>
     );
 }

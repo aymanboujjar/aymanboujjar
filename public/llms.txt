@@ -1,54 +1,36 @@
 # Ayman Boujjar
 
-> Full-Stack & Mobile Developer based in Casablanca, Morocco. Specializes in Laravel, React, React Native and Expo for production web and mobile applications. Also available for worldwide remote freelance and contract work.
+> Full-stack and mobile developer in Casablanca, Morocco. Laravel and React web applications; React Native and Expo apps for iOS and Android. Available for remote freelance and contract work worldwide.
 
-## Who
+## Profile
 
-- Name: Ayman Boujjar
-- Primary title: Full-Stack & Mobile Developer
-- Positioning: Freelance Developer
-- Work model: Remote worldwide
-- Location: Casablanca, Morocco
-- Current affiliation: LionsGeek Association — Full Stack Developer (team contributor on LionsGeek deliveries; not founder/owner)
-- Site: https://aymanboujjar.com/
-- GitHub (public developer profile): https://github.com/aymanboujjar
-- LinkedIn (professional profile): https://www.linkedin.com/in/aymanboujjar
+- [About Ayman](https://aymanboujjar.com/about): background, education, experience, and current role as Full Stack Developer at LionsGeek Association.
+- [GitHub](https://github.com/aymanboujjar): public developer profile.
+- [LinkedIn](https://www.linkedin.com/in/aymanboujjar): professional profile.
+- [CV](https://aymanboujjar.com/Ayman_Boujjar_CV.pdf): downloadable résumé.
 
-## Capabilities
+## Services
 
-- Web applications with Laravel, React, Inertia, TypeScript, and Tailwind
-- Cross-platform mobile apps for iOS and Android with React Native and Expo
-- Backend APIs, third-party integrations, authentication, and notifications
-- Real-time features and AI-powered application experiences (where project scope includes them)
+- [Full-stack development](https://aymanboujjar.com/services/full-stack-development): Laravel, React, Inertia, TypeScript, and Tailwind web applications, community platforms, and internal tools.
+- [Laravel development](https://aymanboujjar.com/services/laravel-development): backend systems, APIs, data-driven features, and integrations with web and mobile clients.
+- [Mobile app development](https://aymanboujjar.com/services/mobile-app-development): React Native and Expo applications for iOS and Android, including backend integration.
+- [All services](https://aymanboujjar.com/services): service overview and supporting projects.
 
-## Award
+## Selected case studies
 
-- Ada Lovelace — LionsGeek team award project; Ayman created the 3D avatar and integrated Moroccan Darija into teammates’ parts. Prix Coup de Cœur Jury at [IN]VISIBLE Festival 2026 (XR4Heritage, Brussels). Shown separately from the project archive.
+- [Tilila](https://aymanboujjar.com/project/Tilila): media platform for CPD / 2M, combining awards, mentoring, and an expert directory. Full-stack contributor with the LionsGeek team.
+- [MyLionsGeek](https://aymanboujjar.com/project/MyLionsGeek): community and operations platform with posts, messaging, jobs, and reservations. Full-stack developer with the LionsGeek team.
+- [LionsGeek Mobile](https://aymanboujjar.com/project/LionsGeek-Mobile): React Native / Expo community app for iOS and Android. Mobile developer with the LionsGeek team; store links appear in the case study.
+- [Casatourat](https://aymanboujjar.com/project/Casatourat): React Native / Expo cultural heritage guide for Casa Mémoire, with GPS-based tours and a Laravel API. Mobile app developer working with LionsGeek / Casa Mémoire.
+- [Ada Lovelace](https://aymanboujjar.com/project/Ada-Lovelace): conversational 3D avatar developed with LionsGeek. The team received the Jury’s Coup de Cœur at [IN]VISIBLE Festival 2026 in Brussels. Ayman contributed the 3D avatar and Moroccan Darija integration.
+- [Project collection](https://aymanboujjar.com/projects): complete portfolio and additional case studies.
 
-## Featured work
+## Working together
 
-- LionsGeek Mobile — React Native / Expo app on the App Store and Google Play (iOS & Android)
-- MyLionsGeek — Laravel + Inertia + React full-stack community platform
-- Tilila — Laravel + React platform for CPD / 2M media initiatives
-- YES Mobile, Casatourat, ISRAR, LionsGeek.ma, and other client projects
+- Location: Casablanca, Morocco.
+- Collaboration: remote freelance and contract work worldwide, including existing products and teams.
+- [Contact](https://aymanboujjar.com/contact): share the product goal, existing materials, timeline, and budget range through the contact form.
 
-## Technical articles
+## Attribution
 
-- Laravel + Inertia + React community platform (MyLionsGeek): https://aymanboujjar.com/articles/laravel-react-community-platform-mylionsgeek
-- Reservation flows on Laravel + React (MyLionsGeek): https://aymanboujjar.com/articles/reservation-flows-laravel-react-mylionsgeek
-- React Native / Expo production shipping (LionsGeek Mobile): https://aymanboujjar.com/articles/react-native-expo-production-lionsgeek-mobile
-- Laravel + React across production web products: https://aymanboujjar.com/articles/laravel-react-production-web-experience
-- Conversational 3D avatar (Ada Lovelace contribution): https://aymanboujjar.com/articles/conversational-3d-avatar-ada-lovelace
-
-## Pages
-
-- Home: https://aymanboujjar.com/
-- About: https://aymanboujjar.com/about
-- Services: https://aymanboujjar.com/services
-- Full-Stack Development: https://aymanboujjar.com/services/full-stack-development
-- Laravel Development: https://aymanboujjar.com/services/laravel-development
-- Mobile App Development: https://aymanboujjar.com/services/mobile-app-development
-- Projects: https://aymanboujjar.com/projects
-- Articles: https://aymanboujjar.com/articles
-- Contact (message form): https://aymanboujjar.com/contact
-- CV: https://aymanboujjar.com/Ayman_Boujjar_CV.pdf
+Case studies describe Ayman’s specific role and contributions. Many projects were delivered with LionsGeek or partner teams. Distinguish team contributions from projects explicitly credited as sole authorship; the case studies are the source for project-specific details.

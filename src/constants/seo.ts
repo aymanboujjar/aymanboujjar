@@ -1,9 +1,10 @@
+import { portfolioFaq } from './faq';
 export const SITE_URL = "https://aymanboujjar.com";
 export const SITE_NAME = "Ayman Boujjar";
 export const DEFAULT_TITLE =
-    "Ayman Boujjar — Full-Stack & Mobile Developer in Casablanca, Morocco";
+    "Ayman Boujjar | Full-Stack & Mobile Developer, Casablanca";
 export const DEFAULT_DESCRIPTION =
-    "Ayman Boujjar is a full-stack and mobile developer based in Casablanca, Morocco, specializing in Laravel, React, React Native and Expo.";
+    "Freelance full-stack and mobile developer in Casablanca. Laravel, React, React Native and Expo applications for teams in Morocco and worldwide.";
 export const OG_IMAGE = `${SITE_URL}/og-image.jpg`;
 export const PERSON_ID = `${SITE_URL}/#person`;
 export const WEBSITE_ID = `${SITE_URL}/#website`;
@@ -71,12 +72,6 @@ export const CONTACT_PAGE_SEO: PageSeo = {
     path: "/contact",
 };
 
-export const ARTICLES_PAGE_SEO: PageSeo = {
-    title: "Technical Articles — Ayman Boujjar | Laravel, React & React Native",
-    description:
-        "Experience-based technical articles by Ayman Boujjar on Laravel, React, React Native, and Expo — tied to real portfolio projects.",
-    path: "/articles",
-};
 
 export function buildAboutPageJsonLd() {
     return {
@@ -93,7 +88,7 @@ export function buildAboutPageJsonLd() {
     };
 }
 
-export function buildProjectsPageJsonLd() {
+export function buildProjectsPageJsonLd(projects: Project[] = []) {
     return {
         "@context": "https://schema.org",
         "@type": "CollectionPage",
@@ -103,25 +98,19 @@ export function buildProjectsPageJsonLd() {
         description: PROJECTS_PAGE_SEO.description,
         isPartOf: { "@id": WEBSITE_ID },
         about: { "@id": PERSON_ID },
-        mainEntity: { "@id": PERSON_ID },
+        mainEntity: {
+            "@type": "ItemList",
+            itemListElement: projects.map((project, index) => ({
+                "@type": "ListItem",
+                position: index + 1,
+                name: project.name,
+                url: `${SITE_URL}/project/${project.name.replace(/\s+/g, "-")}`,
+            })),
+        },
         inLanguage: ["en", "fr"],
     };
 }
 
-export function buildArticlesPageJsonLd() {
-    return {
-        "@context": "https://schema.org",
-        "@type": "CollectionPage",
-        "@id": `${SITE_URL}/articles#webpage`,
-        url: `${SITE_URL}/articles`,
-        name: "Technical Articles — Ayman Boujjar",
-        description: ARTICLES_PAGE_SEO.description,
-        isPartOf: { "@id": WEBSITE_ID },
-        about: { "@id": PERSON_ID },
-        mainEntity: { "@id": PERSON_ID },
-        inLanguage: "en",
-    };
-}
 
 /**
  * Attach page schemas so emit-route-html replaces the homepage Person graph
@@ -129,14 +118,12 @@ export function buildArticlesPageJsonLd() {
  */
 ABOUT_PAGE_SEO.jsonLd = buildAboutPageJsonLd();
 PROJECTS_PAGE_SEO.jsonLd = buildProjectsPageJsonLd();
-ARTICLES_PAGE_SEO.jsonLd = buildArticlesPageJsonLd();
 
 export const STATIC_PAGE_SEO: PageSeo[] = [
     ABOUT_PAGE_SEO,
     SERVICES_PAGE_SEO,
     PROJECTS_PAGE_SEO,
     CONTACT_PAGE_SEO,
-    ARTICLES_PAGE_SEO,
 ];
 
 export function absoluteUrl(path: string): string {
@@ -148,7 +135,7 @@ export function absoluteUrl(path: string): string {
 /**
  * Person entity for Ayman Boujjar.
  * Reused by buildPersonGraph(); do not also inject via Seo.jsonLd on the
- * homepage (index.html already embeds the graph for static crawlers).
+ * homepage without a page graph. The build inserts it into prerendered HTML.
  */
 export function buildPersonJsonLd() {
     return {
@@ -163,7 +150,6 @@ export function buildPersonJsonLd() {
             "Développeur Freelance",
         ],
         description: PERSON_DESCRIPTION,
-        image: OG_IMAGE,
         sameAs: [...SAME_AS],
         worksFor: {
             "@type": "Organization",
@@ -209,7 +195,7 @@ export function buildPersonJsonLd() {
  * static crawlers. Do not also inject this via Seo.jsonLd on the homepage
  * (that would duplicate the static script in index.html).
  */
-export function buildPersonGraph() {
+export function buildPersonGraph(language: 'en' | 'fr' = 'en') {
     return {
         "@context": "https://schema.org",
         "@graph": [
@@ -231,6 +217,16 @@ export function buildPersonGraph() {
                 mainEntity: { "@id": PERSON_ID },
             },
             buildPersonJsonLd(),
+            {
+                "@type": "FAQPage",
+                "@id": `${SITE_URL}/#faq`,
+                isPartOf: { "@id": PROFILE_ID },
+                mainEntity: portfolioFaq.map(item => ({
+                    "@type": "Question",
+                    name: item.question[language],
+                    acceptedAnswer: { "@type": "Answer", text: item.answer[language] },
+                })),
+            },
         ],
     };
 }
@@ -304,6 +300,7 @@ export function buildServiceLandingJsonLd(service: ServiceLandingLike) {
                         "@type": "Country",
                         name: "Morocco",
                     },
+                    { "@type": "Place", name: "Worldwide (remote)" },
                 ],
                 serviceType: serviceName,
                 ...(service.techs.length
@@ -383,6 +380,7 @@ export function buildProjectJsonLd(project: Project) {
         "@id": `${projectUrl}#work`,
         name: project.name,
         description: `${project.desc.en}${roleHint}${teamHint}`,
+        image: absoluteUrl(project.preview),
         url: projectUrl,
         isPartOf: { "@id": WEBSITE_ID },
     };
@@ -546,79 +544,6 @@ export function getRelatedProjects(
         .slice(0, limit);
 }
 
-type ArticleLike = {
-    slug: string;
-    title: string;
-    headline: string;
-    description: string;
-    techs: string[];
-};
-
-/**
- * Article / TechArticle JSON-LD + BreadcrumbList.
- * Author references the canonical Person @id (no duplicate Person node).
- * No datePublished / dateModified — portfolio does not define publication dates.
- */
-export function buildArticleJsonLd(article: ArticleLike) {
-    const url = `${SITE_URL}/articles/${article.slug}`;
-
-    return {
-        "@context": "https://schema.org",
-        "@graph": [
-            {
-                "@type": "TechArticle",
-                "@id": `${url}#article`,
-                headline: article.headline,
-                name: article.headline,
-                description: article.description,
-                url,
-                mainEntityOfPage: url,
-                isPartOf: { "@id": WEBSITE_ID },
-                author: { "@id": PERSON_ID },
-                image: OG_IMAGE,
-                inLanguage: "en",
-                ...(article.techs.length
-                    ? { keywords: article.techs.join(", ") }
-                    : {}),
-            },
-            {
-                "@type": "BreadcrumbList",
-                "@id": `${url}#breadcrumb`,
-                itemListElement: [
-                    {
-                        "@type": "ListItem",
-                        position: 1,
-                        name: "Home",
-                        item: `${SITE_URL}/`,
-                    },
-                    {
-                        "@type": "ListItem",
-                        position: 2,
-                        name: "Articles",
-                        item: `${SITE_URL}/articles`,
-                    },
-                    {
-                        "@type": "ListItem",
-                        position: 3,
-                        name: article.headline,
-                        item: url,
-                    },
-                ],
-            },
-        ],
-    };
-}
-
-export function articlePageSeo(article: ArticleLike): PageSeo {
-    return {
-        title: article.title,
-        description: article.description,
-        path: `/articles/${article.slug}`,
-        type: "article",
-        jsonLd: buildArticleJsonLd(article),
-    };
-}
-
 export function projectImageAlt(project: Project): string {
     if (project.name === "Ada Lovelace") {
         return "LionsGeek team holding Prix Coup de Cœur Jury certificate for Ada Lovelace avatar at [IN]VISIBLE Festival 2026";
@@ -635,4 +560,18 @@ export function projectImageAlt(project: Project): string {
         return `${project.name} built with ${techHint.join(", ")}`;
     }
     return `${project.name} project screenshot`;
+}
+
+/** Resolve identity references on each standalone page, not only after visiting home. */
+export function enrichPageJsonLd(data: PageSeo["jsonLd"]) {
+    if (!data) return undefined;
+    const documents = Array.isArray(data) ? data : [data];
+    const nodes: Record<string, unknown>[] = [];
+    for (const document of documents) {
+        const graph = document["@graph"];
+        nodes.push(...(Array.isArray(graph) ? graph : [document]));
+    }
+    const base = buildPersonGraph()["@graph"].filter(node => node["@type"] === "WebSite" || node["@type"] === "Person");
+    const seen = new Set(nodes.map(node => node["@id"]));
+    return { "@context": "https://schema.org", "@graph": [...nodes, ...base.filter(node => !seen.has(node["@id"]))] };
 }

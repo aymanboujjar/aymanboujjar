@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import Seo from "../components/Seo";
 import { TransText } from "../components/TransText";
 import { getServiceLanding } from "../constants/serviceLandings";
-import { getArticlesForService } from "../constants/articles";
 import { awardProject, proProjects } from "../constants/projects";
 import { serviceLandingPageSeo } from "../constants/seo";
 
@@ -25,7 +24,6 @@ export default function ServiceLanding() {
     const related = service.projectIds
         .map(projectById)
         .filter((p): p is Project => Boolean(p));
-    const relatedArticles = getArticlesForService(service.slug);
 
     return (
         <div className="relative min-h-screen overflow-hidden py-16 lg:py-28">
@@ -179,49 +177,6 @@ export default function ServiceLanding() {
                     </ul>
                 </section>
 
-                {relatedArticles.length > 0 && (
-                    <section className="mt-14">
-                        <h2 className="text-2xl font-semibold text-white sm:text-3xl">
-                            <TransText
-                                en="Related articles"
-                                fr="Articles liés"
-                            />
-                        </h2>
-                        <p className="mt-3 max-w-2xl text-sm text-white/50">
-                            <TransText
-                                en="Technical notes grounded in the same project evidence."
-                                fr="Notes techniques ancrées dans les mêmes preuves projet."
-                            />
-                        </p>
-                        <ul className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
-                            {relatedArticles.map((article) => (
-                                <li key={article.slug}>
-                                    <Link
-                                        to={`/articles/${article.slug}`}
-                                        className="flex h-full flex-col border border-white/10 bg-[#070b14]/80 p-5 transition-colors hover:border-alpha/40"
-                                    >
-                                        <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-alpha">
-                                            {article.techs.slice(0, 3).join(" · ")}
-                                        </span>
-                                        <span className="mt-2 text-lg font-semibold text-white">
-                                            {article.headline}
-                                        </span>
-                                        <span className="mt-3 line-clamp-3 text-sm leading-relaxed text-white/55">
-                                            {article.description}
-                                        </span>
-                                        <span className="mt-4 font-mono text-sm text-alpha">
-                                            <TransText
-                                                en="Read article"
-                                                fr="Lire l’article"
-                                            />{" "}
-                                            →
-                                        </span>
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </section>
-                )}
 
                 <section className="mt-14 max-w-3xl">
                     <h2 className="text-2xl font-semibold text-white sm:text-3xl">

@@ -38,8 +38,8 @@ export const serviceLandings: ServiceLanding[] = [
             fr: "Ayman Boujjar construit des applications web en production de bout en bout — Laravel côté backend, React côté frontend, avec APIs et flux pilotés par base de données quand le produit l’exige.",
         },
         overview: {
-            en: "Full-stack work here means shipping institutional and community platforms with clear user journeys: public sites, internal tools, and multilingual product surfaces. Contributions are documented per project — many deliveries are team work at LionsGeek or with partner organizations, not sole-author builds.",
-            fr: "Le full-stack ici, c’est livrer des plateformes institutionnelles et communautaires avec des parcours clairs : sites publics, outils internes et surfaces produit multilingues. Les contributions sont documentées par projet — beaucoup de livraisons sont du travail d’équipe chez LionsGeek ou avec des partenaires, pas des builds en solo.",
+            en: "A useful web application connects a clear interface to the right data and workflows. I work on public websites, member platforms, bookings, and internal tools, with experience contributing to products such as MyLionsGeek and Tilila alongside the LionsGeek team.",
+            fr: "Une application web utile relie une interface claire aux bonnes données et aux bons parcours. Je travaille sur des sites publics, espaces membres, réservations et outils internes, avec une expérience sur MyLionsGeek et Tilila au sein de l’équipe LionsGeek.",
         },
         capabilities: [
             {
@@ -60,8 +60,8 @@ export const serviceLandings: ServiceLanding[] = [
             },
         ],
         approach: {
-            en: "Start from the product goal and existing constraints, then shape the stack around what already ships in the portfolio — Laravel, React, Inertia, TypeScript, and Tailwind when they fit. Keep authorship honest: contributor language for team deliveries, sole-author language only when the case study says so.",
-            fr: "Partir de l’objectif produit et des contraintes, puis caler la stack sur ce qui est déjà livré dans le portfolio — Laravel, React, Inertia, TypeScript et Tailwind quand c’est pertinent. Garder l’attribution honnête : langage contributeur pour les livraisons d’équipe, langage auteur seul uniquement quand le cas le dit.",
+            en: "We start with your users, the problem to solve, and what already exists. From there, I help define the key screens and workflows, connect them to the backend, and build features in a way your team can continue working with.",
+            fr: "Nous partons de vos utilisateurs, du problème à résoudre et de l’existant. Je vous aide ensuite à définir les écrans et parcours essentiels, à les connecter au backend et à créer des fonctionnalités que votre équipe pourra faire évoluer.",
         },
         audience: {
             en: "Teams and organizations that need a full-stack developer in Casablanca, Morocco — or remotely worldwide — for Laravel/React web applications grounded in shipped portfolio work.",
@@ -89,8 +89,8 @@ export const serviceLandings: ServiceLanding[] = [
             fr: "Ayman Boujjar développe des applications Laravel et des systèmes backend — souvent associés à React et Inertia — pour plateformes communautaires, sites institutionnels et outils de programmes.",
         },
         overview: {
-            en: "Laravel shows up across shipped portfolio cases as the backend for web products: data models, application flows, and APIs that power React or mobile clients. On team projects, Ayman’s role is documented as contributor or full-stack developer — not as sole author unless the case study states that.",
-            fr: "Laravel apparaît dans les cas livrés comme backend de produits web : modèles de données, flux applicatifs et APIs qui alimentent des clients React ou mobiles. Sur les projets d’équipe, le rôle d’Ayman est documenté comme contributeur ou développeur full-stack — pas comme auteur seul sauf si le cas le précise.",
+            en: "Your backend gives the product its structure: data, access, business rules, and the APIs that connect everything. My Laravel work includes community platforms, reservations, messaging, and the systems behind web and mobile interfaces.",
+            fr: "Le backend structure votre produit : données, accès, règles métier et API. Mon travail avec Laravel couvre les plateformes communautaires, réservations, messagerie et systèmes qui alimentent les interfaces web et mobiles.",
         },
         capabilities: [
             {
@@ -140,8 +140,8 @@ export const serviceLandings: ServiceLanding[] = [
             fr: "Ayman Boujjar construit des applications mobiles multiplateformes avec React Native et Expo pour iOS et Android — apps compagnons et clients communautaires appuyés sur des stacks web en production.",
         },
         overview: {
-            en: "Mobile cases in the portfolio include LionsGeek Mobile (App Store and Google Play) and the YES Mobile companion app. Features depend on the product: social feed, messaging, reservations, QR check-in, offline access, or push notifications when the case study documents them. These were team or ecosystem deliveries — contribution wording applies.",
-            fr: "Les cas mobiles du portfolio incluent LionsGeek Mobile (App Store et Google Play) et l’app compagnon YES Mobile. Les fonctionnalités dépendent du produit : fil social, messagerie, réservations, check-in QR, accès hors ligne ou notifications push quand le cas les documente. Ce sont des livraisons d’équipe ou d’écosystème — le langage contribution s’applique.",
+            en: "A mobile app should make the important tasks easy on a small screen. I build React Native and Expo interfaces and connect them to existing backends. My team contributions include LionsGeek Mobile, YES Mobile, and Casatourat, with community, event, and cultural heritage experiences.",
+            fr: "Une application mobile doit faciliter les actions essentielles sur un petit écran. Je développe des interfaces React Native et Expo et les connecte aux backends existants. Mes contributions en équipe incluent LionsGeek Mobile, YES Mobile et Casatourat, autour des communautés, événements et du patrimoine.",
         },
         capabilities: [
             {
@@ -162,15 +162,15 @@ export const serviceLandings: ServiceLanding[] = [
             },
         ],
         approach: {
-            en: "Use React Native and Expo for shared iOS/Android codebases, then connect the app to the backend the product already uses. Keep claims tied to what each case study lists — for example store links on LionsGeek Mobile, or Firebase/offline/push notes on YES Mobile.",
-            fr: "Utiliser React Native et Expo pour un codebase iOS/Android partagé, puis connecter l’app au backend déjà utilisé par le produit. Garder les affirmations liées à ce que chaque cas liste — par exemple les liens stores sur LionsGeek Mobile, ou Firebase/hors ligne/push sur YES Mobile.",
+            en: "We define the core mobile journeys, the devices to support, and the backend connections. Then I build the screens and integrations with React Native and Expo, with attention to navigation, platform behavior, and the release requirements of your app.",
+            fr: "Nous définissons les parcours mobiles essentiels, les appareils à prendre en charge et les connexions au backend. Je développe ensuite les écrans et intégrations avec React Native et Expo, en soignant la navigation, les comportements des plateformes et les exigences de publication.",
         },
         audience: {
             en: "Teams that need a React Native / Expo mobile developer in Morocco (Casablanca-based, worldwide remote) for companion or community apps with real store or production context.",
             fr: "Équipes qui ont besoin d’un développeur mobile React Native / Expo au Maroc (basé à Casablanca, remote mondial) pour des apps compagnons ou communautaires avec un vrai contexte store ou production.",
         },
         techs: ["React Native", "Expo", "TypeScript", "NativeWind", "Firebase"],
-        projectIds: [12, 6],
+        projectIds: [12, 6, 2],
         title: "Mobile App Development in Morocco — Ayman Boujjar",
         description:
             "Ayman Boujjar builds mobile applications with React Native and Expo for iOS and Android, backed by production web technologies.",

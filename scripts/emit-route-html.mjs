@@ -1,176 +1,86 @@
-/**
- * Post-build: emit per-route HTML shells with unique title / description / canonical
- * (and matching OG/Twitter tags) so crawlers do not see homepage meta on every path.
- *
- * When a page provides jsonLd, replaces the homepage Person graph in the shell so
- * project pages do not publish duplicate / incorrect homepage structured data.
- * Client-side <Seo /> still owns SPA navigations after hydration.
- */
-import fs from "node:fs/promises";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
-import { createServer } from "vite";
+/** Prerender the actual React pages, metadata, and entity graph for every public URL. */
+import fs from 'node:fs/promises'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+import { createServer } from 'vite'
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const root = path.resolve(__dirname, "..");
-const distDir = path.join(root, "dist");
-const indexPath = path.join(distDir, "index.html");
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
+const dist = path.join(root, 'dist')
+const escapeHtml = value => String(value).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')
 
-function escapeHtml(value) {
-    return String(value)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;");
+function meta(html, attribute, name, value) {
+  const tag = `<meta ${attribute}="${name}" content="${escapeHtml(value)}" />`
+  const pattern = new RegExp(`<meta\\b(?=[^>]*\\b${attribute}="${name}")[^>]*>`, 'g')
+  return pattern.test(html) ? html.replace(pattern, () => tag) : html.replace('</head>', `${tag}\n</head>`)
 }
 
-function absoluteUrl(siteUrl, routePath) {
-    if (routePath === "/") return `${siteUrl}/`;
-    const clean = routePath.startsWith("/") ? routePath : `/${routePath}`;
-    return `${siteUrl}${clean.replace(/\/$/, "")}`;
+function buildHead(html, page, seo) {
+  const url = seo.absoluteUrl(page.path)
+  let next = html.replace(/<title>[\s\S]*?<\/title>/, () => `<title>${escapeHtml(page.title)}</title>`)
+    .replace(/<link\b(?=[^>]*\brel="canonical")[^>]*>/, () => `<link rel="canonical" href="${escapeHtml(url)}" />`)
+  for (const [attribute, name, value] of [
+    ['name','description',page.description],
+    ['name','robots',page.robots || 'index, follow, max-image-preview:large'],
+    ['property','og:title',page.title], ['property','og:description',page.description],
+    ['property','og:url',url], ['property','og:type',page.type === 'profile' ? 'profile' : 'website'],
+    ['name','twitter:title',page.title], ['name','twitter:description',page.description],
+  ]) next = meta(next, attribute, name, value)
+  const graph = seo.enrichPageJsonLd(page.jsonLd)
+  if (graph) {
+    // Escape '<' so content cannot terminate a script tag.
+    const json = JSON.stringify(graph).replace(/</g,'\\u003c')
+    next = next.replace('</head>', `<script id="page-json-ld" type="application/ld+json">${json}</script>\n</head>`)
+  }
+  return next
 }
 
-function applyPageMeta(
-    html,
-    { title, description, path: routePath, type, robots, jsonLd },
-    siteUrl
-) {
-    const url = absoluteUrl(siteUrl, routePath);
-    const ogType =
-        type === "profile" ? "profile" : type === "article" ? "article" : "website";
-    const t = escapeHtml(title);
-    const d = escapeHtml(description);
-    const u = escapeHtml(url);
-    const h1 = escapeHtml(title);
-
-    let next = html
-        .replace(/<title>[^<]*<\/title>/, `<title>${t}</title>`)
-        .replace(
-            /<meta\s+name="description"\s+content="[^"]*"\s*\/>/,
-            `<meta\n      name="description"\n      content="${d}"\n    />`
-        )
-        .replace(
-            /<link\s+rel="canonical"\s+href="[^"]*"\s*\/>/,
-            `<link rel="canonical" href="${u}" />`
-        )
-        .replace(
-            /<meta\s+property="og:type"\s+content="[^"]*"\s*\/>/,
-            `<meta property="og:type" content="${ogType}" />`
-        )
-        .replace(
-            /<meta\s+property="og:title"\s+content="[^"]*"\s*\/>/,
-            `<meta property="og:title" content="${t}" />`
-        )
-        .replace(
-            /<meta\s+property="og:description"\s+content="[^"]*"\s*\/>/,
-            `<meta\n      property="og:description"\n      content="${d}"\n    />`
-        )
-        .replace(
-            /<meta\s+property="og:url"\s+content="[^"]*"\s*\/>/,
-            `<meta property="og:url" content="${u}" />`
-        )
-        .replace(
-            /<meta\s+name="twitter:title"\s+content="[^"]*"\s*\/>/,
-            `<meta name="twitter:title" content="${t}" />`
-        )
-        .replace(
-            /<meta\s+name="twitter:description"\s+content="[^"]*"\s*\/>/,
-            `<meta\n      name="twitter:description"\n      content="${d}"\n    />`
-        )
-        // Crawlable H1 in page source (SPA shell). React replaces #root on hydrate.
-        .replace(
-            /(<div id="root">\s*<main class="seo-shell">\s*)<h1>[^<]*<\/h1>(\s*<\/main>\s*<\/div>)/,
-            `$1<h1>${h1}</h1>$2`
-        );
-
-    // Drop leftover robots meta, then set when requested.
-    next = next.replace(
-        /\s*<meta\s+name="robots"\s+content="[^"]*"\s*\/>/g,
-        ""
-    );
-    if (robots) {
-        next = next.replace(
-            /(<link rel="canonical"[^>]*>)/,
-            `$1\n    <meta name="robots" content="${escapeHtml(robots)}" />`
-        );
-    }
-
-    if (jsonLd) {
-        const serialized = JSON.stringify(jsonLd, null, 2)
-            .split("\n")
-            .map((line, i) => (i === 0 ? line : `      ${line}`))
-            .join("\n");
-        next = next.replace(
-            /<script(?:\s+id="page-json-ld")?\s+type="application\/ld\+json">[\s\S]*?<\/script>/,
-            `<script id="page-json-ld" type="application/ld+json">\n      ${serialized}\n    </script>`
-        );
-    }
-
-    return next;
-}
-
-async function writeRouteHtml(baseHtml, page, siteUrl) {
-    const html = applyPageMeta(baseHtml, page, siteUrl);
-    const segments = page.path.split("/").filter(Boolean);
-    const outFile = path.join(distDir, ...segments, "index.html");
-    await fs.mkdir(path.dirname(outFile), { recursive: true });
-    await fs.writeFile(outFile, html, "utf8");
-    return path.relative(distDir, outFile);
+function revealInitialContent(html) {
+  // Framer Motion starts some elements transparent. Prerendered pages must also
+  // be fully readable with JavaScript disabled; the client keeps its animations.
+  return html.replace(/style="([^"]*)"/g, (whole, value) => {
+    if (!/(^|;)opacity:0(?:;|$)/.test(value)) return whole
+    const styles = value.split(';').filter(rule => !/^(opacity|transform|filter):/.test(rule))
+    return styles.filter(Boolean).length ? `style="${styles.join(';')}"` : ''
+  })
 }
 
 async function main() {
-    const baseHtml = await fs.readFile(indexPath, "utf8");
-
-    const server = await createServer({
-        root,
-        server: { middlewareMode: true },
-        appType: "custom",
-        // Avoid picking up a conflicting preview server; we only need module load.
-        optimizeDeps: { noDiscovery: true },
-    });
-
-    try {
-        const seo = await server.ssrLoadModule("/src/constants/seo.ts");
-        const projectsMod = await server.ssrLoadModule(
-            "/src/constants/projects.tsx"
-        );
-
-        const landingsMod = await server.ssrLoadModule(
-            "/src/constants/serviceLandings.ts"
-        );
-
-        const articlesMod = await server.ssrLoadModule(
-            "/src/constants/articles.ts"
-        );
-
-        const pages = [
-            ...seo.STATIC_PAGE_SEO,
-            ...landingsMod.serviceLandings.map((service) =>
-                seo.serviceLandingPageSeo(service)
-            ),
-            ...[projectsMod.awardProject, ...projectsMod.proProjects, ...projectsMod.persoProjects].map(
-                (project) => seo.projectPageSeo(project)
-            ),
-            ...articlesMod.articles.map((article) =>
-                seo.articlePageSeo(article)
-            ),
-        ];
-
-        const written = [];
-        for (const page of pages) {
-            written.push(await writeRouteHtml(baseHtml, page, seo.SITE_URL));
-        }
-
-        console.log(
-            `[emit-route-html] Wrote ${written.length} route HTML files:\n` +
-                written.map((f) => `  - ${f}`).join("\n")
-        );
-    } finally {
-        await server.close();
+  const baseHtml = await fs.readFile(path.join(dist,'index.html'),'utf8')
+  const manifest = JSON.parse(await fs.readFile(path.join(dist,'.vite','manifest.json'),'utf8'))
+  const assetMap = new Map()
+  for (const [key, asset] of Object.entries(manifest)) {
+    assetMap.set(`/${key}`, `/${asset.file}`)
+    if (asset.src) assetMap.set(`/${asset.src}`, `/${asset.file}`)
+  }
+  const server = await createServer({root,server:{middlewareMode:true},appType:'custom',optimizeDeps:{noDiscovery:true}})
+  try {
+    const seo = await server.ssrLoadModule('/src/constants/seo.ts')
+    const catalog = await server.ssrLoadModule('/src/constants/projects.tsx')
+    const landings = await server.ssrLoadModule('/src/constants/serviceLandings.ts')
+    const {renderPage} = await server.ssrLoadModule('/src/entry-server.tsx')
+    const projects = [catalog.awardProject,...catalog.proProjects,...catalog.persoProjects]
+    const pages = [
+      {path:'/',title:seo.DEFAULT_TITLE,description:seo.DEFAULT_DESCRIPTION,type:'profile',jsonLd:seo.buildPersonGraph()},
+      ...seo.STATIC_PAGE_SEO.map(page => page.path === '/projects' ? {...page,jsonLd:seo.buildProjectsPageJsonLd([catalog.awardProject,...catalog.proProjects])} : page),
+      ...landings.serviceLandings.map(seo.serviceLandingPageSeo),
+      ...projects.map(seo.projectPageSeo),
+    ]
+    const written = []
+    for (const page of pages) {
+      let html = buildHead(baseHtml,page,seo).replace('<!--app-html-->', () => revealInitialContent(renderPage(page.path)))
+      for (const [source, built] of assetMap) html = html.split(source).join(built)
+      if (html.includes('/src/assets/')) throw new Error(`Unresolved production asset in ${page.path}`)
+      if (html.includes('<!--app-html-->') || !/<h1\b/.test(html)) throw new Error(`Missing prerendered content for ${page.path}`)
+      const file = path.join(dist,...page.path.split('/').filter(Boolean),'index.html')
+      await fs.mkdir(path.dirname(file),{recursive:true})
+      await fs.writeFile(file,html,'utf8')
+      written.push(page.path)
     }
+    // The sitemap uses the exact same route catalog as the HTML output.
+    const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${pages.map(page=>`  <url><loc>${escapeHtml(seo.absoluteUrl(page.path))}</loc></url>`).join('\n')}\n</urlset>\n`
+    await fs.writeFile(path.join(dist,'sitemap.xml'),sitemap,'utf8')
+    await fs.writeFile(path.join(root,'public','sitemap.xml'),sitemap,'utf8')
+    console.log(`[prerender] Wrote ${written.length} complete pages and a matching sitemap.`)
+  } finally { await server.close() }
 }
-
-main().catch((err) => {
-    console.error("[emit-route-html] Failed:", err);
-    process.exit(1);
-});
+main().catch(error => {console.error('[prerender]',error);process.exitCode=1})

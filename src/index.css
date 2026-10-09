@@ -2,7 +2,7 @@
 
 
 @theme {
-  --color-alpha: #0077BE;
+  --color-alpha: #d4ed91;
 }
 
 /* Trusted By — orbital constellation */
@@ -250,4 +250,3 @@ html.signal-cursor-on,
 html.signal-cursor-on * {
   cursor: none !important;
 }
-

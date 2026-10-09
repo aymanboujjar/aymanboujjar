@@ -1,54 +1,14 @@
-import React, { createContext, useContext, useState, type ReactNode, } from 'react';
-
-export type Language = 'en' | 'fr';
-export type Theme = 'light' | 'dark';
-
-interface AppContextType {
-  selectedLanguage: Language;
-  theme: Theme;
-  toggleLanguage: () => void;
-  toggleTheme: () => void;
-  isDark: boolean;
-}
-
-const AppContext = createContext<AppContextType | undefined>(undefined);
-
-interface AppProviderProps {
-  children: ReactNode;
-}
-
-export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
-  const [selectedLanguage, setSelectedLanguage] = useState<Language>('en');
-  const [theme, setTheme] = useState<Theme>('dark');
-
-
-  const toggleLanguage = () => {
-    setSelectedLanguage(prev => prev === 'en' ? 'fr' : 'en');
-  };
-
-  const toggleTheme = () => {
-    setTheme(prev => prev === 'dark' ? 'light' : 'dark');
-  };
-
-  const value: AppContextType = {
+import { useEffect, useState, type ReactNode } from 'react'
+import { AppContext, type Language, type Theme } from './useAppContext'
+export function AppProvider({ children }: { children: ReactNode }) {
+  const [selectedLanguage, setSelectedLanguage] = useState<Language>('en')
+  const [theme, setTheme] = useState<Theme>('dark')
+  useEffect(() => { document.documentElement.lang = selectedLanguage }, [selectedLanguage])
+  return <AppContext.Provider value={{
     selectedLanguage,
     theme,
-    toggleLanguage,
-    toggleTheme,
+    toggleLanguage: () => setSelectedLanguage(previous => previous === 'en' ? 'fr' : 'en'),
+    toggleTheme: () => setTheme(previous => previous === 'dark' ? 'light' : 'dark'),
     isDark: theme === 'dark',
-  };
-
-  return (
-    <AppContext.Provider value={value}>
-      {children}
-    </AppContext.Provider>
-  );
-};
-
-export const useAppContext = (): AppContextType => {
-  const context = useContext(AppContext);
-  if (context === undefined) {
-    throw new Error('useAppContext must be used within a AppProvider');
-  }
-  return context;
-};
+  }}>{children}</AppContext.Provider>
+}
