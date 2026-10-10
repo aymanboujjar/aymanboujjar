@@ -1,4 +1,9 @@
 {
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "functions": {
+    "api/contact.ts": { "maxDuration": 25 }
+  },
   "headers": [
     {
       "source": "/sitemap.xml",

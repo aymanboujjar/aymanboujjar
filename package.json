@@ -7,6 +7,8 @@
     "dev": "vite",
     "build": "tsc -b && vite build && node scripts/emit-route-html.mjs",
     "lint": "eslint .",
+    "test:contact": "node scripts/contact.test.mjs",
+    "check:api": "tsc --noEmit --strict --target ES2022 --module NodeNext --moduleResolution NodeNext --skipLibCheck --types node api/contact.ts",
     "preview": "vite preview",
     "check:seo": "node scripts/check-site.mjs"
   },
@@ -20,6 +22,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.30.1",
+    "@types/node": "^22.20.5",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "@vercel/node": "^20.0.0",

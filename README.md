@@ -51,7 +51,7 @@ https://aymanboujjar.com/project/MyLionsGeek
 
 The `/contact` page posts to `/api/contact` (Vercel) and emails **boujjarr@gmail.com** via [Resend](https://resend.com). Visitors stay on your site.
 
-**Required (one-time):**
+**Required (one-time):** Follow [CONTACT_OPERATIONS.md](CONTACT_OPERATIONS.md) to provision the durable Upstash rate limiter and set its three required environment variables. Without it, valid inquiries fail closed with HTTP 503 and no email is sent. Then configure Resend:
 
 1. Create a free account at https://resend.com — use **boujjarr@gmail.com** (Resend’s test sender can only deliver to the signup email until you verify a domain).
 2. Create an API key: https://resend.com/api-keys
@@ -81,6 +81,7 @@ Local API testing: `npx vercel dev` (plain `npm run dev` does not run `/api`).
 
 - Run `npm run dev` for the local React app.
 - Run `npm run build` for production. The post-build step renders 21 pages from the same React components used by the browser, including the homepage, services, profile, and case studies.
+- Run `npm run test:contact` for mocked API regressions and `npm run check:api` for the server TypeScript check (uses Node types already installed with Vercel).
 - Run `npm run check:seo` after a build to verify static content, titles, descriptions, canonical URLs, entity graphs, the sitemap, redirects, and local links.
 - Run `npm run preview` to inspect the production output.
 

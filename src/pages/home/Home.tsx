@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Seo from '../../components/Seo'
+import ServiceOffers from '../../components/ServiceOffers'
+import CollaborationProcess from '../../components/CollaborationProcess'
 import WorkShowcase from '../../components/WorkShowcase'
 import { TransText } from '../../components/TransText'
 import { useAppContext } from '../../contexts/useAppContext'
@@ -35,9 +37,9 @@ export default function Home() {
         <div className="hero-composition">
           <div className="hero-copy">
             <p className="eyebrow hero-intro"><TransText en="Ayman Boujjar / Freelance web & mobile developer" fr="Ayman Boujjar / Développeur web & mobile freelance" /></p>
-            <h1><TransText en="Web & mobile." fr="Web & mobile." /><br /><span className="serif-line"><TransText en="Built for people." fr="Pensés pour les gens." /></span></h1>
-            <p className="hero-description"><TransText en="Need a web platform, a mobile app, or help improving an existing product? I’m Ayman, a freelance developer in Casablanca. I build with Laravel, React, React Native, and Expo—working with clients and teams remotely worldwide." fr="Une plateforme web, une application mobile ou un produit à améliorer ? Moi, c’est Ayman, développeur freelance à Casablanca. Je travaille avec Laravel, React, React Native et Expo, avec des clients et des équipes à distance dans le monde entier." /></p>
-            <div className="hero-actions"><Link className="studio-button" to="/contact"><TransText en="Discuss your project" fr="Parlons de votre projet" /><span>↗</span></Link><a className="text-link" href="#selected-work"><TransText en="Explore my work" fr="Découvrir mes projets" /><span>↘</span></a></div>
+            <h1><TransText en="Web & mobile." fr="Web & mobile." /><br /><span className="serif-line"><TransText en="Built for business." fr="Pensés pour votre activité." /></span></h1>
+            <p className="hero-description"><TransText en="Launch new features, simplify business workflows, or improve an existing product. I build web applications with Laravel and React, and iOS and Android apps with React Native and Expo. Based in Casablanca, available for freelance and contract work with founders, businesses, and agencies worldwide." fr="Lancez de nouvelles fonctionnalités, simplifiez vos processus métier ou améliorez votre produit. Je développe des applications web avec Laravel et React, et des apps iOS et Android avec React Native et Expo. Basé à Casablanca, disponible en freelance pour les fondateurs, entreprises et agences du monde entier." /></p>
+            <div className="hero-actions"><Link className="studio-button" to="/contact"><TransText en="Discuss a Project" fr="Parlons de votre projet" /><span>↗</span></Link><a className="text-link" href="#selected-work"><TransText en="View My Work" fr="Découvrir mes projets" /><span>↘</span></a></div>
           </div>
           <WorkShowcase />
         </div>
@@ -57,14 +59,8 @@ export default function Home() {
           <p className="project-role">{p.role?.[lang]}</p><div className="project-techs">{p.techs.slice(0,3).map(t => <span key={t.name}>{t.name}</span>)}</div>
         </Link>)}</div>
       </section>
-      <section className="studio-about studio-container">
-        <div><p className="eyebrow">02 / <TransText en="What I can build" fr="Ce que je peux créer" /></p><h2><TransText en="From the interface to what powers it." fr="De l’interface à ce qui la fait fonctionner." /></h2><Link to="/services" className="text-link"><TransText en="Explore my services" fr="Découvrir mes services" /> ↗</Link></div>
-        <div className="approach-list">{[
-          ['01','Web applications.','Applications web.','Laravel and React platforms for public websites, member communities, booking flows, and internal tools.','Des plateformes Laravel et React pour les sites publics, communautés, réservations et outils internes.','/services/full-stack-development'],
-          ['02','Mobile experiences.','Expériences mobiles.','Cross-platform iOS and Android apps with React Native and Expo, connected to the APIs your product needs.','Des apps iOS et Android avec React Native et Expo, connectées aux API nécessaires à votre produit.','/services/mobile-app-development'],
-          ['03','The backend behind it.','Le backend qui les accompagne.','Laravel APIs, authentication, administration, and database-driven workflows that support the user experience.','Des API Laravel, de l’authentification, de l’administration et des flux de données au service de l’expérience.','/services/laravel-development'],
-        ].map(([num,en,fr,desc,descFr,path]) => <div key={num}><span>{num}</span><div><h3><Link to={path}><TransText en={en} fr={fr} /></Link></h3><p><TransText en={desc} fr={descFr} /></p></div><span aria-hidden="true">↗</span></div>)}</div>
-      </section>
+      <section className="home-offers studio-container"><div className="section-heading"><div><p className="eyebrow">02 / <TransText en="Services" fr="Services" /></p><h2><TransText en="What does your product need next?" fr="Quelle est la prochaine étape ?" /></h2></div><Link className="text-link" to="/services"><TransText en="All services" fr="Tous les services" /> ↗</Link></div><ServiceOffers /></section>
+      <div className="studio-container"><CollaborationProcess /></div>
       <section className="studio-award studio-container"><Link to={pathFor(awardProject.name)} className="award-feature"><img src={awardProject.preview} alt={projectImageAlt(awardProject)} loading="lazy" /><div><p className="eyebrow">✳ <TransText en="A shared moment of pride" fr="Une fierté collective" /></p><h2>Ada Lovelace.<br /><span className="serif-line"><TransText en="An idea with a voice." fr="Une idée qui prend voix." /></span></h2><p><TransText en="Our LionsGeek team’s conversational 3D avatar won the Jury’s Coup de Cœur at [IN]VISIBLE Festival 2026 in Brussels. My part: the 3D avatar and Moroccan Darija integration." fr="Notre avatar 3D conversationnel, créé avec LionsGeek, a remporté le Coup de Cœur du Jury au festival [IN]VISIBLE 2026 à Bruxelles. Ma contribution : l’avatar 3D et l’intégration de la darija." /></p><span className="text-link"><TransText en="Meet the project" fr="Découvrir le projet" /> ↗</span></div></Link></section>
       <section className="studio-faq studio-container">
         <div><p className="eyebrow">03 / <TransText en="Before we start" fr="Avant de commencer" /></p><h2><TransText en="A few useful answers." fr="Quelques réponses utiles." /></h2><p><TransText en="Have another question? I’m happy to hear about your project." fr="Une autre question ? Parlons de votre projet." /></p><Link className="text-link" to="/contact"><TransText en="Get in touch" fr="Me contacter" /> ↗</Link></div>

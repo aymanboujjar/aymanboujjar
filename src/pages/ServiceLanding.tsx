@@ -222,10 +222,10 @@ export default function ServiceLanding() {
                     </p>
                     <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
                         <Link
-                            to="/contact"
+                            to={`/contact?service=${service.slug === "laravel-development" ? "fix" : service.slug === "mobile-app-development" ? "mobile" : "web"}`}
                             className="inline-flex items-center gap-2 border border-alpha bg-alpha px-6 py-3.5 font-semibold text-white transition-shadow hover:shadow-[0_0_28px_rgba(0,119,190,0.35)]"
                         >
-                            <TransText en="Contact" fr="Contact" /> →
+                            <TransText en="Discuss a Project" fr="Parlons de votre projet" /> →
                         </Link>
                         <Link
                             to="/projects"

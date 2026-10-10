@@ -4,6 +4,10 @@ export type ContactPayload = {
     subject: string;
     message: string;
     company?: string;
+    service?: string;
+    organization?: string;
+    timeline?: string;
+    budget?: string;
 };
 
 type SubmitResult =
@@ -17,6 +21,7 @@ const ERROR_MESSAGES = {
         config: "The contact form is temporarily unavailable.",
         send: "Something went wrong while sending. Please try again later.",
         generic: "Something went wrong. Please try again.",
+        limited: "Too many requests. Please wait before trying again, or email me directly.",
     },
     fr: {
         network: "Impossible de joindre le serveur. Réessayez ou écrivez-moi directement.",
@@ -24,6 +29,7 @@ const ERROR_MESSAGES = {
         config: "Le formulaire est temporairement indisponible.",
         send: "Erreur lors de l'envoi. Réessayez plus tard.",
         generic: "Une erreur est survenue. Réessayez.",
+        limited: "Trop de demandes. Patientez avant de réessayer ou écrivez-moi directement.",
     },
 } as const;
 
@@ -44,14 +50,18 @@ export async function submitContactForm(
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(payload),
+            signal: AbortSignal.timeout(20000),
         });
 
-        if (res.ok) {
+        if (res.ok && (await res.json()).ok === true) {
             return { ok: true };
         }
 
         if (res.status === 400) {
             return { ok: false, error: msg("invalid") };
+        }
+        if (res.status === 429) {
+            return { ok: false, error: msg("limited") };
         }
         if (res.status === 503) {
             return { ok: false, error: msg("config") };

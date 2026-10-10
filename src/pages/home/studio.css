@@ -172,3 +172,20 @@ body{margin:0}
 .showcase-screen img,.is-mobile .showcase-screen img{display:block;width:100%;height:auto;max-width:none;padding:0;object-fit:initial}
 .lightbox-image{height:auto;max-height:72vh}.lightbox-image>img{width:100%;height:auto;object-fit:initial}
 @media(max-width:760px){.case-cover>button,.case-gallery-grid button{height:auto;padding:0}.case-related img{height:auto}.project-preview{padding:0;aspect-ratio:auto}.showcase-screen{height:auto}.lightbox-image{height:auto;max-height:62vh}.preview-caption{opacity:0}.studio-project:focus-visible .preview-caption{opacity:1}}
+
+/* Shared conversion sections use the existing studio palette and spacing. */
+.home-offers{padding:70px 0;border-top:1px solid var(--studio-line)}
+.offer-grid>article{padding:30px;border:1px solid var(--studio-line);display:flex;flex-direction:column;gap:20px;min-width:0;background:#22251e;border-radius:5px}
+.offer-grid .offer-heading{font-size:25px;letter-spacing:-1px;line-height:1.2;margin:0;font-weight:inherit;max-width:none}
+.offer-grid p,.process-intro{font-size:13px;color:var(--studio-muted);line-height:1.9}
+.offer-evidence{margin-top:auto;padding-top:20px;border-top:1px solid var(--studio-line)}
+.offer-evidence>a{display:block;margin-top:16px;font-size:12px}
+.offer-evidence>a>span{display:block;color:var(--studio-muted);font-size:11px;margin-top:6px;line-height:1.6}
+.collaboration-process>div:last-child{grid-template-columns:repeat(4,minmax(0,1fr))}
+.process-intro{max-width:650px;margin-top:20px}
+.studio-contact-form select{width:100%;background:var(--studio-bg);color:var(--studio-paper);border:1px solid var(--studio-line);padding:15px;font:inherit;border-radius:0}
+.studio-contact-form select:focus-visible{outline:2px solid var(--studio-accent);outline-offset:3px}
+.studio-contact-form [aria-invalid=true]{border-color:#ffb4a8}
+.field-error{color:#ffb4a8;font-size:12px;margin-top:8px}
+@media(max-width:1000px){.collaboration-process>div:last-child{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){.home-offers{padding:50px 0}.offer-grid>article{padding:24px}.collaboration-process>div:last-child{grid-template-columns:1fr}}
