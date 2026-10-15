@@ -10,7 +10,7 @@ export default function WorkShowcase() {
   const project = pieces[active]
   const mobile = project.techs.some(tech => tech.name === 'Expo')
   return <aside className="work-showcase" aria-label="Selected project preview">
-    <div className="showcase-orbit" aria-hidden="true"><span>✳</span></div>
+    <div className="showcase-orbit" aria-hidden="true"><span><svg viewBox="0 0 64 64" width="1em" height="1em" fill="none" stroke="currentColor" strokeWidth="2.5" focusable="false"><path d="M32 3v58M3 32h58M11.5 11.5l41 41M11.5 52.5l41-41" /></svg></span></div>
     <div className="showcase-label"><span>AB / <TransText en="IN PRACTICE" fr="EN PRATIQUE" /></span><span>0{active + 1} — 03</span></div>
     <Link className={`showcase-window ${mobile ? 'is-mobile' : ''}`} to={`/project/${project.name.replace(/\s+/g, '-')}`} aria-label={`Explore ${project.name}`}>
       <div className="window-chrome" aria-hidden="true"><span /><span /><span /><small>{project.name}</small><b>↗</b></div>
