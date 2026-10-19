@@ -190,7 +190,7 @@ export default function Contact() {
                                 <TransText en="Send a message" fr="Envoyer un message" />
                             </Link>
                             <MagneticLink
-                                href="/Ayman_Boujjar_CV.pdf?v=20260930"
+                                href="/Ayman_Boujjar_CV.pdf?v=20261019"
                                 download="Ayman_Boujjar_CV.pdf"
                                 className="inline-flex w-fit items-center gap-3 border border-white/15 bg-[#070b14]/80 px-6 py-3.5 font-semibold text-white transition-colors hover:border-alpha/40"
                             >
